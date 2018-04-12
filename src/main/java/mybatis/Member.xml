@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "member.mybatis">
+	<!-- 로그인 -->
+	<select id="login" resultType="int" parameterType="hashmap">
+		SELECT count(*) FROM tpuser 
+			WHERE id = #{id} 
+			AND pw = #{pw}
+	</select>	
+	
+	<!-- 이름가져오기 -->
+	<select id="getname" resultType="String" parameterType="hashmap">
+		select name from tpuser 
+			WHERE id = #{id} 
+	</select>
+	
+	<select id="getNextNumber" resultType="int">
+		select TPUSER_SEQ.nextval from dual
+		<!-- select MEMBER_SEQ.nextval from dual -->
+	</select>
+	
+	<insert id="insertEmployee" parameterType="Member">
+	<!-- 	insert into tpuser  (num,writer,email,subject,passwd,reg_date,
+		ref,re_step,re_level,content,ip,boardid, filename, filesize) 
+			values(#{num},#{writer},#{email},#{subject},#{passwd},sysdate,#{ref},
+			#{re_step},#{re_level},#{content},#{ip},#{boardid},#{filename},#{filesize}) -->
+		insert into tpuser(name,phone,tel,emnum,tnum,id,pw,email,position,joind,login,signature)
+    values(#{name},#{phone},#{tel},#{emnum},#{tnum},#{id},#{pw},#{email},#{position},#{joind},#{login},#{signature})	
+	</insert>
+	
+	
+	
+</mapper>

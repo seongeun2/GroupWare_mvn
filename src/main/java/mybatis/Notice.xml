@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace = "notice.mybatis">
+<!--
+<select id="getMaxNid" resultType="int">
+	select nvl(max(nid),0) from tpnotice
+</select>
+
+<select id="fromList" resultType="NoticeDataBean" parameterType="hashmap">
+	select * from tpnotice where fromid = #{sabun}
+</select>
+
+<select id="toList" resultType="NoticeDataBean" parameterType="hashmap">
+	select * from tpnotice where toid = #{sabun}
+</select>	
+
+<select id="detail" resultType="NoticeDataBean" parameterType="hashmap">
+	select * from tpnotice where nid = #{nid}
+</select>
+
+<insert id="insert" parameterType="InventBusiness" >
+insert into tpnotice values(
+   #{nid},#{fromid},#{toid},#{title},#{content},#{status},#{indate})	
+</insert>
+
+<delete id="delete" parameterType="int">
+	delete from tpnotice where nid = #{nid}
+</delete>
+-->
+</mapper> 

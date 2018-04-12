@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "approval.mybatis">
+
+	<!-- 문서작성시 번호체크 -->
+	<select id="apNextNumber" resultType="int">
+		select docnoser.nextval from dual
+	</select>
+	
+	<!-- 문서작성 -->
+	<insert id="apInsert" parameterType="approval">
+		insert into approval(docNo, name, inid, indt, deptName, teamName, typegubun,
+		<if test="startDt != null">
+		startDt,
+		</if>
+		<if test="endDt != null">
+		endDt,
+		</if>
+		<if test="holiday != null">
+		holiday,
+		</if>
+		 title, content)
+		values(#{docNo},#{name},#{inId},sysdate,#{deptName},#{teamName},#{typegubun}, 
+		<if test="startDt != null">
+		#{startDt},
+		</if>
+		<if test="endDt != null">
+		#{endDt},
+		</if>
+		<if test="holiday != null">
+		#{holiday},
+		</if>
+		#{title},#{content})
+	</insert>
+	
+	<!-- 결재선 저장 -->
+	<insert id="apInsert_path" parameterType="approval">
+		insert into approval_path(docNo, userid, username, status, gubun) 
+			values(#{docNo},#{inId},#{name},'st01','ap01')
+	</insert>
+	
+	<insert id="apInsert_path2" parameterType="approval">
+		insert into approval_path(docNo, userid, username, status, gubun) 
+			values(#{docNo},#{userid},#{user2},'st02','ap02')
+	</insert>
+	
+	<insert id="apInsert_path3" parameterType="approval">
+		insert into approval_path(docNo, userid, username, status, gubun) 
+			values(#{docNo},#{userid},#{user3},'','ap03')
+	</insert>
+	
+
+	
+	
+	<!-- 결재현황 리스트 -->
+	<select id="allList" resultType="Approval" parameterType="hashmap">
+		select * from (select rownum rnum ,a.* from(select app.docno, app.title, app.name, app.deptname, app.teamname, 
+			app.indt, decode(app.typegubun,'doc01','기안서','doc02','휴가신청서','doc03','지출결의서') typegubun, 
+			decode(path.status,'st01','진행중','st02','결재대기','st03','결재완료','st04','반려') status 
+			from approval app, approval_path path
+			where app.docno = path.docno
+			and path.userid = #{userid}
+			order by indt desc, docno desc ) a)
+			where 1=1
+			<if test = "keyWord != null">
+			and ${keyField} like '%' ||#{keyWord}|| '%'
+			</if>
+			<if test = "keyWord == null">
+			 and rnum between #{startRow} and #{endRow}
+			 </if>
+	</select>
+	
+	<!-- 결재현황 카운트 -->
+	<select id="allListCount" resultType="int" parameterType="hashmap">
+		select nvl(count(*),0) from (select rownum rnum ,a.* from(select app.docno, app.title, app.name, app.deptname, app.teamname,  
+			app.indt, decode(app.typegubun,'doc01','기안서','doc02','휴가신청서','doc03','지출결의서') typegubun,  
+			decode(path.status,'st01','진행중','st02','결재대기','st03','결재완료','st04','반려') status  
+			from approval app, approval_path path 
+			where app.docno = path.docno 
+			and path.userid = #{userid} 
+			order by indt desc, docno desc ) a)  
+			where 1=1  
+			<if test = "keyWord != null"> 
+			and ${keyField} like '%' ||#{keyWord}|| '%' 
+			</if>
+	</select>
+	
+	<!-- 진행문서 리스트 -->
+	<select id="apIng" resultType="Approval" parameterType="hashmap">
+		select * from (select rownum rnum ,a.* from(select app.docno, app.title, app.name, app.deptname, app.teamname, app.indt,   
+		decode(app.typegubun,'doc01','기안서','doc02','휴가신청서','doc03','지출결의서') typegubun,  
+		decode(path.status,'st01','진행중','st02','결재대기','st03','결재완료','st04','반려') status  
+			from approval app, approval_path path 
+			where app.docno = path.docno 
+			and path.status ='st01' 
+			and path.userid = #{userid} 
+			order by indt desc, docno desc ) a) 
+			where 1=1  
+			<if test = "keyWord != null"> 
+			and ${keyField} like '%' ||#{keyWord}|| '%' 
+			</if>
+			<if test = "startRow != null and endRow != null">
+			 and rnum between #{startRow} and #{endRow} 
+			</if>
+	</select>
+	
+	<!-- 진행문서st01 카운트 -->
+	<select id="apIngCount" resultType="int" parameterType="hashmap">
+		select nvl(count(*),0) from (select rownum rnum ,a.* from(select app.docno, app.title, app.name, app.deptname, app.teamname, app.indt,  
+		decode(app.typegubun,'doc01','기안서','doc02','휴가신청서','doc03','지출결의서') typegubun, 
+		decode(path.status,'st01','진행중','st02','결재대기','st03','결재완료','st04','반려') status 
+			from approval app, approval_path path
+			where app.docno = path.docno
+			and path.status ='st01'
+			and path.userid = #{userid}
+			order by indt desc, docno desc ) a)
+			where 1=1 
+			<if test = "keyWord != null">
+			and ${keyField} like '%' ||#{keyWord}|| '%'
+			</if>
+			<if test = "startRow != null and endRow != null">
+			 and rnum between #{startRow} and #{endRow}
+			</if>
+	</select>
+	
+	
+	<!-- 결재대기 리스트 -->
+	<select id="apWaiting" resultType="Approval" parameterType="hashmap">
+		select * from (select rownum rnum ,a.* from(select app.docno, app.title, app.name, app.deptname, app.teamname, app.indt, 
+		decode(app.typegubun,'doc01','기안서','doc02','휴가신청서','doc03','지출결의서') typegubun, 
+		decode(path.status,'st01','진행중','st02','결재대기','st03','결재완료','st04','반려') status 
+			from approval app, approval_path path
+			where app.docno = path.docno
+			and path.status ='st02'
+			and path.userid = #{userid}
+			order by indt desc, docno desc ) a)
+			where 1=1 
+			<if test = "keyWord != null">
+			and ${keyField} like '%' ||#{keyWord}|| '%'
+			</if>
+			<if test = "startRow != null and endRow != null">
+			 and rnum between #{startRow} and #{endRow}
+			</if>
+	</select>
+	
+	<!-- 결재대기st02 카운트 -->
+	<select id="apWaitingCount" resultType="int" parameterType="hashmap">
+		select nvl(count(*),0) from (select rownum rnum ,a.* from(select app.docno, app.title, app.name, app.deptname, app.teamname, app.indt, 
+		decode(app.typegubun,'doc01','기안서','doc02','휴가신청서','doc03','지출결의서') typegubun, 
+		decode(path.status,'st01','진행중','st02','결재대기','st03','결재완료','st04','반려') status 
+			from approval app, approval_path path
+			where app.docno = path.docno
+			and path.status ='st02'
+			and path.userid = #{userid}
+			order by indt desc, docno desc ) a)
+			where 1=1 
+			<if test = "keyWord != null">
+			and ${keyField} like '%' ||#{keyWord}|| '%'
+			</if>
+			<if test = "startRow != null and endRow != null">
+			 and rnum between #{startRow} and #{endRow}
+			</if>
+	</select>
+	
+	
+	<!-- 상세페이지 -->
+	<select id="viewPage" resultType="Approval" parameterType="hashmap">
+		select 
+		    docno,name,inid,indt,deptname,teamname,typegubun,startdt,enddt,title,content,holiday
+		    ,(select status from approval_path where docno = #{docno} and userid = #{userid}) as status
+		    ,(select username from approval_path where gubun = 'ap01' and status in ('st01','st03','st04') and docno = #{docno}) as stamp1
+		    , (select username from approval_path where gubun = 'ap02' and status in ('st01','st03') and docno = #{docno}
+            union all
+            select username from approval_path 
+              where gubun = 'ap02' 
+              and docno = #{docno}
+              and docno = (select docno from approval_path where docno =#{docno} and gubun ='ap03' and STATUS = 'st04' )) as stamp2
+		    ,(select username from approval_path where gubun = 'ap03' and status in ('st01','st03') and docno = #{docno}) as stamp3
+            ,(select username from approval_path where gubun = 'ap01' and docno = #{docno}) as user1
+		    ,(select username from approval_path where gubun = 'ap02' and docno = #{docno}) as user2
+		    ,(select username from approval_path where gubun = 'ap03' and docno = #{docno}) as user3
+		from approval 
+		where docno = #{docno}
+	</select>
+	
+	<select id="apInfo" resultType="Approval" parameterType="hashmap">
+		select tpdep.dname AS deptName , tpteam.tname AS teamName, tpuser.name AS name
+			from tpuser, tpteam, tpdep 
+			where tpuser.tnum = tpteam.tnum 
+			and tpteam.dnum = tpdep.dnum 
+			and tpuser.id = #{userid} 
+	</select>	
+	
+	<!-- 결재현황 카운트 -->
+	<select id="apCount" resultType="int" parameterType="approval">
+		select count(*)
+			from approval_path
+		where docNo = #{docNo}
+	</select>
+	
+	<!-- 최종결재인경우 -->
+	<update id="apSave" parameterType="approval">
+	   update approval_path
+		  set status = 'st03'
+		where docNo = #{docNo}	
+	</update>
+	
+	<!-- 결재선이 3개일경우 -->
+	<update id="apSaveSt1" parameterType="approval">
+	   update approval_path
+		  set status = 'st01'
+		where docNo = #{docNo}	
+		  and gubun = 'ap02'
+	</update>
+	
+	<!-- 결재선이 3개일경우 -->
+	<update id="apSaveSt2" parameterType="approval">
+	   update approval_path
+		  set status = 'st02'
+		where docNo = #{docNo}	
+		  and gubun = 'ap03'
+	</update>
+	
+	<!-- 반려 -->
+	<update id="docReturn" parameterType="hashmap">
+	   update approval_path
+		  set status = 'st04'
+		where docNo = #{num}
+	</update>
+	
+</mapper>

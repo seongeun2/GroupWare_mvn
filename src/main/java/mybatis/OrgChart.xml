@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "orgchart.mybatis">
+
+	<select id="getArticleCount" resultType="int" parameterType="hashmap">
+		select nvl(count(*),0) from tpuser
+	</select>
+	
+	<select id="getArticles" resultType="Member" parameterType="hashmap">
+	<!-- 1번		select * from
+			( select rownum rnum ,a.* 
+			  from (select dnum,emnum,name,position,tel,
+			  email from tpuser order by dnum,emnum) 
+			  a ) where rnum between #{startRow} and #{endRow}  -->
+			  
+			  
+ 			<!-- 2번  select * from
+ 			  			( select rownum rnum ,a.* 
+ 			  			  from (select tpuser.dnum,dname,emnum,name,position,tel,
+ 			  			  email from tpuser,tpdep where tpuser.dnum = tpdep.dnum order by dnum,emnum) 
+ 			  			  a ) where rnum between #{startRow} and #{endRow}  -->
+ 			
+ 		<!-- 3번	  			  
+ 			  			   			select * from
+ 			  			           ( select rownum rnum ,a.* 
+ 			  			          from (select tpdep.dnum,tpdep.dname,tpteam.tnum,tpteam.tname,tpuser.emnum,tpuser.name,tpuser.position,tpuser.tel,
+ 			  			  			  tpuser.email from tpuser,tpteam,tpdep where tpuser.tnum = tpteam.tnum and tpteam.dnum =tpdep.dnum order by dnum,tnum,emnum) a)
+ 			  			                where rnum between #{startRow} and #{endRow}
+ 			  			           -->    
+ 			  			           
+		select * from
+         ( select rownum rnum ,a.* 
+        from (select id,tpdep.dnum,tpdep.dname,tpteam.tnum,tpteam.tname,tpuser.emnum,tpuser.name,decode(tpuser.position,1,'대표',2,'관리자',
+        3,'팀장',4,'대리',5,'사원') position,tpuser.tel,
+			  tpuser.email from tpuser,tpteam,tpdep where tpuser.tnum = tpteam.tnum and tpteam.dnum =tpdep.dnum order by dnum,tnum,tpuser.position) a ) 
+			  where 1=1
+			 <if test = "keyWord != null">
+			and ${keyField} like '%' ||#{keyWord}|| '%'
+			</if>
+			<if test = "startRow != null and endRow != null">
+             and rnum between #{startRow} and #{endRow}
+             </if>
+		  
+	</select>
+	
+	<select id="getNextNumber" resultType="int">
+		select TPUSER.nextval from dual
+	</select>
+	
+	 <!-- 게시글 수정 -->
+   <update id="upEmployee"  parameterType="Member">
+      update tpuser set name=#{name},phone=#{phone},tel=#{tel},emnum=#{emnum},tnum=#{tnum},id=#{id},pw=#{pw},email=#{email},#{position},joind=#{joind},login=#{login},signature=#{signature} 
+		 where emnum=#{emnum} and pw = #{pw}
+   </update>	
+
+    <!-- 게시글 삭제 -->
+    <update id="deleteArticle"  parameterType="map">
+      delete from board where num=#{num} and passwd = #{passwd}
+   </update>
+</mapper>
