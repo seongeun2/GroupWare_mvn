@@ -58,7 +58,6 @@ public class MemberController{
 	//관리자 모드 - 직원 등록
 	@RequestMapping("/regEmployee")
 	public String regEmployee() {
-		System.out.println("regEmployee");
 		return "member/regEmployee";
 	}
 	
