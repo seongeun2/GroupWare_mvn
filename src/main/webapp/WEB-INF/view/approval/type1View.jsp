@@ -42,7 +42,9 @@
          </div>
          <div class="w3-container w3-center w3-border">
             <%-- <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" style="width: 100px; height: 100px" class="w3-circle" alt="Avatar"> --%>
-              <p>${vo.stamp1}</p>
+              <c:if test="${vo.stamp1 ne ''}">
+              <p><img src="${pageContext.servletContext.contextPath}/resources/images/stamp/${vo.stamp1}.jpg" style="width: 100px; height: 100px" class="w3-circle" alt="Avatar"></p>
+              </c:if>
            </div>
          </div>
          <!-- 2¹ø °áÀç -->

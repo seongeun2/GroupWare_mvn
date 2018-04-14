@@ -43,8 +43,8 @@
             <p id="name" name="name">${vo.name}</p>
          </div>
          <div class="w3-container w3-center w3-border">
-            <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" 
-                    style="width: 100px; height: 100px" class="w3-circle" alt="Avatar">
+            <img src="${pageContext.servletContext.contextPath}/resources/images/stamp/no.JPG" 
+                    style="width: 100px; height: 100px" alt="Avatar">
            </div>
          </div>
          <!-- 2¹ø °áÀç -->

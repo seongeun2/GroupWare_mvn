@@ -169,14 +169,14 @@
 		select 
 		    docno,name,inid,indt,deptname,teamname,typegubun,startdt,enddt,title,content,holiday
 		    ,(select status from approval_path where docno = #{docno} and userid = #{userid}) as status
-		    ,(select username from approval_path where gubun = 'ap01' and status in ('st01','st03','st04') and docno = #{docno}) as stamp1
-		    , (select username from approval_path where gubun = 'ap02' and status in ('st01','st03') and docno = #{docno}
+		    ,(select userid from approval_path where gubun = 'ap01' and status in ('st01','st03','st04') and docno = #{docno}) as stamp1
+		    , (select userid from approval_path where gubun = 'ap02' and status in ('st01','st03') and docno = #{docno}
             union all
-            select username from approval_path 
+            select userid from approval_path 
               where gubun = 'ap02' 
               and docno = #{docno}
               and docno = (select docno from approval_path where docno =#{docno} and gubun ='ap03' and STATUS = 'st04' )) as stamp2
-		    ,(select username from approval_path where gubun = 'ap03' and status in ('st01','st03') and docno = #{docno}) as stamp3
+		    ,(select userid from approval_path where gubun = 'ap03' and status in ('st01','st03') and docno = #{docno}) as stamp3
             ,(select username from approval_path where gubun = 'ap01' and docno = #{docno}) as user1
 		    ,(select username from approval_path where gubun = 'ap02' and docno = #{docno}) as user2
 		    ,(select username from approval_path where gubun = 'ap03' and docno = #{docno}) as user3
