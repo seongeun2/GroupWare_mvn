@@ -25,6 +25,8 @@
   });
   </script>
   
+<div class="w3-main">
+
   <!-- Contact Section -->
 <div class="w3-row-padding w3-center w3-padding-24" style="margin-left: 110px; margin-right: 110px;">
    <div class="w3-third w3-dark-grey w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type1'">
@@ -41,9 +43,7 @@
    </div>
 </div>
    
-   <!-- 사이 줄 그어줍니다. -->
-<hr class="w3-opacity">
-<div class="w3-padding-32 w3-border" style="margin-left: 120px; margin-right: 120px;">
+<div class="w3-padding-32 w3-border">
 <form action="apWrite" target="_blank">
 <input type="hidden" name="typegubun" value="doc02">
 <input type="hidden" id="id2" name="id2" value="${id2}">
@@ -55,7 +55,7 @@
       <div class="w3-row w3-padding w3-blue-grey">
          <div class="w3-padding-16"></div>
          
-      <div class="w3-col" style="width: 55%;"><p class="w3-xxxlarge">휴가신청서</p></div>
+      <div class="w3-col" style="width: 55%;"><p class="w3-xxxlarge" style="text-align:center;">휴가신청서</p></div>
       <!-- 1번 결재 -->
       <div class="w3-col" style="width: 15%; height: 120px">
          <div class="w3-container w3-center w3-border">
@@ -167,4 +167,6 @@
 </form></div>
   
 <div class="w3-padding-16"></div>
+
+</div>
 </html>

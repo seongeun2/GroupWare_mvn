@@ -13,18 +13,14 @@
 </head>
 <body>
 
-<div class="w3-main" style="margin-left: 100px; margin-right: 100px;">
-   <div class="w3-padding">
+<div class="w3-main">
+   <div class="w3-padding-24">
    
      <!--Management Hierarchy-->
     <section class="management-hierarchy">
       
         <h1> 그리소프트 /조직도</h1>
                   
-        <div style="text-align:right;">   
-             <button class="w3-button w3-white w3-border w3-round-large" onclick="location.href='insa'">총 직원</button>
-        </div> 
-              
         <div class="hv-container">
             <div class="hv-wrapper">
 
@@ -175,6 +171,12 @@
 
         </div>
    
+		<div class="w3-padding-32"></div>
+		
+		<div style="text-align:center;">   
+			<button class="w3-button w3-white w3-border w3-round-large" onclick="location.href='insa'">총 직원</button>
+		</div>
+		
     </section>
    </div>
 </div>

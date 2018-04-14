@@ -3,8 +3,10 @@
 <!DOCTYPE html>
 <html>
   <script src="${pageContext.servletContext.contextPath}/resources/js/app.js"></script>
-  <!-- Contact Section -->
-<div class="w3-row-padding w3-center w3-padding-24" style="margin-left: 110px; margin-right: 110px;">
+  
+<div class="w3-main">
+	<!-- Contact Section -->
+<div class="w3-row-padding w3-center w3-padding-24">
    <div class="w3-third w3-metro-dark-blue w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type1'">
       <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
       <p>기안서</p>
@@ -18,10 +20,8 @@
       <p>지출결의서</p>
    </div>
 </div>
-   
-<!-- 사이 줄 그어줍니다. -->
-<hr class="w3-opacity">
-<div class="w3-padding-32 w3-border" style="margin-left: 120px; margin-right: 120px;">
+ 
+<div class="w3-padding-32 w3-border">
 <!-- <form action="apWrite" target="_blank"> -->
 <form action="apWrite" method="post">
 <input type="hidden" name="typegubun" value="doc01">
@@ -127,4 +127,6 @@
 </div>
   
 <div class="w3-padding-16"></div>
+</div>
+  
 </html>
