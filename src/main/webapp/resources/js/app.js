@@ -49,6 +49,16 @@ function IsThird(result) {
    }
 }
 
+/*body의 min width를 설정해서 찌부되지 않도록 합니다.*/
+function SetBodyMinWidth() {
+	var minWidth = "960px";
+	var bodies = document.getElementsByTagName("body");
+	
+	for(i = 0; i < bodies.length; i++) {
+		bodies[i].style.minWidth = minWidth;  
+	}
+}
+
 function SetView() {
 	var head = document.head || document.getElementsByTagName("head")[0];
 	var style = document.createElement('style');
@@ -60,7 +70,7 @@ function SetView() {
 	head.appendChild(style);
 }
 
-/*색상 테마를 설정합니다.*/
+/*메인 색상 테마를 설정합니다.*/
 function SetColorTheme(style) {
 	var mainColor = '#E9E3FF';
 	var hoverColor = '#FFCCFF';
@@ -77,6 +87,17 @@ function SetColorTheme(style) {
 	}
 	
 	SetButtonEffect(style, hoverColor);
+}
+
+/*문서 색상 테마를 설정합니다.*/
+function SetApprovalColorTheme() {
+	var color = '#b4b4b4';
+	
+	var colorElements = document.getElementsByClassName("approval_color_theme");
+	
+	for(i = 0; i < colorElements.length; ++i) {
+		colorElements[i].style.backgroundColor = color;
+	}
 }
 
 /*화면의 좌우 padding을 설정합니다.*/
@@ -109,6 +130,20 @@ function _SetMainMargin() {
 	SetMainMargin(style);
 }
 
+/*기안서, 휴가신청서, 지출결의서 내부의 좌우 margin을 설정합니다.*/
+function SetApprovalMargin() {
+	var innerMargin = document.getElementById("approval_inner_margin");
+	
+	var margin = '24px';
+	var width = document.body.clientWidth;
+	
+	if (width > 1600)
+		margin = '200px';
+	
+	innerMargin.style.marginLeft = margin;
+	innerMargin.style.marginRight = margin;
+}
+
 /*가로가 1280 이하가 되면 아이콘과 라벨이 겹치지 않게 하기 위해서 라벨을 숨깁니다.*/
 function ToggleLabel() {
 	var width = document.body.clientWidth;
@@ -125,6 +160,11 @@ function ToggleLabel() {
 	}
 }
 
+function SetApprovalBorder() {
+	var borderElement = document.getElementById("approval_border");
+	borderElement.classList.add("w3-bottombar", "w3-topbar", "w3-leftbar", "w3-rightbar");
+}
+
 /*문서는 최소 크기 이하로 작아지지 않도록 제어합니다.*/
 
 /*W3-button의 효과를 재정의해서 사용합니다.*/
@@ -137,6 +177,13 @@ function SetButtonEffect(style, hoverColor) {
 	} else {
 		style.appendChild(document.createTextNode(newStyle));
 	}
+}
+
+/*문서용 color theme와 margin을 적용합니다.*/ 
+function InitApprovalTheme() {
+	SetApprovalBorder();
+	SetApprovalMargin();
+	SetApprovalColorTheme();
 }
 
 String.prototype.format = function() {

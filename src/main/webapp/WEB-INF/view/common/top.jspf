@@ -196,6 +196,7 @@ $(window).on('load',InitTop);
 function InitTop() {
 	refresh();
 	SetView();
+	SetBodyMinWidth();
 }
 
 function refresh() {
