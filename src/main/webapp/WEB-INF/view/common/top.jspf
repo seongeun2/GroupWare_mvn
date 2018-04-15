@@ -92,7 +92,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
       
       <div class="grid-menu w3-display-container" style="display: none;">
          <div class="w3-row">
-            <div class="w3-half grid-menu-item w3-display-topleft main_color_theme" onclick="location.href='/GroupWare/approval/type1'">
+            <div class="w3-half grid-menu-item w3-display-topleft" onclick="location.href='/GroupWare/approval/type1'">
                <div class="w3-display-middle">
                   <i class="fa fa-file-text-o" style="font-size:36px;"></i>
                </div>
@@ -101,7 +101,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
                </div>
             </div>
             
-            <div class="w3-half grid-menu-item w3-display-topright w3-metro-yellow" onclick="location.href='/GroupWare/approval/allList'">
+            <div class="w3-half grid-menu-item w3-display-topright" onclick="location.href='/GroupWare/approval/allList'">
                <div class="w3-display-middle">
                   <i class="fa fa-hand-stop-o" style="font-size:36px;"></i>
                </div>
@@ -112,7 +112,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
          </div>
          
          <div class="w3-row">
-            <div class="w3-half grid-menu-item w3-display-bottomleft w3-metro-teal" onclick="location.href='/GroupWare/approval/apIng'">
+            <div class="w3-half grid-menu-item w3-display-bottomleft" onclick="location.href='/GroupWare/approval/apIng'">
                <div class="w3-display-middle">
                   <i class="fa fa-undo" style="font-size:36px;"></i>
                </div>
@@ -121,7 +121,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
                </div>
             </div>
             
-            <div class="w3-half grid-menu-item w3-display-bottomright w3-metro-red" onclick="location.href='/GroupWare/approval/apWaiting'">
+            <div class="w3-half grid-menu-item w3-display-bottomright" onclick="location.href='/GroupWare/approval/apWaiting'">
                <div class="w3-display-middle">
                   <i class="fa fa-check-square-o" style="font-size:36px;"></i>
                </div>
@@ -158,7 +158,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
       </div>
       
       <div class="grid-menu w3-display-container" style="display: none;">
-         <div class="grid-menu-item w3-display-topmiddle main_color_theme">
+         <div class="grid-menu-item w3-display-topmiddle">
             <!-- 쪽지함 쓰기 -->
             <div class="w3-display-middle">
                <i class="fa fa-paper-plane-o" style="font-size:36px;"></i>
@@ -168,7 +168,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
             </div>
          </div>
          
-         <div class="grid-menu-item w3-display-bottommiddle main_color_theme">
+         <div class="grid-menu-item w3-display-bottommiddle">
             <!-- 받은 쪽지 -->
             <div class="w3-display-middle">
                <i class="fa fa-briefcase" style="font-size:36px;"></i>
@@ -255,13 +255,11 @@ function refresh() {
     });
     
    $(".grid-menu-item").mouseenter(function() {
-      /* $(this).removeClass('main_color_theme');
-      $(this).addClass('hover_color_theme'); */
+	   $(this).css("background-color", "#2d89ef");
    });
    
    $(".grid-menu-item").mouseleave(function() {
-      /* $(this).removeClass('hover_color_theme');
-      $(this).addClass('main_color_theme'); */
+	   SetGridColor();
    });
    
    _SetMainMargin();

@@ -66,6 +66,7 @@ function SetView() {
 	
 	SetColorTheme(style);
 	SetMainMargin(style);
+	SetGridColor();
 	
 	head.appendChild(style);
 }
@@ -135,6 +136,41 @@ function SetApprovalColorTheme() {
 	
 	for(i = 0; i < colorElements.length; ++i) {
 		colorElements[i].style.backgroundColor = color;
+	}
+}
+
+function SetGridColor() {
+	/*
+	grid_menu_1 - 문서작성
+	grid_menu_2 - 결재현황
+	grid_menu_3 - 진행문서
+	grid_menu_4 - 결재대기
+	grid_menu_5 - 쪽지함 쓰기
+	grid_menu_6 - 받은 쪽지
+	*/
+	
+	/*color:#fff;background-color:#ffc40d*/
+	
+	var color1 = '#ffc40d';
+	var color2 = '#ffc40d';
+	var color3 = '#ffc40d';
+	var color4 = '#ffc40d';
+	var color5 = '#ffc40d';
+	var color6 = '#ffc40d';
+	
+	var white = '#ffffff';
+	
+	var items = document.getElementsByClassName('grid-menu-item');
+	
+	items[0].style.backgroundColor = color1;
+	items[1].style.backgroundColor = color1;
+	items[2].style.backgroundColor = color1;
+	items[3].style.backgroundColor = color1;
+	items[4].style.backgroundColor = color1;
+	items[5].style.backgroundColor = color1;
+	
+	for (i = 0; i < items.length; i++) {
+		items[i].style.color = white;
 	}
 }
 
@@ -208,7 +244,7 @@ function SetApprovalBorder() {
 /*W3-button의 효과를 재정의해서 사용합니다.*/
 function SetButtonEffect(style, hoverColor) {
 	// SetColorTheme의 값으로 설정합니다.
-	var newStyle = ".w3-button:hover {background-color: {0}; transition-duration: {1};}".format(hoverColor, '0.4s'); 
+	var newStyle = ".w3-button:hover {background-color: {0}; transition-duration: {1};}".format(hoverColor, '0.0s'); 
 	
 	if(style.styleSheet) {
 		style.styleSheet.cssText += newStyle;
