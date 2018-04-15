@@ -50,4 +50,14 @@ public class OrgChartDBMybatis extends MybatisConnector{
 		return li;
 		}
 
+	  //회원 삭제
+	   public int deleteEmp(String emnum) throws Exception {
+	      sqlSession= sqlSession();
+	      Map map = new HashMap();
+	      map.put("emnum", emnum);
+	      int chk 
+	      = sqlSession.delete(namespace+".deleteEmp",   map);
+	      sqlSession.commit();sqlSession.close();   
+	      return chk;   
+	   }	
 }	

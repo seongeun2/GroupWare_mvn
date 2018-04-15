@@ -82,4 +82,13 @@ public class OrgChartContorller {
 		}
 	}
 	
+	//관리자 모드 - 직원 삭제
+			@RequestMapping("/deleteEmp")
+			public String deleteEmp(String emnum, Model model, HttpServletRequest request)
+					throws Exception {
+				dbPro.deleteEmp(emnum);
+				return insa(model,request);
+
+			}		
+	
 }

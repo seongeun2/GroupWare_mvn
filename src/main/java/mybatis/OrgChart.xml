@@ -58,4 +58,9 @@
     <update id="deleteArticle"  parameterType="map">
       delete from board where num=#{num} and passwd = #{passwd}
    </update>
+   
+   <!-- 직원 삭제 -->
+    <update id="deleteEmp"  parameterType="map">
+      delete from tpuser where emnum=#{emnum}
+   </update>
 </mapper>

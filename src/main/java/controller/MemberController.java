@@ -106,7 +106,6 @@ public class MemberController{
 		@RequestMapping("/updateEmp")
 		public String updateEmp(MemberDataBean article, HttpSession session,Model model)
 				throws Exception {
-			System.out.println("µé¾î¿È!!!!!");
 			String id = (String) session.getAttribute("id");
 			System.out.println("id==================="+id);
 			
@@ -119,5 +118,7 @@ public class MemberController{
 			return "member/updateEmp";
 
 		}
+		
+		
 }
 
