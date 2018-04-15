@@ -13,33 +13,32 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/js/app.js"></script>
+</head>
 <script type="text/javascript">
 function pop(){	//쪽지쓰기_조직도 팝업
 	window.open("http://www.google.com/","","width=800,height=600");
 }
 </script>
-
 <body>
 
 <!-- Navbar -->
 <div class="w3-top">
-   <div class="w3-bar w3-metro-dark-blue w3-top w3-left-align w3-large">
-      <!-- <a href="/GroupWare/member/mainBoard" class="w3-bar-item w3-button w3-hover-blue">GroupWare</a> -->
-      <a href="${pageContext.request.contextPath}/main" class="w3-bar-item w3-button w3-hover-blue">GroupWare</a>
+   <div class="w3-bar main_color_theme w3-top w3-left-align w3-large">
+      <a href="${pageContext.request.contextPath}/main" class="w3-bar-item w3-button">GroupWare</a>
       <div class="w3-right w3-hide-small">
          <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-blue">추가기능 1</a> -->
          <c:if test="${id.equals('admin')}">
-         	<a href="${pageContext.request.contextPath}/member/adminpage" class="w3-bar-item w3-button w3-hide-small w3-hover-blue">직원 관리</a>
+         	<a href="${pageContext.request.contextPath}/member/adminpage" class="w3-bar-item w3-button w3-hide-small">직원 관리</a>
          </c:if>
          
-         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-blue">내 정보</a>
-         <a href="/GroupWare/logout" class="w3-bar-item w3-button w3-hide-small w3-hover-blue">로그아웃</a>
+         <a href="#" class="w3-bar-item w3-button w3-hide-small">내 정보</a>
+         <a href="/GroupWare/logout" class="w3-bar-item w3-button w3-hide-small">로그아웃</a>
       </div>
    </div>
 </div>
 
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-main">
 
 <div class="w3-main" style="margin-left: 100px; margin-right: 100px;">
 
@@ -48,7 +47,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
 <div class="w3-row-padding">
    <!-- 사용자 프로필 그리드 -->
    <div id="profile-grid" class="w3-col w3-center" style="width: 13%;">
-      <div class="w3-row w3-metro-dark-blue">
+      <div class="w3-row main_color_theme">
          <!-- 사진, 이름 -->
          <div class="w3-padding">
          
@@ -64,12 +63,12 @@ function pop(){	//쪽지쓰기_조직도 팝업
          </div>
    
          <!-- 아래 메뉴들 -->
-         <div class="w3-padding w3-button w3-hover-blue">
-            <i class="fa fa-user" style="font-size: 24px;">${name}</i>
+         <div class="w3-padding">
+            <a href="#" ><i class="fa fa-user" style="font-size: 24px;">${name}</i></a>
          </div>
       </div>
 
-      <div class="w3-row w3-metro-dark-blue">
+      <div class="w3-row main_color_theme">
          <!-- 아래 메뉴들 -->
          <div class="w3-padding">
             <div class="w3-medium">
@@ -85,7 +84,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
    
     <!-- 전자결재 메뉴 그리드 -->
    <div id="approvalbox" class="w3-col" style="width: 29%;">
-      <div class="top-menu w3-display-container w3-metro-dark-blue">
+      <div class="top-menu w3-display-container main_color_theme">
          <div class="w3-display-middle">
             <i class="fa fa-file-o" style="font-size:96px;"></i>
          </div>
@@ -96,12 +95,12 @@ function pop(){	//쪽지쓰기_조직도 팝업
       
       <div class="grid-menu w3-display-container" style="display: none;">
          <div class="w3-row">
-            <div class="w3-half grid-menu-item w3-display-topleft w3-metro-dark-blue" onclick="location.href='/GroupWare/approval/type1'">
+            <div class="w3-half grid-menu-item w3-display-topleft main_color_theme" onclick="location.href='/GroupWare/approval/type1'">
                <div class="w3-display-middle">
                   <i class="fa fa-file-text-o" style="font-size:36px;"></i>
                </div>
                <div class="w3-display-bottommiddle">
-                   <p>문서작성</p>
+                   <p class="toggle_label_small">문서작성</p>
                </div>
             </div>
             
@@ -110,7 +109,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
                   <i class="fa fa-hand-stop-o" style="font-size:36px;"></i>
                </div>
                <div class="w3-display-bottommiddle">
-                  <p>결재현황</p>
+                  <p class="toggle_label_small">결재현황</p>
                </div>
             </div>
          </div>
@@ -121,7 +120,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
                   <i class="fa fa-undo" style="font-size:36px;"></i>
                </div>
                <div class="w3-display-bottommiddle">
-                 <p>진행문서</p>
+                 <p class="toggle_label_small">진행문서</p>
                </div>
             </div>
             
@@ -130,7 +129,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
                   <i class="fa fa-check-square-o" style="font-size:36px;"></i>
                </div>
                <div class="w3-display-bottommiddle">
-                  <p>결재대기</p>
+                  <p class="toggle_label_small">결재대기</p>
                </div>
             </div>
          </div>
@@ -139,7 +138,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
    
    <!-- 조직도 메뉴 그리드 -->
    <div id="organization-chart" class="w3-col" style="width: 29%;" onclick="location.href='/GroupWare/orgChart/orgTree'">
-      <div class="top-menu w3-display-container w3-metro-dark-blue">
+      <div class="top-menu w3-display-container main_color_theme">
          <div class="w3-display-middle">
             <i class="fa fa-group" style="font-size:96px;"></i>
          </div>
@@ -152,7 +151,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
    
    <!-- 쪽지함 메뉴 그리드 -->
    <div id="mailbox" class="w3-col" style="width: 29%;">
-      <div class="top-menu w3-display-container w3-metro-dark-blue">
+      <div class="top-menu w3-display-container main_color_theme">
          <div class="w3-display-middle">
             <i class="fa fa-envelope" style="font-size:96px;"></i>
          </div>
@@ -168,17 +167,17 @@ function pop(){	//쪽지쓰기_조직도 팝업
                <i class="fa fa-paper-plane-o" style="font-size:36px;"></i>
             </div>
             <div class="w3-display-bottommiddle">
-               <p><a href="${pageContext.request.contextPath}/notice/writeNotice">쪽지 쓰기</a></p>
+               <p class="toggle_label_small"><a href="${pageContext.request.contextPath}/notice/writeNotice">쪽지 쓰기</a></p>
             </div>
          </div>
          
-         <div class="grid-menu-item w3-display-bottommiddle w3-metro-dark-blue">
+         <div class="grid-menu-item w3-display-bottommiddle main_color_theme">
             <!-- 받은 쪽지 -->
             <div class="w3-display-middle">
                <i class="fa fa-briefcase" style="font-size:36px;"></i>
             </div>
             <div class="w3-display-bottommiddle">
-               <p><a href="${pageContext.request.contextPath}/notice/listNotice">쪽지함</a></p>
+               <p class="toggle_label_small"><a href="${pageContext.request.contextPath}/notice/listNotice">쪽지함</a></p>
             </div>
          </div>
       </div>
@@ -202,6 +201,13 @@ $(document).ready(refresh);
 
 // resize는 창 크기 수정될때
 $(window).on('resize', refresh);
+$(window).on('load',InitTop);
+
+function InitTop() {
+	refresh();
+	SetView();
+	SetBodyMinWidth();
+}
 
 function refresh() {
    // #은 id selector
@@ -263,21 +269,22 @@ function refresh() {
     });
     
    $(".grid-menu-item").mouseenter(function() {
-      $(this).removeClass('w3-metro-dark-blue');
-      $(this).addClass('w3-metro-blue');
+      /* $(this).removeClass('main_color_theme');
+      $(this).addClass('hover_color_theme'); */
    });
    
    $(".grid-menu-item").mouseleave(function() {
-      $(this).removeClass('w3-metro-blue');
-      $(this).addClass('w3-metro-dark-blue');
+      /* $(this).removeClass('hover_color_theme');
+      $(this).addClass('main_color_theme'); */
    });
-}  
+   
+   _SetMainMargin();
+   ToggleLabel();
+}
 
-jQuery.fn.extend({
-   setGridHeight: function (source) {
-   }
-});
-
+function PreventOverlap() {
+	
+}
 
 </script>
 
