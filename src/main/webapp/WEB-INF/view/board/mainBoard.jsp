@@ -6,8 +6,10 @@
 <html>
 <div class="w3-padding-16"></div>
 
+<div class="w3-main">
+
 <!-- 게시판 div 영역 -->
-<div class="w3-row-padding" style="margin-left: 108px; margin-right: 108px;">
+<div class="w3-row-padding">
    <div class="w3-half w3-container w3-padding w3-metro-dark-blue">
       <div class="w3-row">
          <h5>공지사항</h5>
@@ -156,3 +158,5 @@
 </div>
 
 <div class="w3-padding-32"></div>
+
+</div>
