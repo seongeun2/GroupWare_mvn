@@ -31,15 +31,22 @@ function PopupEmpInfo(clicked_element) {
    // 게시판의 정보 순서를 모달에 그대로 적용하기 때문에 순서에 주의합니다.
    var row_td = clicked_element.getElementsByTagName("td");
    var modal = document.getElementById("modal_emp_info");
-   var infos = document.getElementsByClassName("w3-")
    
-   document.getElementById("emp_info_emnum").placeholder = row_td[0].innerHTML;
-   document.getElementById("emp_info_dnum").placeholder = row_td[1].innerHTML;
-   document.getElementById("emp_info_tnum").placeholder = row_td[2].innerHTML;
-   document.getElementById("emp_info_name").placeholder = row_td[3].innerHTML;
-   document.getElementById("emp_info_position").placeholder = row_td[4].innerHTML;
-   document.getElementById("emp_info_tel").placeholder = row_td[5].innerHTML;
-   document.getElementById("emp_info_email").placeholder = row_td[6].innerHTML;
+   document.getElementById("emp_info_emnum").innerHTML = row_td[0].innerHTML;
+   
+   console.log(row_td[1].innerText);
+   
+   if(row_td[1].innerHTML != "")
+	   document.getElementById("emp_info_profile").src = "${pageContext.servletContext.contextPath}/fileSave/" + row_td[1].innerHTML;
+	else
+		document.getElementById("emp_info_profile").src = "${pageContext.servletContext.contextPath}/resources/images/mypic.gif";
+   
+   document.getElementById("emp_info_dnum").innerHTML = row_td[2].innerHTML;
+   document.getElementById("emp_info_tnum").innerHTML = row_td[3].innerHTML;
+   document.getElementById("emp_info_name").innerHTML = row_td[4].innerHTML;
+   document.getElementById("emp_info_position").innerHTML = row_td[5].innerHTML;
+   document.getElementById("emp_info_tel").innerHTML = row_td[6].innerHTML;
+   document.getElementById("emp_info_email").innerHTML = row_td[7].innerHTML;
    
    modal.style.display = 'block';
    
@@ -61,6 +68,7 @@ function ApplyForAdmin() {
    document.getElementById("deleteForAdmin").style.visibility = "visible";
    
    document.getElementById("emp_info_emnum").readOnly = false;
+   document.getElementById("emp_info_profile").readOnly = false;
    document.getElementById("emp_info_dnum").readOnly = false;
    document.getElementById("emp_info_tnum").readOnly = false;
    document.getElementById("emp_info_name").readOnly = false;
@@ -91,7 +99,8 @@ function mem_search(frm){
    <col width="20%">   <!-- 이메일 -->
    <thead>
       <tr class="w3-yellow">
-          <!-- <th>사번</th>emnum  -->
+<!--           <th>사번</th>emnum
+          <th>사진</th>emnum  -->
         <th>부서</th>  <!-- dnum -->
         <th>팀</th>  <!-- dnum -->
        <th>이름</th><!-- name -->
@@ -104,7 +113,8 @@ function mem_search(frm){
 <tbody id="emp_rows">
    <c:forEach var="li" items="${articleList}">
       <tr onclick="PopupEmpInfo(this)">
-         <td style="display:none">${li.emnum}</td><!-- 사번 -->
+      	 <td style="display:none">${li.emnum}</td><!-- 사번 -->
+      	 <td style="display:none">${li.profile}</td><!-- 프로필 -->
          <td>${li.dname}</td><!-- 부서 -->
          <td>${li.tname}</td><!-- 팀 -->
          <td>${li.name}</td><!-- 이름 -->
@@ -163,19 +173,29 @@ GenerateID()
          <div class="w3-center"><br>
                   <span onclick="document.getElementById('modal_emp_info').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
          </div>
-   
+
 <div class="w3-container w3-text-blue w3-margin">
    <h2 class="w3-center">사원 정보</h2>
 
    <div class="w3-container w3-border w3-border-blue">
+      
+      
+       <!-- 프로필 사진-->
+      <div class="w3-section">
+         <div>
+         	<!-- 등록된 이미지가 없는 경우에는 그냥 이걸로 보여줍니다. -->
+			<img id="emp_info_profile" src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif">
+		</div>
+      </div>
+      
       <!-- 사원 번호 -->
       <div class="w3-row w3-section">
          <div class="w3-col" style="width:50px">
             <i class="w3-xxlarge fa fa-star"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_emnum" class="w3-input w3-border-blue w3-transparent" name="emnum" type="text" readonly="readonly">
-         </div>
+				<p id="emp_info_emnum"></p>
+		</div>
       </div>
       
       <!-- 이름 -->
@@ -184,7 +204,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-user"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_name" class="w3-input w3-border-bottom w3-border-blue w3-pale-red" name="name" type="text" readonly="readonly">
+            <p id="emp_info_name"></p>
          </div>
       </div>
       
@@ -194,7 +214,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-bookmark"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_dnum" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="first" type="text" readonly="readonly">
+            <p id="emp_info_dnum"></p>
          </div>
       </div>
       
@@ -204,7 +224,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-group"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_tnum" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="tnum" type="text" readonly="readonly">
+            <p id="emp_info_tnum"></p>
          </div>
       </div>
       
@@ -214,7 +234,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-id-badge"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_position" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="position" type="text" readonly="readonly">
+            <p id="emp_info_position"></p>
          </div>
       </div>
       
@@ -224,12 +244,11 @@ GenerateID()
             <i class="w3-xxlarge fa fa-phone"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_tel" class="w3-input w3-border-bottom w3-border-blue w3-pale-red" name="first" type="text" readonly="readonly">
+            <p id="emp_info_tel"></p>
          </div>
       </div>
       
       <!-- 핸드폰 -->
-      <!-- 아직 추가되지 않아서 주석 -->
       <!-- <div class="w3-row w3-section">
          <div class="w3-col" style="width:50px">
             <i class="w3-xxlarge fa fa-star"></i>
@@ -245,7 +264,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-star"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_email" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="email" type="text" readonly="readonly">
+            <p id="emp_info_email"></p>
          </div>
       </div>
    
@@ -260,21 +279,28 @@ GenerateID()
    
    </div>
    <br>
-   <c:if test="${id eq 'admin'}">
-   <div class="w3-center">
+    <div class="w3-center">
       <div class="w3-bar">
+     <button type= "button" class="w3-button w3-section w3-blue" onclick="document.getElementById('modal_emp_info').style.display='none'"> 확인 </button>
+     <c:if test="${id eq 'admin'}">
+  	
       <!-- 관리자인 경우에는 수정과 삭제가 가능합니다. -->
-         <button class="w3-button w3-section w3-blue" onclick="document.getElementById('modal_emp_info').style.display='none'"> 확인 </button>
          
          <!-- 사용자 정보 수정 -->
-         <button id="modifyForAdmin" class="w3-button w3-section w3-pink" style="visibility:visible" onclick="location.href='upEmployee'"> 수정 </button>
+         <button id="modifyForAdmin" type="button" class="w3-button w3-section w3-pink" style="visibility:visible" onclick="location.href='${pageContext.request.contextPath}/member/updateEmp'"> 수정 </button>
          
          <!-- 사용자 정보 삭제 -->
-         <button id="deleteForAdmin" class="w3-button w3-section w3-red" style="visibility:visible"> 삭제 </button>
+         <button type= "button" id="deleteForAdmin" class="w3-button w3-section w3-red" style="visibility:visible"> 삭제 </button>
       </div>
    </div>
    </c:if>
+   </form> 
 </div>
+
+
+
+
+
 
       </div>
    </div>

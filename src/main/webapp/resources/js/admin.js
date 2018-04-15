@@ -5,23 +5,27 @@ function doChange(srcE, targetId){
     removeAll(targetE);
 
     if(val == '1'){	//경영지원 부서
-        addOption('인사팀', targetE);
-        addOption('회계팀', targetE);
-        addOption('고객관리팀', targetE);
+        addOption('인사팀', '201', targetE);
+        addOption('회계팀', '202',targetE);
+        addOption('고객관리팀', '203',targetE);
     }
     else if(val == '2'){ //개발 부서
-        addOption('개발1팀', targetE);
-        addOption('개발2팀', targetE);
+        addOption('개발1팀','301', targetE);
+        addOption('개발2팀','302', targetE);
     }
     else{	//디자인 부서
-    	addOption('디자인1팀', targetE);
-        addOption('디자인2팀', targetE);
+    	addOption('디자인1팀','401', targetE);
+        addOption('디자인2팀','402', targetE);
     }
-    
 }
 
-function addOption(value, e){
-    var o = new Option(value);
+function doTeamChange(srcE) {
+	var val = srcE.options[srcE.selectedIndex].value;
+	console.log(val);
+}
+
+function addOption(value, code, e){
+    var o = new Option(value, code);
     try{
         e.add(o);
     }catch(ee){

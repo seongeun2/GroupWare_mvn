@@ -49,30 +49,5 @@ public class OrgChartDBMybatis extends MybatisConnector{
 		System.out.println("li====="+li);
 		return li;
 		}
-	
-	//회원 수정
-	   public int upEmployee(MemberDataBean article) {
-	      sqlSession= sqlSession();
-	      int chk 
-	      = sqlSession.update(namespace+".upEmployee",  article);
-	      System.out.println("chk=="+chk);
-	      sqlSession.commit();
-	      sqlSession.close();   
-	      
-	      return chk;
-	      
-	   }
-	   
-	   //회원 삭제
-	   public int deleteArticle(int num, String passwd, 
-	         String boardid) throws Exception {
-	      sqlSession= sqlSession();
-	      Map map = new HashMap();
-	      map.put("num", num);
-	      map.put("passwd", passwd);
-	      map.put("boardid", boardid);
-	      int chk 
-	      = sqlSession.delete(namespace+".deleteArticle",   map);
-	      sqlSession.commit();sqlSession.close();   
-	      return chk;   }
+
 }	

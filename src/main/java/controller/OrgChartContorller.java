@@ -56,7 +56,6 @@ public class OrgChartContorller {
 		
 		if(count > 0){
 			articleList = dbPro.getArticles(startRow, endRow, keyField, keyWord);}
-		System.out.println("articleList======"+articleList);
 				number=count - (currentPage-1)*pageSize;
 		
 		int bottomLine=3;
@@ -81,19 +80,6 @@ public class OrgChartContorller {
 		}else {
 			return "orgChart/insa";
 		}
-	}
-	
-	//관리자 모드 - 직원 수정
-	@RequestMapping("/upEmployee")
-	public String upEmployee(MemberDataBean article, Model model)
-			throws Exception {
-		System.out.println("들어옴!!!!!");
-		System.out.println("article==================="+article);
-	 	int chk= dbPro.upEmployee(article); 
-	 	model.addAttribute("chk", chk);
-	 
-		return "orgChart/updatePro";
-
 	}
 	
 }

@@ -33,7 +33,7 @@
          ( select rownum rnum ,a.* 
         from (select id,tpdep.dnum,tpdep.dname,tpteam.tnum,tpteam.tname,tpuser.emnum,tpuser.name,decode(tpuser.position,1,'대표',2,'관리자',
         3,'팀장',4,'대리',5,'사원') position,tpuser.tel,
-			  tpuser.email from tpuser,tpteam,tpdep where tpuser.tnum = tpteam.tnum and tpteam.dnum =tpdep.dnum order by dnum,tnum,tpuser.position) a ) 
+			  tpuser.email,profile from tpuser,tpteam,tpdep where tpuser.tnum = tpteam.tnum and tpteam.dnum =tpdep.dnum order by dnum,tnum,tpuser.position) a ) 
 			  where 1=1
 			 <if test = "keyWord != null">
 			and ${keyField} like '%' ||#{keyWord}|| '%'

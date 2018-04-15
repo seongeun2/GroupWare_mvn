@@ -14,7 +14,8 @@ public class MemberDataBean {
 	String joind;		//사원 입사일
 	int login;			//로그인 상태(Default = 0)
 	String signature;	//서명
-	int filesize;
+	String profile;		//프로필 사진
+	
 	
 	//TPTEAM 테이블
 	String tname;  //팀 이름
@@ -98,11 +99,11 @@ public class MemberDataBean {
 		this.signature = signature;
 	}
 	
-	public int getFilesize() {
-		return filesize;
+	public String getProfile() {
+		return profile;
 	}
-	public void setFilesize(int filesize) {
-		this.filesize = filesize;
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 	
 	public String getTname() {

@@ -15,6 +15,12 @@
 			WHERE id = #{id} 
 	</select>
 	
+	<!-- 프로필사진가져오기 -->
+	<select id="getprofile" resultType="String" parameterType="hashmap">
+		select profile from tpuser 
+			WHERE id = #{id} 
+	</select>
+	
 	<select id="getNextNumber" resultType="int">
 		select TPUSER_SEQ.nextval from dual
 		<!-- select MEMBER_SEQ.nextval from dual -->
@@ -25,10 +31,14 @@
 		ref,re_step,re_level,content,ip,boardid, filename, filesize) 
 			values(#{num},#{writer},#{email},#{subject},#{passwd},sysdate,#{ref},
 			#{re_step},#{re_level},#{content},#{ip},#{boardid},#{filename},#{filesize}) -->
-		insert into tpuser(name,phone,tel,emnum,tnum,id,pw,email,position,joind,login,signature)
-    values(#{name},#{phone},#{tel},#{emnum},#{tnum},#{id},#{pw},#{email},#{position},#{joind},#{login},#{signature})	
+		insert into tpuser(name,phone,tel,emnum,tnum,id,pw,email,position,joind,login,signature,profile)
+    values(#{name},#{phone},#{tel},#{emnum},#{tnum},#{id},#{pw},#{email},#{position},#{joind},#{login},#{signature},#{profile})	
 	</insert>
 	
-	
+	<!--직원 한명 데이터 가져오기 -->
+	<select id="getEmployee" resultType="Member" parameterType="hashmap">
+		select * from tpuser 
+			WHERE id = #{id} 
+	</select>
 	
 </mapper>

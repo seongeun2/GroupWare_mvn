@@ -1,10 +1,12 @@
 package dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import model.BoardDataBean;
 import model.MemberDataBean;
 
 public class MemberDBMybatis extends MybatisConnector{
@@ -48,13 +50,64 @@ public class MemberDBMybatis extends MybatisConnector{
 	//직원 등록
 	public void insertEmployee(MemberDataBean article) {
 		sqlSession = sqlSession();
-		int number = sqlSession.selectOne(namespace+".getNextNumber",article);
-		
+		int emnum = sqlSession.selectOne(namespace+".getNextNumber",article);
+		System.out.println("Sequence==========" + emnum);
+		article.setEmnum(emnum);
 		sqlSession.insert(namespace+".insertEmployee",article);
 		sqlSession.commit();
 		sqlSession.close();
 	}
 	
 	
+	//프로필사진 가져오기
+		public String getprofile(String id) {
+			sqlSession = sqlSession();
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("id", id);
+			String profile = sqlSession.selectOne(namespace+".getprofile", map) ;	
+			sqlSession.close();
+			return profile;
+		}
 	
+		
+		//직원 한명 데이터 가져오기
+		   public MemberDataBean getEmployee (String id) {
+		      sqlSession= sqlSession();
+		      Map map = new HashMap();
+		      map.put("id", id);
+		      
+		      MemberDataBean article 
+		      = sqlSession.selectOne(namespace+".getEmployee",   map);
+		      
+		      sqlSession.commit();
+		      sqlSession.close();   
+		      
+		      return article;   
+		   }		
+		
+		//회원 수정
+		   public int upEmployee(MemberDataBean article) {
+		      sqlSession= sqlSession();
+		      int chk 
+		      = sqlSession.update(namespace+".upEmployee",  article);
+		      System.out.println("chk=="+chk);
+		      sqlSession.commit();
+		      sqlSession.close();   
+		      
+		      return chk;
+		      
+		   }
+		   
+		   //회원 삭제
+		   public int deleteArticle(int num, String passwd, 
+		         String boardid) throws Exception {
+		      sqlSession= sqlSession();
+		      Map map = new HashMap();
+		      map.put("num", num);
+		      map.put("passwd", passwd);
+		      map.put("boardid", boardid);
+		      int chk 
+		      = sqlSession.delete(namespace+".deleteArticle",   map);
+		      sqlSession.commit();sqlSession.close();   
+		      return chk;   }
 }

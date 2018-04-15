@@ -10,29 +10,29 @@
 	</head>
 <body>
 	<div class="w3-container w3-margin">
-	  	<h1 align="center">-직원 등록-</h1>
+	  	<h1 align="center">-직원 수정-</h1>
 	</div>
 	<div class="w3-container w3-content w3-margin-top">	
 		<form class="w3-container w3-card-4" action="regEmployeePro" enctype="multipart/form-data" method="post">
 			<!-- <input  type="hidden"   name="emnum" value="${emnum}"> -->
 			<p>
 				<label>*이름</label>
-				<input class="w3-input" type="text" style="width:90%" name="name" required>
+				<input class="w3-input" type="text" style="width:90%" name="name" value="${article.name}" required>
 			</p>
 			
 			<p>
 				<label>*아이디</label>
-				<input class="w3-input" type="text" style="width:90%" name="id" required>
+				<input class="w3-input" type="text" style="width:90%" name="id" value="${article.id}" required>
 			</p>
 			
 			<p>
 				<label>*비밀번호</label>
-				<input class="w3-input" type="password" style="width:90%" name="pw" required>
+				<input class="w3-input" type="password" style="width:90%" name="pw" value="${article.pw}" required>
 			</p>
 			
 			<p>
 				<label>*부서</label>
-				<select class="w3-select" name="option" id="option" onchange="doChange(this,'tnum')" required>
+				<select class="w3-select" name="option" id="option" onchange="doChange(this,'tnum')"  required>
 					<option value="" disabled selected>부서를 선택하세요.</option>
 					<option value="1">경영지원부서</option>
 					<option value="2">개발부서</option>
@@ -49,7 +49,7 @@
 			
 			
 			<div class="selectPosition"><p>*직위</p>
-				<input class="w3-radio" type="radio" name="position" value="3" required>팀장
+				<input class="w3-radio" type="radio" name="position" value="3" value="${article.position}" required>팀장
 				<input class="w3-radio" type="radio" name="position" value="4">대리
 				<input class="w3-radio" type="radio" name="position" value="5">사원
 			</div>
@@ -57,35 +57,35 @@
 			
 			<p>
 				<label>*입사일</label>
-				<input class="w3-input w3-padding-16 w3-border" type="date" placeholder="Date" name="joind" required>
+				<input class="w3-input w3-padding-16 w3-border" type="date" placeholder="Date" name="joind" value="${article.joind}" required>
 			</p>
 			
 			<p>
 				<label>*이메일</label>
-				<input class="w3-input" type="text" style="width:90%" name="email">
+				<input class="w3-input" type="text" style="width:90%" name="email" value="${article.email}">
 			</p>
 			
 			<p>
 				<label>*핸드폰 번호</label>
-				<input class="w3-input" type="text" style="width:90%" name="phone">
+				<input class="w3-input" type="text" style="width:90%" name="phone" value="${article.phone}">
 			</p>
 			
 			<p>
 				<label>*사내 번호</label>
-				<input class="w3-input" type="text" style="width:90%" name="tel">
+				<input class="w3-input" type="text" style="width:90%" name="tel" value="${article.tel}">
 			</p>
 		
 			 <tr>
   				<td width="70" align="center">*서명</td>
   				<td width="330">
-  				<input type="file" size="40" maxlength="30" name="uploadfile"> 
+  				<input type="file" size="40" maxlength="30" name="uploadfile" value="${article.signature}"> 
   				</td>
 		    </tr>
 		    
 		    <tr>
   				<td width="70" align="center">*프로필사진</td>
   				<td width="330">
-  				<input type="file" size="40" maxlength="30" name="profileimage"> 
+  				<input type="file" size="40" maxlength="30" name="profileimage" value="${article.profile}"> 
   				</td>
 		    </tr>
 			
