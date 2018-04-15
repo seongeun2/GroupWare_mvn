@@ -10,6 +10,8 @@
    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/orgTree-view.css">
 <body>
 
+<div class="w3-main">
+
 <script type="text/javascript">
 function GenerateID() {
    // 사원 row에 id를 부여합니다.
@@ -87,7 +89,9 @@ function mem_search(frm){
 <!-- session 정보 전용입니다. -->
 <input id="session_getter" type="hidden" name="pONumb" value="${sessionScope.id}" />
 
- <div class="w3-container" style="margin: 40px 100px;">
+<div class="w3-padding-16"></div>
+
+ <div class="w3-container">
 <h2 style="text-align: center;">총 직원</h2>
 <table class="w3-table-all w3-hoverable" style="text-align: center;">
    <!-- <col width="10%">   사번 -->
@@ -303,6 +307,8 @@ GenerateID()
 
       </div>
    </div>
+</div>
+
 </div>
    
 </body>
