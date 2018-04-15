@@ -27,7 +27,6 @@ function pop(){	//쪽지쓰기_조직도 팝업
    <div class="w3-bar main_color_theme w3-top w3-left-align w3-large">
       <a href="${pageContext.request.contextPath}/main" class="w3-bar-item w3-button">GroupWare</a>
       <div class="w3-right w3-hide-small">
-         <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-blue">추가기능 1</a> -->
          <c:if test="${id.equals('admin')}">
          	<a href="${pageContext.request.contextPath}/member/adminpage" class="w3-bar-item w3-button w3-hide-small">직원 관리</a>
          </c:if>
@@ -39,8 +38,6 @@ function pop(){	//쪽지쓰기_조직도 팝업
 </div>
 
 <div class="w3-main">
-
-<div class="w3-main" style="margin-left: 100px; margin-right: 100px;">
 
 <div class="w3-padding-32"></div>
 
@@ -161,7 +158,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
       </div>
       
       <div class="grid-menu w3-display-container" style="display: none;">
-         <div class="grid-menu-item w3-display-topmiddle w3-metro-dark-blue">
+         <div class="grid-menu-item w3-display-topmiddle main_color_theme">
             <!-- 쪽지함 쓰기 -->
             <div class="w3-display-middle">
                <i class="fa fa-paper-plane-o" style="font-size:36px;"></i>
@@ -197,7 +194,6 @@ function getElementHeight(elementId) {
 
 // jquery 스크립트 시작
 // ready- 처음 document가 로드 되면 호출
-$(document).ready(refresh);
 
 // resize는 창 크기 수정될때
 $(window).on('resize', refresh);
@@ -238,16 +234,6 @@ function refresh() {
     $("#approvalbox").mouseleave(function(){
        $(this).children(".top-menu").show();
       $(this).children(".grid-menu").hide();
-    });
-    
-    $("#organization-chart").mouseenter(function(){
-       $(this).children().removeClass('w3-metro-dark-blue');
-      $(this).children().addClass('w3-metro-blue');
-    });
-   
-    $("#organization-chart").mouseleave(function(){
-       $(this).children().removeClass('w3-metro-blue');
-      $(this).children().addClass('w3-metro-dark-blue');
     });
     
     /* 쪽지함 */ 
