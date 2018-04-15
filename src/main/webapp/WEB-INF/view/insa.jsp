@@ -18,7 +18,7 @@
  
  <div class="w3-container" style="margin: 40px 100px;">
 <h2 style="text-align: center;">총 직원</h2>
-<table class="w3-table-all w3-hoverable" style="text-align: center;">
+<table class="w3-table-all w3-hoverable">
 	<col width="10%">	<!-- 사번 -->
 	<col width="10%">	<!-- 부서 -->
 	<col width="10%">	<!-- 팀 -->
@@ -29,25 +29,25 @@
 	<col width="10%">	<!-- 결재 -->
    <thead>
       <tr class="w3-yellow">
-      	 <th>사번</th><!-- emnum  -->
-    	 <th>부서</th>  <!-- dnum -->
-    	 <th>팀</th>  <!-- dnum -->
-		 <th>이름</th><!-- name -->
-		 <th>직위</th><!-- position -->
-		 <th>사내번호</th><!-- tel -->
-		 <th>이메일</th><!-- email -->
-		 <th>결재</th><!-- V -->
+      	 <th style="text-align: center;">사번</th><!-- emnum  -->
+    	 <th style="text-align: center;">부서</th>  <!-- dnum -->
+    	 <th style="text-align: center;">팀</th>  <!-- dnum -->
+		 <th style="text-align: center;">이름</th><!-- name -->
+		 <th style="text-align: center;">직위</th><!-- position -->
+		 <th style="text-align: center;">사내번호</th><!-- tel -->
+		 <th style="text-align: center;">이메일</th><!-- email -->
+		 <th style="text-align: center;">결재</th><!-- V -->
       </tr>
    </thead>
    <c:forEach var="li" items="${articleList}">
        <tr>
-         <td>${li.emnum}</td><!-- 사번 -->
-         <td>${li.dname}</td><!-- 부서 -->
-         <td>${li.tname}</td><!-- 팀 -->
-         <td><a href="#" onclick="document.getElementById('id01').style.display='block'">${li.name}</a></td><!-- 이름 -->
-         <td>${li.position}</td><!-- 직위 -->
-         <td>${li.tel}</td><!-- 사내번호 -->
-         <td>${li.email}</td><!-- 이메일 -->
+         <td style="text-align: center;">${li.emnum}</td><!-- 사번 -->
+         <td style="text-align: center;">${li.dname}</td><!-- 부서 -->
+         <td style="text-align: center;">${li.tname}</td><!-- 팀 -->
+         <td style="text-align: center;"><a href="#" onclick="document.getElementById('id01').style.display='block'">${li.name}</a></td><!-- 이름 -->
+         <td style="text-align: center;">${li.position}</td><!-- 직위 -->
+         <td style="text-align: center;">${li.tel}</td><!-- 사내번호 -->
+         <td style="text-align: center;">${li.email}</td><!-- 이메일 -->
          <td><center><input class="w3-check" type="checkbox" onclick="check('${li.name}','${li.id}','${app}')"></center></td>
        </tr>
    </c:forEach>       
