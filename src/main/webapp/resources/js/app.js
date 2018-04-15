@@ -64,11 +64,13 @@ function SetView() {
 	var style = document.createElement('style');
 	style.type = 'text/css';
 	
+	head.appendChild(style);
+	
 	SetColorTheme(style);
 	SetMainMargin(style);
 	SetGridColor();
-	
-	head.appendChild(style);
+	SetBodyMinWidth();
+	ToggleLabel();
 }
 
 /*메인 색상 테마를 설정합니다.*/
@@ -111,10 +113,8 @@ function SetColorTheme(style) {
 	var mainColor = '#E9E3FF';
 	var hoverColor = '#FFCCFF';
 	
-	/*var mainColorCss = ".main_color_theme {background: {0}; transition-duration: 0.4s;}".format(mainColor);*/
 	var mainColorCss = ".main_color_theme {color:#fff;background-color:#2b5797}";
 	
-	/*var hoverColorCss = ".main_color_theme:hover {background-color: {0}; transition-duration: 0.4s;}".format(hoverColor);*/
 	var hoverColorCss = ".main_color_theme:hover {color:#fff;background-color:#2d89ef}";
 
 	if(style.styleSheet) {
@@ -244,7 +244,7 @@ function SetApprovalBorder() {
 /*W3-button의 효과를 재정의해서 사용합니다.*/
 function SetButtonEffect(style, hoverColor) {
 	// SetColorTheme의 값으로 설정합니다.
-	var newStyle = ".w3-button:hover {background-color: {0}; transition-duration: {1};}".format(hoverColor, '0.0s'); 
+	var newStyle = ".w3-button:hover {background-color: {0};}".format(hoverColor); 
 	
 	if(style.styleSheet) {
 		style.styleSheet.cssText += newStyle;

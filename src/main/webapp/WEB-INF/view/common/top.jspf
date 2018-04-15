@@ -43,8 +43,8 @@ function pop(){	//쪽지쓰기_조직도 팝업
 
 <div class="w3-row-padding">
    <!-- 사용자 프로필 그리드 -->
-   <div id="profile-grid" class="w3-col w3-center" style="width: 13%;">
-      <div class="w3-row main_color_theme">
+   <div id="profile-grid" class="w3-col w3-center main_color_theme" style="width:13%; height: 300px;">
+      <div class="w3-row">
          <!-- 사진, 이름 -->
          <div class="w3-padding">
          
@@ -202,7 +202,6 @@ $(window).on('load',InitTop);
 function InitTop() {
 	refresh();
 	SetView();
-	SetBodyMinWidth();
 }
 
 function refresh() {
@@ -261,9 +260,6 @@ function refresh() {
    $(".grid-menu-item").mouseleave(function() {
 	   SetGridColor();
    });
-   
-   _SetMainMargin();
-   ToggleLabel();
 }
 
 function PreventOverlap() {
