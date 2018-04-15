@@ -56,7 +56,7 @@
            </div>
          </div>
          <!-- 3번 결재 -->
-         <div class="w3-col" style="width: 15%; height: 120px">
+         <div class="w3-col" style="width: 15%; background-color: white;">
             <div class="w3-container w3-center w3-border w3-border-black">
                  <p id="name22" name="name33" onclick="apPop();" >선택</p>
             </div>

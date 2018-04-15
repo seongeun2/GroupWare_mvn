@@ -56,7 +56,7 @@
            </div>
          </div>
          <!-- 3번 결재 -->
-         <div class="w3-col" style="width: 15%; ">
+         <div class="w3-col" style="width: 15%; background-color: white;">
             <div class="w3-container w3-center w3-border w3-border-black">
                  <p id="name33" name="name33" onclick="apPop2();" >결재선2</p>
             </div>
