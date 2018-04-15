@@ -179,12 +179,11 @@ GenerateID()
 
    <div class="w3-container w3-border w3-border-blue">
       
-      
        <!-- 프로필 사진-->
       <div class="w3-section">
-         <div>
+         <div style="text-align:center;">
          	<!-- 등록된 이미지가 없는 경우에는 그냥 이걸로 보여줍니다. -->
-			<img id="emp_info_profile" src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif">
+			<img id="emp_info_profile" src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" height="300" width="300">
 		</div>
       </div>
       
