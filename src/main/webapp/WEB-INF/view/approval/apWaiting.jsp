@@ -15,7 +15,10 @@ function search3(frm){
 	frm.submit();
 }
 </script>
-<div class="w3-container" style="margin: 40px 100px;">
+
+<div class="w3-main">
+
+<div class="w3-container">
 <h2 style="text-align: center;">결재 대기  ${count}건</h2>
 <table class="w3-table-all w3-hoverable" style="text-align: center;">
 	<col width="10%">	<!-- 문서번호 -->
@@ -94,5 +97,7 @@ function search3(frm){
 	<input type="text" size="20" name="keyWord">
 	<input type="button" value="검색" onclick="search3(form)" />&nbsp;
 </form>
+
+</div>
 
 </html>

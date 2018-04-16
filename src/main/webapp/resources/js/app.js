@@ -67,8 +67,8 @@ function SetView() {
 	head.appendChild(style);
 	
 	SetColorTheme(style);
-	SetMainMargin(style);
 	SetGridColor();
+	//SetMainMargin(style);
 	SetBodyMinWidth();
 	ToggleLabel();
 }
@@ -191,6 +191,7 @@ function SetMainMargin(style) {
 	}
 }
 
+/*
 function _SetMainMargin() {
 	var style = document.getElementsByTagName('style')[0];
 	
@@ -201,6 +202,7 @@ function _SetMainMargin() {
 		
 	SetMainMargin(style);
 }
+*/
 
 /*기안서, 휴가신청서, 지출결의서 내부의 좌우 margin을 설정합니다.*/
 function SetApprovalMargin() {
