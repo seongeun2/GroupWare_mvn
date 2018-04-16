@@ -101,24 +101,7 @@ public class MemberController{
 				dbPro.insertEmployee(article);
 			return "member/adminpage";
 		}
-		
-		//관리자 모드 - 직원 수정
-		@RequestMapping("/updateEmp")
-		public String updateEmp(MemberDataBean article, HttpSession session,Model model)
-				throws Exception {
-			String id = (String) session.getAttribute("id");
-			System.out.println("id==================="+id);
-			
-			article = dbPro.getEmployee(id);
-			System.out.println(article.getEmail());
-			System.out.println(article.getPw());
-		 	//int chk= dbPro.upEmployee(article); 
-		 	model.addAttribute("article", article);
-		 
-			return "member/updateEmp";
 
-		}
-		
 		
 }
 

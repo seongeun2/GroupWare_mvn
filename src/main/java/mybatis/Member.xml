@@ -35,10 +35,5 @@
     values(#{name},#{phone},#{tel},#{emnum},#{tnum},#{id},#{pw},#{email},#{position},#{joind},#{login},#{signature},#{profile})	
 	</insert>
 	
-	<!--직원 한명 데이터 가져오기 -->
-	<select id="getEmployee" resultType="Member" parameterType="hashmap">
-		select * from tpuser 
-			WHERE id = #{id} 
-	</select>
 	
 </mapper>

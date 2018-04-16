@@ -89,8 +89,13 @@ function deleteArticle() {
 	document.getElementById('confirmModal').style.display='none';
 	document.getElementById('modal_emp_info').style.display='none';
 	location.href="deleteEmp?emnum=" + document.getElementById('emp_info_emnum').innerHTML;
-	console.log("DeletediaryPro?emnum=" + document.getElementById('emp_info_emnum').innerHTML);
+	console.log("deleteEmp?emnum=" + document.getElementById('emp_info_emnum').innerHTML);
 }
+
+function updateArticle(){
+	location.href="updateEmp?emnum=" + document.getElementById('emp_info_emnum').innerHTML;
+}
+
 </script>
 
 <!-- session 정보 전용입니다. -->
@@ -297,7 +302,9 @@ GenerateID()
       <!-- 관리자인 경우에는 수정과 삭제가 가능합니다. -->
          
          <!-- 사용자 정보 수정 -->
-         <button id="modifyForAdmin" type="button" class="w3-button w3-section w3-pink" style="visibility:visible" onclick="location.href='${pageContext.request.contextPath}/member/updateEmp'"> 수정 </button>
+         <button id="modifyForAdmin" type="button" class="w3-button w3-section w3-pink" style="visibility:visible" 
+         <%-- onclick="location.href='${pageContext.request.contextPath}/member/updateEmp'"> 수정 </button> --%>
+         onclick="updateArticle()"> 수정 </button>
          
          <!-- 사용자 정보 삭제 -->
         <!-- <button type= "button" id="deleteForAdmin" class="w3-button w3-section w3-red" style="visibility:visible" onclick="location.href='${pageContext.request.contextPath}/member/deleteEmp?emnum=${emp_info_emnum}'"> 삭제 </button> -->

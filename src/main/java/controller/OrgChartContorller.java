@@ -1,14 +1,18 @@
 package controller;
 
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import dao.OrgChartDBMybatis;
@@ -90,5 +94,49 @@ public class OrgChartContorller {
 				return insa(model,request);
 
 			}		
+			
+	//관리자 모드 - 직원 수정
+			@RequestMapping("/updateEmp")
+			public String updateEmp(int emnum, Model model, MultipartHttpServletRequest request,MemberDataBean article)
+					throws Exception {
+				
+				article = dbPro.getEmployee(emnum);
+				
+				/*MultipartFile multi = request.getFile("uploadfile");
+				MultipartFile multi2 = request.getFile("profileimage");
+				
+				String filename = article.getSignature();
+				String profilename =article.getProfile();
+				
+				//signature
+				if(filename != null && !filename.equals("")) {
+					String uploadPath = request.getRealPath("/")+"fileSave";
+					FileCopyUtils.copy(multi.getInputStream(), new FileOutputStream(uploadPath+"/"+multi.getOriginalFilename()));
+					article.setSignature(filename);
+					//article.setFilesize((int) multi.getSize()); 
+					}else {
+						article.setSignature("");
+						//article.setFilesize(0); 
+					}
+				
+				//profile image
+				if(profilename != null && !profilename.equals("")) {
+					String uploadPath = request.getRealPath("/")+"fileSave";
+					FileCopyUtils.copy(multi2.getInputStream(), new FileOutputStream(uploadPath+"/"+multi2.getOriginalFilename()));
+					article.setProfile(profilename);
+					//article.setFilesize((int) multi.getSize()); 
+					}else {
+						article.setProfile("");
+						//article.setFilesize(0); 
+					}
+				*/
+				
+			 	//int chk= dbPro.upEmployee(article); 
+			 	model.addAttribute("article", article);
+			 	
+				return "member/updateEmp";
+
+			}
+
 	
 }

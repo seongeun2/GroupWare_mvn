@@ -7,8 +7,33 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<script src="${pageContext.servletContext.contextPath}/resources/js/admin.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	</head>
 <body>
+
+<script>
+function myFunction() {
+    document.getElementById("myDate").value = "${article.joind}";
+}
+
+var position = $(':radio[name="position"]:checked').val();
+
+//달력
+$(document).ready(function () {
+     var date = new Date();
+     /* var currentMonth = date.getMonth();
+     var currentDate = date.getDate();
+     var currentYear = date.getFullYear(); */
+
+     $('#myDate').datepicker({
+         /* minDate: new Date(currentYear, currentMonth, currentDate), */
+         dateFormat: 'yy-mm-dd'
+     });
+});
+
+</script>
 	<div class="w3-container w3-margin">
 	  	<h1 align="center">-직원 수정-</h1>
 	</div>
@@ -57,7 +82,7 @@
 			
 			<p>
 				<label>*입사일</label>
-				<input class="w3-input w3-padding-16 w3-border" type="date" placeholder="Date" name="joind" value="${article.joind}" required>
+				<input class="w3-input w3-padding-16 w3-border" type="text" name="joind" id="myDate" value="${article.joind}" required>
 			</p>
 			
 			<p>

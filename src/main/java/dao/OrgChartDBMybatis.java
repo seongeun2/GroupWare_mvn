@@ -60,4 +60,32 @@ public class OrgChartDBMybatis extends MybatisConnector{
 	      sqlSession.commit();sqlSession.close();   
 	      return chk;   
 	   }	
+	   
+	 //직원 한명 데이터 가져오기
+	   public MemberDataBean getEmployee (int emnum) {
+	      sqlSession= sqlSession();
+	      Map map = new HashMap();
+	      map.put("emnum", emnum);
+	      
+	      MemberDataBean article 
+	      = sqlSession.selectOne(namespace+".getEmployee",   map);
+	      
+	      sqlSession.commit();
+	      sqlSession.close();   
+	      
+	      return article;   
+	   }		  
+	   
+	 //회원 수정
+	   public int upEmployee(MemberDataBean article) {
+	      sqlSession= sqlSession();
+	      int chk 
+	      = sqlSession.update(namespace+".upEmployee",  article);
+	      System.out.println("chk=="+chk);
+	      sqlSession.commit();
+	      sqlSession.close();   
+	      
+	      return chk;
+	      
+	   }
 }	

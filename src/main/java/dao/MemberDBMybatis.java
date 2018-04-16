@@ -68,35 +68,5 @@ public class MemberDBMybatis extends MybatisConnector{
 			sqlSession.close();
 			return profile;
 		}
-	
-		
-		//직원 한명 데이터 가져오기
-		   public MemberDataBean getEmployee (String id) {
-		      sqlSession= sqlSession();
-		      Map map = new HashMap();
-		      map.put("id", id);
-		      
-		      MemberDataBean article 
-		      = sqlSession.selectOne(namespace+".getEmployee",   map);
-		      
-		      sqlSession.commit();
-		      sqlSession.close();   
-		      
-		      return article;   
-		   }		
-		
-		//회원 수정
-		   public int upEmployee(MemberDataBean article) {
-		      sqlSession= sqlSession();
-		      int chk 
-		      = sqlSession.update(namespace+".upEmployee",  article);
-		      System.out.println("chk=="+chk);
-		      sqlSession.commit();
-		      sqlSession.close();   
-		      
-		      return chk;
-		      
-		   }
-		   
 		 
 }

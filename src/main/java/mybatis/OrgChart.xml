@@ -63,4 +63,10 @@
     <update id="deleteEmp"  parameterType="map">
       delete from tpuser where emnum=#{emnum}
    </update>
+   
+   	<!--직원 한명 데이터 가져오기 -->
+	<select id="getEmployee" resultType="Member" parameterType="hashmap">
+		select * from tpuser 
+			WHERE emnum = #{emnum} 
+	</select>
 </mapper>
