@@ -254,11 +254,12 @@ function refresh() {
     });
     
    $(".grid-menu-item").mouseenter(function() {
-	   $(this).css("background-color", "#2d89ef");
+	   SetGridHoverColor(this);
    });
    
    $(".grid-menu-item").mouseleave(function() {
-	   SetGridColor();
+	   $(this).css("background-color", "#2b5797");
+	   $(this).css("color", "#fff");
    });
 }
 
