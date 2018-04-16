@@ -55,7 +55,7 @@
            </div>
          </div>
          <!-- 3¹ø °áÀç -->
-         <div class="w3-col" style="width: 15%; background-color: white;">
+         <div class="w3-col" id="third_approval" style="width: 15%; background-color: white;">
             <div class="w3-container w3-center w3-border w3-border-black">
                  <p id="result">${vo.user3}</p>
             </div>
