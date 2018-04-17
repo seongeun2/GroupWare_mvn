@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import dao.OrgChartDBMybatis;
 import model.MemberDataBean;
@@ -95,18 +96,20 @@ public class OrgChartContorller {
 
 			}		
 			
-	//관리자 모드 - 직원 수정
+	//관리자 모드 - 직원 수정 폼
 			@RequestMapping("/updateEmp")
-			public String updateEmp(int emnum, Model model, MultipartHttpServletRequest request,MemberDataBean article)
+			public String updateEmp(int emnum, Model model,MemberDataBean article)
 					throws Exception {
 				
 				article = dbPro.getEmployee(emnum);
 				
-				/*MultipartFile multi = request.getFile("uploadfile");
+				ModelAndView mv = new ModelAndView();
+				/*
+				MultipartFile multi = request.getFile("uploadfile");
 				MultipartFile multi2 = request.getFile("profileimage");
 				
-				String filename = article.getSignature();
-				String profilename =article.getProfile();
+				String filename = multi.getOriginalFilename();
+				String profilename = multi2.getOriginalFilename();
 				
 				//signature
 				if(filename != null && !filename.equals("")) {
@@ -130,9 +133,10 @@ public class OrgChartContorller {
 						//article.setFilesize(0); 
 					}
 				*/
-				
 			 	//int chk= dbPro.upEmployee(article); 
 			 	model.addAttribute("article", article);
+			 	System.out.println(article.getSignature());
+			 	System.out.println(article.getProfile());
 			 	
 				return "member/updateEmp";
 

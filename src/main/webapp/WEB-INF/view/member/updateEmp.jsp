@@ -18,11 +18,14 @@ function myFunction() {
     document.getElementById("myDate").value = "${article.joind}";
 }
 
-var position = $(':radio[name="position"]:checked').val();
-
+//var position = $(':radio[name="position"]:checked').val();
 //달력
 $(document).ready(function () {
-     var date = new Date();
+
+	var radiocheck = $("input[type=radio][name=position]").val();	
+	$("input:radio[name=position][value="+radiocheck+"]").prop('checked', true);
+	
+	var date = new Date();
      /* var currentMonth = date.getMonth();
      var currentDate = date.getDate();
      var currentYear = date.getFullYear(); */
@@ -67,8 +70,9 @@ $(document).ready(function () {
 			
 		 	<p>
 				<label>*팀</label>
-				<select class="w3-select" name="tnum" id="tnum" onchange="doTeamChange(this)" required>
+				<select class="w3-select" name="tnum" id="tnum" onchange="doTeamChange(this)"  required>
 				 <option value="" disabled selected>부서 선택 후 팀을 선택하세요.</option>
+					
 				</select>
 			</p> 
 			
@@ -111,6 +115,7 @@ $(document).ready(function () {
   				<td width="70" align="center">*프로필사진</td>
   				<td width="330">
   				<input type="file" size="40" maxlength="30" name="profileimage" value="${article.profile}"> 
+  				<img src="/GroupWare/fileSave/${article.profile}">
   				</td>
 		    </tr>
 			
