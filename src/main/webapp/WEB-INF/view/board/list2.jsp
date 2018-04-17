@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -20,67 +21,69 @@
  
 <!-- admin 계정만 글 쓸 수 있게 하는 것 -->
   <c:if test="${id eq 'admin'}">
-   <p class="w3-right w3-padding-right-large">
+	<p class="w3-right w3-padding-right-large">
 <!-- 수정 : writeFormUpload2 -->
 <!-- 수정 : ${boardid } -->
-      <a href="writeFormUpload${boardid}">글쓰기</a>   <!-- writeForm -->
-   </p>
+		<a href="writeFormUpload${boardid}">글쓰기</a>	<!-- writeForm -->
+	</p>
   </c:if>
 
-   <c:if test="${count==0 }">
-      <table class="w3-table-all w3-hoverable"  width="700">
-         <tr class="w3-teal">
-            <td align="center">게시판에 저장된 글이 없습니다.</td>
-         </tr>
-      </table>
-   </c:if>
+	<c:if test="${count==0 }">
+		<table class="w3-table-all w3-hoverable"  width="700">
+			<tr class="w3-teal">
+				<td align="center">게시판에 저장된 글이 없습니다.</td>
+			</tr>
+		</table>
+	</c:if>
 
 
-   <c:if test="${count!=0 }">
+	<c:if test="${count!=0 }">
 
-   <table class="w3-table-all w3-hoverable"  width="700">
-       <thead>
-         <tr class="w3-cyan">
-            <td align="center" width="50">번호</td>
-         <td align="center" width="250">제 목</td>
-         <td align="center" width="100">작성자</td>
-         <td align="center" width="150">작성일</td>
-         <td align="center" width="50">조 회</td>
-         <td align="center" width="100">IP</td>
-      </tr>
-       </thead>
+	<table class="w3-table-all w3-hoverable"  width="700">
+    	<thead>
+      	<tr class="w3-cyan">
+      		<td align="center" width="50">번호</td>
+			<td align="center" width="250">제 목</td>
+			<td align="center" width="100">작성자</td>
+			<td align="center" width="150">작성일</td>
+			<td align="center" width="50">조 회</td>
+			<td align="center" width="100">IP</td>
+		</tr>
+    	</thead>
     
     
-    <c:forEach  var="article"  items="${articleList}">   
-      <tr height="30">
-         <td align="center" width="50">${number}</td>
-         <c:set var="number" value="${number-1}"/>
-         <td width="250">
-   
-         <c:if test="${article.re_level>0}">
-            <img src="${pageContext.request.contextPath}/resources/images/hyo-board-img/level.gif"
-               width="${5 * article.re_level}" height="16"> 
-            <img src="${pageContext.request.contextPath}/resources/images/hyo-board-img/re.gif">
-         </c:if> 
-   
-         <c:if test="${article.re_level==0}">
-             <img src="${pageContext.request.contextPath}/resources/images/hyo-board-img/level.gif"  height="16">
-         </c:if>
-         
+    <c:forEach  var="article"  items="${articleList}">	
+		<tr height="30">
+			<td align="center" width="50">${number}</td>
+			<c:set var="number" value="${number-1}"/>
+			<td width="250">
+	
+			<c:if test="${article.re_level>0}">
+				<img src="${pageContext.request.contextPath}/resources/images/hyo-board-img/level.gif"
+					width="${5 * article.re_level}" height="16"> 
+				<img src="${pageContext.request.contextPath}/resources/images/hyo-board-img/re.gif">
+			</c:if> 
+	
+			<c:if test="${article.re_level==0}">
+	 			<img src="${pageContext.request.contextPath}/resources/images/hyo-board-img/level.gif"  height="16">
+			</c:if>
+			
 <!-- 수정 : ${boardid } -->
-             <a href="content?num=${article.num}&pageNum=${currentPage}&boardid=${boardid}">
-               ${article.subject}</a> 
+		 		<a href="content?num=${article.num}&pageNum=${currentPage}&boardid=${boardid}">
+					${article.subject}</a> 
 
-          <c:if test="article.readcount>=20">
-             <img src="${pageContext.request.contextPath}/resources/images/hyo-board-img/hot.gif" border="0" height="16">
-         </c:if>
-          </td>
-         <td align="center" width="100">${article.writer}</td>
-         <td align="center" width="150">${article.reg_date}</td>
-         <td align="center" width="50">${article.readcount}</td>
-         <td align="center" width="100">${article.ip}</td>
-      </tr>   
-   </c:forEach>
+ 			<c:if test="article.readcount>=20">
+ 				<img src="${pageContext.request.contextPath}/resources/images/hyo-board-img/hot.gif" border="0" height="16">
+			</c:if>
+ 			</td>
+			<td align="center" width="100">${article.writer}</td>
+			<td align="center" width="150">
+				<ftm:formatDate value="${article.reg_date}" pattern="yyyy-MM-dd"/>
+			</td>
+			<td align="center" width="50">${article.readcount}</td>
+			<td align="center" width="100">${article.ip}</td>
+		</tr>	
+	</c:forEach>
   </table>
   </c:if>
 </div>

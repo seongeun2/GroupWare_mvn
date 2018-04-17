@@ -15,6 +15,13 @@
 			WHERE id = #{id} 
 	</select>
 	
+	<!-- 장효추가 : 4/13(금) -->
+	<!-- 이메일 가져오기 -->
+	<select id="getEmail" resultType="String" parameterType="hashmap">
+		select email from tpuser 
+			WHERE id = #{id}  
+	</select>
+	
 	<!-- 프로필사진가져오기 -->
 	<select id="getprofile" resultType="String" parameterType="hashmap">
 		select profile from tpuser 

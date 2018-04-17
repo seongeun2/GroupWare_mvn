@@ -130,7 +130,7 @@ function SetColorTheme(style) {
 
 /*문서 색상 테마를 설정합니다.*/
 function SetApprovalColorTheme() {
-	var color = '#b4b4b4';
+	var color = '#eaeaea';
 	
 	var colorElements = document.getElementsByClassName("approval_color_theme");
 	
@@ -149,7 +149,7 @@ function SetGridHoverColor(element) {
 	5 - 쪽지함 쓰기
 	6 - 받은 쪽지
 	*/
-	var colors = ['#b91d47', '#ee1111', '#da532c', '#e3a21a', '#1d1d1d', '#ffc40d'];
+	var colors = ['#9F81F7', '#F3F781', '#009688', '#e3a21a', '#1d1d1d', '#ffc40d'];
 	var white = '#ffffff';
 	
 	var items = document.getElementsByClassName('grid-menu-item');

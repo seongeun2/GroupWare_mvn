@@ -21,7 +21,7 @@
    </div>
 </div>
  
-<div id="approval_border" class="w3-padding-32">
+<div id="approval_border" class="w3-padding-32" style="margin: 10px; border: 1px solid #000!important; ">
 
 <form action="apWrite" method="post">
 <input type="hidden" name="typegubun" value="doc01">
@@ -42,7 +42,7 @@
          </div>
          <div class="w3-container w3-center w3-border w3-border-black">
             <img src="${pageContext.servletContext.contextPath}/resources/images/stamp/no.JPG" 
-+                    style="width: 100px; height: 100px" alt="Avatar">
+                   style="width: 100px; height: 100px" alt="Avatar">
            </div>
          </div>
          <!-- 2¹ø °áÀç -->

@@ -32,19 +32,14 @@ public class MemberController{
 		int pwcheck = dbPro.login(id, pw);
 		String name = dbPro.getname(id);
 		String profile = dbPro.getprofile(id);
+		String email = dbPro.getEmail(id);
 		
 		session.setAttribute("name", name);
 		session.setAttribute("id", id);
+		session.setAttribute("email", email);
 		session.setAttribute("profile", profile);
 		model.addAttribute("pwcheck",pwcheck);	
 		
-		
-	/*	
-		if(id.equals("admin") && pwcheck==1) {
-			//return "common/admin";  //jsp 페이지 만들어야함.
-			return "/board/mainBoard";
-		}else
-		*/
 		return  "loginDb"; 
 	}
 	

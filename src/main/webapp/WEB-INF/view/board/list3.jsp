@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page import="model.MemberDataBean" %>
+
 <!DOCTYPE html>
 <html>
 <title>자유게시판</title>
@@ -75,9 +74,7 @@
 			</c:if>
  			</td>
 			<td align="center" width="100">${article.writer}</td>
-			<td align="center" width="150">
-				<ftm:formatDate value="${article.reg_date}" pattern="yyyy-MM-dd"/>
-			</td>
+			<td align="center" width="150">${article.reg_date}</td>
 			<td align="center" width="50">${article.readcount}</td>
 			<td align="center" width="100">${article.ip}</td>
 		</tr>	
@@ -113,23 +110,16 @@
    
    
 <!-- 회원 검색 -->
-   <form name ="Board_search" method="get" style="text-align: center;" action="./">
-      <select name="keyField"  id="keyField" style="height: 30px;">
+   <form name ="Boardsearch" method="post" style="text-align: center;">
+      <select name="keyField" style="height: 30px;">
       	<option>선택</option>
-     		<option value="name" selected="selected">이름</option>
-      		<option value="subject">제목</option>
-      		<option value="content">내용</option>
+     		<option value="m_id">보낸사람</option>
+      		<option value="m_name">이름</option>
+      		<option value="m_content">내용</option>
       </select>
-      <input type="text" size="20" name="keyWord" id="keyWord">
-      <button type="button" value="검색" onclick="search();" />&nbsp;
+      <input type="text" size="20" name="keyWord">
+      <input type="button" value="검색" onclick="mem_search(form)" />&nbsp;
    </form>
-   
-   <script>
-   		function search() {
-   			var keyWord = jQur
-   		}
-   </script>
-   
    
    
 </body>

@@ -60,13 +60,24 @@ public class MemberDBMybatis extends MybatisConnector{
 	
 	
 	//프로필사진 가져오기
-		public String getprofile(String id) {
-			sqlSession = sqlSession();
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("id", id);
-			String profile = sqlSession.selectOne(namespace+".getprofile", map) ;	
-			sqlSession.close();
-			return profile;
-		}
+	public String getprofile(String id) {
+		sqlSession = sqlSession();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		String profile = sqlSession.selectOne(namespace+".getprofile", map) ;	
+		sqlSession.close();
+		return profile;
+	}
+		
+	//장효추가: 4/13(금)
+	//이메일 가져오기
+	public String getEmail(String id) {
+		sqlSession = sqlSession();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		String email = sqlSession.selectOne(namespace+".getEmail", map) ;	
+		sqlSession.close();
+		return email;
+	}
 		 
 }

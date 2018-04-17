@@ -22,8 +22,8 @@
    </div>
 </div>
    
-<div id="approval_border" class="w3-padding-32">
-<form action="apWrite" target="_blank">
+<div id="approval_border" class="w3-padding-32" style="margin: 10px; border: 1px solid #000!important; ">
+<form action="apWrite" method="post">
 <input type="hidden" name="typegubun" value="doc03">
 <input type="hidden" id="id2" name="id2" value="${id2}">
 <input type="hidden" id="id3" name="id3" value="${id3}">

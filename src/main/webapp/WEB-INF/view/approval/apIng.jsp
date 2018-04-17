@@ -18,7 +18,7 @@ function search2(frm){
 
 <div class="w3-main">
 
-<div class="w3-container">
+<div class="w3-container w3-padding-32">
 <h2 style="text-align: center;">결재 진행중  ${count}건</h2>
 <table class="w3-table-all w3-hoverable" style="text-align: center;">
 	<col width="10%">	<!-- 문서번호 -->
