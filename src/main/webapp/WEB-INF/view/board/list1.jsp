@@ -14,7 +14,9 @@
 
 <body>
 
-<div class="w3-container" style="margin: 40px 100px;">
+<div class="w3-main">
+
+<div class="w3-container">
   <h2 style="text-align: center;">자유게시판 : ${boardid} 번 (전체 글:${count})</h2>
   
 <!--  글쓰기 버튼  -->
@@ -130,7 +132,7 @@
    		}
    </script>
    
-   
-   
+</div> 
+  
 </body>
 </html> 
