@@ -79,5 +79,15 @@ public class MemberDBMybatis extends MybatisConnector{
 		sqlSession.close();
 		return email;
 	}
+	//직원 수정
+	public void updateEmp(MemberDataBean article) {
+		sqlSession = sqlSession();
+		System.out.println("getEmnum=========="+article.getEmnum());
+		sqlSession.update(namespace+".updateEmp",	article);	
+		sqlSession.commit();
+		sqlSession.close();	
+
+		}
+	
 		 
 }

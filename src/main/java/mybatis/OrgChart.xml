@@ -69,4 +69,10 @@
 		select * from tpuser 
 			WHERE emnum = #{emnum} 
 	</select>
+	
+		<!-- 부서 num가져오기 -->
+	<select id="getdnum" resultType="int" parameterType="hashmap">
+		<!-- select tpdep.dnum from tpdep,tpteam where tpdep.dnum = tpteam.dnum and tpteam.tnum = ${tnum} -->
+		select d.dnum from tpdep d,tpteam t,tpuser u where d.dnum = t.dnum and  t.tnum = u.tnum and u.emnum = ${emnum}
+	</select>
 </mapper>

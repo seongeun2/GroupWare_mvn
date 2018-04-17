@@ -41,6 +41,12 @@
 		insert into tpuser(name,phone,tel,emnum,tnum,id,pw,email,position,joind,login,signature,profile)
     values(#{name},#{phone},#{tel},#{emnum},#{tnum},#{id},#{pw},#{email},#{position},#{joind},#{login},#{signature},#{profile})	
 	</insert>
-	
+
+	<!-- 게시글 수정 -->
+	<update id="updateEmp"  parameterType="Member">
+		update tpuser set name=#{name},phone=#{phone},
+				tel=#{tel} ,tnum=#{tnum},id=#{id},pw=#{pw},email=#{email},position=#{position},joind=#{joind},signature=#{signature},profile=#{profile}
+				where emnum=#{emnum}
+	</update>
 	
 </mapper>

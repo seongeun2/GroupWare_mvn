@@ -34,6 +34,9 @@ $(document).ready(function () {
          /* minDate: new Date(currentYear, currentMonth, currentDate), */
          dateFormat: 'yy-mm-dd'
      });
+     
+    /*  $("#dnum").val("${dnum}").prop("selected", true); //값이 1인 option 선택
+     //value="${dnum}" */
 });
 
 </script>
@@ -41,8 +44,8 @@ $(document).ready(function () {
 	  	<h1 align="center">-직원 수정-</h1>
 	</div>
 	<div class="w3-container w3-content w3-margin-top">	
-		<form class="w3-container w3-card-4" action="regEmployeePro" enctype="multipart/form-data" method="post">
-			<!-- <input  type="hidden"   name="emnum" value="${emnum}"> -->
+		<form class="w3-container w3-card-4" action="/GroupWare/member/updateEmpPro" enctype="multipart/form-data" method="post">
+		 	 <input  type="hidden"   name="emnum" value="${article.emnum}">  
 			<p>
 				<label>*이름</label>
 				<input class="w3-input" type="text" style="width:90%" name="name" value="${article.name}" required>
@@ -60,11 +63,11 @@ $(document).ready(function () {
 			
 			<p>
 				<label>*부서</label>
-				<select class="w3-select" name="option" id="option" onchange="doChange(this,'tnum')"  required>
+				<select class="w3-select" name="option" id="option" onchange="doChange(this,'tnum')" id="dnum" required>
 					<option value="" disabled selected>부서를 선택하세요.</option>
-					<option value="1">경영지원부서</option>
-					<option value="2">개발부서</option>
-					<option value="3">디자인부서</option>
+					<option value="200">경영지원부서</option>
+					<option value="300">개발부서</option>
+					<option value="400">디자인부서</option>
 			 	</select>
 			</p>
 			
@@ -105,23 +108,26 @@ $(document).ready(function () {
 			</p>
 		
 			 <tr>
-  				<td width="70" align="center">*서명</td>
-  				<td width="330">
-  				<input type="file" size="40" maxlength="30" name="uploadfile" value="${article.signature}"> 
-  				<img src="/GroupWare/fileSave/${article.signature}" style="height:300px; width: 300px;">
-  				</td>
+  				<td width="70" align="center">*서명<br/></td>
+				<td>
+				<%-- <img src="/GroupWare/fileSave/${article.signature}" style="height:300px; width: 300px;"></td> --%>
+  				<br><br>
+  				<input type="file" size="40" maxlength="30" name="uploadfile" value="${article.signature}"/> 
 		    </tr>
+		    <input type="hidden" name="signature" value="${article.signature}"/>
 		    
+		    <p>
 		    <tr>
-  				<td width="70" align="center">*프로필사진</td>
-  				<td width="330">
-  				<input type="file" size="40" maxlength="30" name="profileimage"> 
-  				<input type="hidden" name="profileimage" value="${article.profile}">
-  				<img src="/GroupWare/fileSave/${article.profile}" style="height:300px; width: 300px;">
-
+  				<td width="70" align="center">*프로필사진<br/></td>
+  				<td>
+  				<%-- <img src="/GroupWare/fileSave/${article.profile}" style="height:300px; width: 300px;"> --%>
+  				<br><br>
+  				<input type="file" size="40" maxlength="30" name="profileimage"></td>
+  				</tr> 
+  				<input type="hidden" name="profile" value="${article.profile}"/>
   				</td>
 		    </tr>
-			
+			</p>
 			<div align="center">
 				<p>
 					<button type="button" class="w3-button w3-black w3-margin-bottom w3-hover-teal" onclick="location.href = '../main'" align="center"> 메인</button>

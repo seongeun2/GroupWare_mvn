@@ -96,12 +96,12 @@ public class MemberController{
 			return "member/adminpage";
 		}
 
-		//관리자 모드 - 직원 수정 폼
-		@RequestMapping("/updateEmp")
-		public String updateEmp(MultipartHttpServletRequest request, Model model,MemberDataBean article, String uploadfile, String profileimage)
+		//관리자 모드 - 직원 수정
+		@RequestMapping("/updateEmpPro")
+		public String updateEmpPro(MultipartHttpServletRequest request, Model model,MemberDataBean article, String signature, String profile)
 				throws Exception {
 	
-			
+			System.out.println("직원수정");
 			ModelAndView mv = new ModelAndView();
 			
 			MultipartFile multi = request.getFile("uploadfile");
@@ -117,7 +117,7 @@ public class MemberController{
 				article.setSignature(filename);
 				//article.setFilesize((int) multi.getSize()); 
 				}else {
-					article.setSignature(uploadfile);
+					article.setSignature(signature);
 					//article.setFilesize(0); 
 				}
 			
@@ -128,16 +128,16 @@ public class MemberController{
 				article.setProfile(profilename);
 				//article.setFilesize((int) multi.getSize()); 
 				}else {
-					article.setProfile(profileimage);
+					article.setProfile(profile);
 					//article.setFilesize(0); 
 				}
 			
-		 	//int chk= dbPro.upEmployee(article); 
-		 	model.addAttribute("article", article);
-		 	System.out.println(article.getSignature());
-		 	System.out.println(article.getProfile());
-		 	
-			return "member/updateEmp";
+			System.out.println("signature=====" + signature);
+			System.out.println("profile=====" + profile);
+			System.out.println("getSignature=====" + article.getSignature());
+			System.out.println("getProfile=====" + article.getProfile());
+			dbPro.updateEmp(article);
+			return "member/adminpage";
 
 		}	
 }

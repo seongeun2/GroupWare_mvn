@@ -88,4 +88,15 @@ public class OrgChartDBMybatis extends MybatisConnector{
 	      return chk;
 	      
 	   }
+	   
+	   //ºÎ¼­°ª 
+	   public int getdnum(int emnum) {
+			sqlSession = sqlSession();
+			Map map = new HashMap();
+			map.put("emnum", emnum);
+			int dnum = sqlSession.selectOne(namespace+".getdnum", map) ;	
+			sqlSession.close();
+			return dnum;
+			
+		}
 }	

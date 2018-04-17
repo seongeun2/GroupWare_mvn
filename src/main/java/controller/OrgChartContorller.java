@@ -104,37 +104,10 @@ public class OrgChartContorller {
 				article = dbPro.getEmployee(emnum);
 				
 				ModelAndView mv = new ModelAndView();
-				/*
-				MultipartFile multi = request.getFile("uploadfile");
-				MultipartFile multi2 = request.getFile("profileimage");
-				
-				String filename = multi.getOriginalFilename();
-				String profilename = multi2.getOriginalFilename();
-				
-				//signature
-				if(filename != null && !filename.equals("")) {
-					String uploadPath = request.getRealPath("/")+"fileSave";
-					FileCopyUtils.copy(multi.getInputStream(), new FileOutputStream(uploadPath+"/"+multi.getOriginalFilename()));
-					article.setSignature(filename);
-					//article.setFilesize((int) multi.getSize()); 
-					}else {
-						article.setSignature("");
-						//article.setFilesize(0); 
-					}
-				
-				//profile image
-				if(profilename != null && !profilename.equals("")) {
-					String uploadPath = request.getRealPath("/")+"fileSave";
-					FileCopyUtils.copy(multi2.getInputStream(), new FileOutputStream(uploadPath+"/"+multi2.getOriginalFilename()));
-					article.setProfile(profilename);
-					//article.setFilesize((int) multi.getSize()); 
-					}else {
-						article.setProfile("");
-						//article.setFilesize(0); 
-					}
-				*/
-			 	//int chk= dbPro.upEmployee(article); 
+				int dnum = dbPro.getdnum(emnum);
 			 	model.addAttribute("article", article);
+			 	model.addAttribute("dnum",dnum);
+			 	
 			 	System.out.println(article.getSignature());
 			 	System.out.println(article.getProfile());
 			 	
