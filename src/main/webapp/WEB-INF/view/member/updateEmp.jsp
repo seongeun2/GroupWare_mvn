@@ -18,12 +18,22 @@ function myFunction() {
     document.getElementById("myDate").value = "${article.joind}";
 }
 
-//var position = $(':radio[name="position"]:checked').val();
-//달력
-$(document).ready(function () {
+function positionCheck() {
+    document.getElementById("position_" + "${article.position}").checked = true;
+}
 
-	var radiocheck = $("input[type=radio][name=position]").val();	
+
+function tnumCheck() {
+    document.getElementById("tnum_" + "${article.tnum}").selected = true;
+}
+
+$(document).ready(function () {
+	positionCheck();
+	tnumCheck();
+	/* var radiocheck = $("input[type=radio][name=position]").val();	
 	$("input:radio[name=position][value="+radiocheck+"]").prop('checked', true);
+	 */
+	
 	
 	var date = new Date();
      /* var currentMonth = date.getMonth();
@@ -61,7 +71,7 @@ $(document).ready(function () {
 				<input class="w3-input" type="password" style="width:90%" name="pw" value="${article.pw}" required>
 			</p>
 			
-			<p>
+			<!-- <p>
 				<label>*부서</label>
 				<select class="w3-select" name="option" id="option" onchange="doChange(this,'tnum')" id="dnum" required>
 					<option value="" disabled selected>부서를 선택하세요.</option>
@@ -69,21 +79,33 @@ $(document).ready(function () {
 					<option value="300">개발부서</option>
 					<option value="400">디자인부서</option>
 			 	</select>
-			</p>
+			</p> -->
 			
 		 	<p>
 				<label>*팀</label>
-				<select class="w3-select" name="tnum" id="tnum" onchange="doTeamChange(this)"  required>
-				 <option value="" disabled selected>부서 선택 후 팀을 선택하세요.</option>
+				<select class="w3-select" name="tnum" id="tnum"   required>
+				
+				 <option id="tnum_201" value="201">인사팀</option>
+				 <option id="tnum_202" value="202">회계팀</option>
+				 <option id="tnum_203" value="203">고객관리팀</option>
+				 <option id="tnum_301" value="301">개발1팀</option>
+				 <option id="tnum_302" value="302">개발2팀</option>
+				 <option id="tnum_401" value="401">디자인1팀</option>
+				 <option id="tnum_402" value="402">디자인2팀</option>
 					
 				</select>
 			</p> 
-			
+
 			
 			<div class="selectPosition"><p>*직위</p>
-				<input class="w3-radio" type="radio" name="position" value="3" value="${article.position}" required>팀장
-				<input class="w3-radio" type="radio" name="position" value="4">대리
-				<input class="w3-radio" type="radio" name="position" value="5">사원
+				<input id="position_3" class="w3-radio" type="radio" name="position" value="3">
+				<label for="position_3">팀장</label>
+				
+				<input id="position_4" class="w3-radio" type="radio" name="position" value="4">
+				<label for="position_4">대리</label>
+				
+				<input id="position_5" class="w3-radio" type="radio" name="position" value="5">
+				<label for="position_5">사원</label>
 			</div>
 			
 			
