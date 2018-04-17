@@ -108,14 +108,17 @@ $(document).ready(function () {
   				<td width="70" align="center">*서명</td>
   				<td width="330">
   				<input type="file" size="40" maxlength="30" name="uploadfile" value="${article.signature}"> 
+  				<img src="/GroupWare/fileSave/${article.signature}" style="height:300px; width: 300px;">
   				</td>
 		    </tr>
 		    
 		    <tr>
   				<td width="70" align="center">*프로필사진</td>
   				<td width="330">
-  				<input type="file" size="40" maxlength="30" name="profileimage" value="${article.profile}"> 
-  				<img src="/GroupWare/fileSave/${article.profile}">
+  				<input type="file" size="40" maxlength="30" name="profileimage"> 
+  				<input type="hidden" name="profileimage" value="${article.profile}">
+  				<img src="/GroupWare/fileSave/${article.profile}" style="height:300px; width: 300px;">
+
   				</td>
 		    </tr>
 			

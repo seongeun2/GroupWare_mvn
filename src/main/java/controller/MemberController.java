@@ -67,7 +67,6 @@ public class MemberController{
 	//관리자 모드 - 직원 등록 DB에 넣기
 		@RequestMapping("/regEmployeePro")
 		public String regEmployeePro(MultipartHttpServletRequest request, MemberDataBean article, Model model) throws Exception{
-			System.out.println("들어왔나아아아아앙아");
 			ModelAndView mv = new ModelAndView();
 			
 			MultipartFile multi = request.getFile("uploadfile");
@@ -102,6 +101,49 @@ public class MemberController{
 			return "member/adminpage";
 		}
 
-		
+		//관리자 모드 - 직원 수정 폼
+		@RequestMapping("/updateEmp")
+		public String updateEmp(MultipartHttpServletRequest request, Model model,MemberDataBean article, String uploadfile, String profileimage)
+				throws Exception {
+	
+			
+			ModelAndView mv = new ModelAndView();
+			
+			MultipartFile multi = request.getFile("uploadfile");
+			MultipartFile multi2 = request.getFile("profileimage");
+			
+			String filename = multi.getOriginalFilename();
+			String profilename = multi2.getOriginalFilename();
+			
+			//signature
+			if(filename != null && !filename.equals("")) {
+				String uploadPath = request.getRealPath("/")+"fileSave";
+				FileCopyUtils.copy(multi.getInputStream(), new FileOutputStream(uploadPath+"/"+multi.getOriginalFilename()));
+				article.setSignature(filename);
+				//article.setFilesize((int) multi.getSize()); 
+				}else {
+					article.setSignature(uploadfile);
+					//article.setFilesize(0); 
+				}
+			
+			//profile image
+			if(profilename != null && !profilename.equals("")) {
+				String uploadPath = request.getRealPath("/")+"fileSave";
+				FileCopyUtils.copy(multi2.getInputStream(), new FileOutputStream(uploadPath+"/"+multi2.getOriginalFilename()));
+				article.setProfile(profilename);
+				//article.setFilesize((int) multi.getSize()); 
+				}else {
+					article.setProfile(profileimage);
+					//article.setFilesize(0); 
+				}
+			
+		 	//int chk= dbPro.upEmployee(article); 
+		 	model.addAttribute("article", article);
+		 	System.out.println(article.getSignature());
+		 	System.out.println(article.getProfile());
+		 	
+			return "member/updateEmp";
+
+		}	
 }
 
