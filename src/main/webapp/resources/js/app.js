@@ -67,8 +67,8 @@ function SetView() {
 	head.appendChild(style);
 	
 	SetColorTheme(style);
-	SetMainMargin(style);
 	SetGridColor();
+	//SetMainMargin(style);
 	SetBodyMinWidth();
 	ToggleLabel();
 }
@@ -139,38 +139,36 @@ function SetApprovalColorTheme() {
 	}
 }
 
-function SetGridColor() {
+// 마우스 오버 할때 색상을 지정합니다.
+function SetGridHoverColor(element) {
 	/*
-	grid_menu_1 - 문서작성
-	grid_menu_2 - 결재현황
-	grid_menu_3 - 진행문서
-	grid_menu_4 - 결재대기
-	grid_menu_5 - 쪽지함 쓰기
-	grid_menu_6 - 받은 쪽지
+	1 - 문서작성
+	2 - 결재현황
+	3 - 진행문서
+	4 - 결재대기
+	5 - 쪽지함 쓰기
+	6 - 받은 쪽지
 	*/
-	
-	/*color:#fff;background-color:#ffc40d*/
-	
-	var color1 = '#ffc40d';
-	var color2 = '#ffc40d';
-	var color3 = '#ffc40d';
-	var color4 = '#ffc40d';
-	var color5 = '#ffc40d';
-	var color6 = '#ffc40d';
-	
+	var colors = ['#b91d47', '#ee1111', '#da532c', '#e3a21a', '#1d1d1d', '#ffc40d'];
 	var white = '#ffffff';
 	
 	var items = document.getElementsByClassName('grid-menu-item');
 	
-	items[0].style.backgroundColor = color1;
-	items[1].style.backgroundColor = color1;
-	items[2].style.backgroundColor = color1;
-	items[3].style.backgroundColor = color1;
-	items[4].style.backgroundColor = color1;
-	items[5].style.backgroundColor = color1;
+	for (i = 0; i < items.length; i++) {
+		if(items[i] == element) {
+			items[i].style.backgroundColor = colors[i];
+		}
+	}
+}
+
+function SetGridColor() {
+	var items = document.getElementsByClassName('grid-menu-item');
+	var backcolor = '#2b5797';
+	var color = '#fff';
 	
 	for (i = 0; i < items.length; i++) {
-		items[i].style.color = white;
+		items[i].style.backgroundColor = backcolor;
+		items[i].style.color = color;
 	}
 }
 
@@ -193,6 +191,7 @@ function SetMainMargin(style) {
 	}
 }
 
+/*
 function _SetMainMargin() {
 	var style = document.getElementsByTagName('style')[0];
 	
@@ -203,6 +202,7 @@ function _SetMainMargin() {
 		
 	SetMainMargin(style);
 }
+*/
 
 /*기안서, 휴가신청서, 지출결의서 내부의 좌우 margin을 설정합니다.*/
 function SetApprovalMargin() {

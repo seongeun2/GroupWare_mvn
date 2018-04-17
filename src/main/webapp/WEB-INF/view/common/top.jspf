@@ -20,6 +20,10 @@ function pop(){	//쪽지쓰기_조직도 팝업
 	window.open("http://www.google.com/","","width=800,height=600");
 }
 </script>
+
+<style>
+.w3-main {margin-left: 200px; margin-right: 200px;}"
+</style>
 <body>
 
 <!-- Navbar -->
@@ -200,8 +204,8 @@ $(window).on('resize', refresh);
 $(window).on('load',InitTop);
 
 function InitTop() {
-	refresh();
 	SetView();
+	refresh();
 }
 
 function refresh() {
@@ -254,11 +258,12 @@ function refresh() {
     });
     
    $(".grid-menu-item").mouseenter(function() {
-	   $(this).css("background-color", "#2d89ef");
+	   SetGridHoverColor(this);
    });
    
    $(".grid-menu-item").mouseleave(function() {
-	   SetGridColor();
+	   $(this).css("background-color", "#2b5797");
+	   $(this).css("color", "#fff");
    });
 }
 

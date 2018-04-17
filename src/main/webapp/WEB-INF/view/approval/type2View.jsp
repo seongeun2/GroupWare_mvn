@@ -10,15 +10,15 @@
 
   <!-- Contact Section -->
 <div class="w3-row-padding w3-center w3-padding-24" style="margin-left: 110px; margin-right: 110px;">
-   <div class="w3-third w3-dark-grey w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type1'">
+   <div class="w3-third main_color_theme w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type1'">
       <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
       <p>기안서</p>
    </div>
-   <div class="w3-third w3-dark-grey w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type2'">
+   <div class="w3-third main_color_theme w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type2'">
       <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
       <p>휴가신청서</p>
    </div>
-   <div class="w3-third w3-dark-grey w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type3'">
+   <div class="w3-third main_color_theme w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type3'">
       <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
       <p>지출결의서</p>
    </div>
@@ -58,7 +58,7 @@
            </div>
          </div>
          <!-- 3번 결재 -->
-         <div id="third_approval" style="width: 15%; background-color: white;">
+         <div class="w3-col" id="third_approval" style="width: 15%; background-color: white;">
             <div class="w3-container w3-center w3-border w3-border-black">
                  <p id="result">${vo.user3}</p>
             </div>
