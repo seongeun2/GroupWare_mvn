@@ -7,9 +7,9 @@
 <script src="${pageContext.servletContext.contextPath}/resources/js/app.js"></script>
 
 <div class="w3-main">
-
+<div class="w3-padding-24"></div>
   <!-- Contact Section -->
-<div class="w3-row-padding w3-center w3-padding-24" style="margin-left: 110px; margin-right: 110px;">
+ <div class="w3-row-padding w3-center w3-padding-24">
    <div class="w3-third main_color_theme w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type1'">
       <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
       <p>기안서</p>
@@ -24,9 +24,9 @@
    </div>
 </div>
    
-<div id="approval_border" class="w3-padding-32">
+<div id="approval_border" class="w3-padding-32" style="margin: 10px; border: 1px solid #000!important; ">
 
-<form action="apSave" target="_blank">
+<form action="apSave" method="post">
 <input type="hidden" id="docNo" name="docNo" value="${vo.docNo}">
 <input type="hidden" id="stamp2" name="stamp2" value="${vo.stamp2}">
    
@@ -44,7 +44,9 @@
          </div>
          <div class="w3-container w3-center w3-border w3-border-black">
             <%-- <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" style="width: 100px; height: 100px" class="w3-circle" alt="Avatar"> --%>
-              <p>${vo.stamp1}</p>
+              <c:if test="${vo.stamp1 ne ''}">
+              <p><img src="${pageContext.servletContext.contextPath}/resources/images/stamp/${vo.stamp1}.jpg" style="width: 100px; height: 100px" class="w3-circle" alt=""></p>
+              </c:if>
            </div>
          </div>
          <!-- 2번 결재 -->
@@ -54,7 +56,9 @@
             </div>
             <div class="w3-container w3-center w3-border w3-border-black">
                  <%-- <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" style="width: 100px; height: 100px" class="w3-circle" alt="Avatar"> --%>
-              <p>${vo.stamp2}</p>
+              <c:if test="${vo.stamp2 ne ''}">
+              <p><img src="${pageContext.servletContext.contextPath}/resources/images/stamp/${vo.stamp2}.jpg" style="width: 100px; height: 100px" class="w3-circle" alt=""></p>
+              </c:if>
            </div>
          </div>
          <!-- 3번 결재 -->
@@ -64,7 +68,9 @@
             </div>
             <div class="w3-container w3-center w3-border w3-border-black">
                  <%-- <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" style="width: 100px; height: 100px" class="w3-circle" alt="Avatar"> --%>
-               <p>${vo.stamp3}</p>
+               <c:if test="${vo.stamp3 ne ''}">
+              <p><img src="${pageContext.servletContext.contextPath}/resources/images/stamp/${vo.stamp3}.jpg" style="width: 100px; height: 100px" class="w3-circle" alt=""></p>
+              </c:if>
             </div>
          </div>
          

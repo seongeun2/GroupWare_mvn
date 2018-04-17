@@ -30,7 +30,7 @@ function search2(frm){
 	<col width="10%">	<!-- 문서양식 -->
 	<col width="10%">	<!-- 진행상태 -->
 	<thead>
-		<tr class="w3-teal">
+		<tr style="background-color: #9F81F7; color: #fff">
 			<th>문서번호</th>
 			<th>작성자</th>
 	        <th>부서</th>

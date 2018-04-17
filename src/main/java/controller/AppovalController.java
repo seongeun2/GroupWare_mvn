@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -77,16 +76,16 @@ public class AppovalController {
 		
 		model.addAttribute("approval", approval);
 		
-		//입력하면 메세지 창
-		String msg = "sucess";
-		 PrintWriter out = response.getWriter();
-		 request.setCharacterEncoding("EUC-KR");
-		 response.setContentType("text/html; charset=EUC-KR");
-		 response.setHeader("Content-Type", "text/html;charset=EUC-KR");
+		//메세지 창
+		request.setCharacterEncoding("EUC-KR");
+		response.setContentType("text/html; charset=EUC-KR");
+		response.setHeader("Content-Type", "text/html;charset=EUC-KR");
+		String msg = "문서가 작성되었습니다.";
+		PrintWriter out = response.getWriter();
 		 
-		    out.println("<script>alert('"+msg+"'); location.href='/GroupWare/approval/allList';</script>");
-		    out.flush(); 
-		    out.close();
+		out.println("<script>alert('"+msg+"'); location.href='/GroupWare/approval/allList';</script>");
+		out.flush(); 
+		out.close();
 		
 		return null ;
 	}
@@ -248,16 +247,27 @@ public class AppovalController {
 	
 	//결재
 	@RequestMapping("/apSave")
-	public String apSave(Model model, ApprovalDataBean approval) {
+	public String apSave(Model model, ApprovalDataBean approval, HttpServletRequest request, HttpServletResponse response) throws IOException{
 			
 		dbPro.apSave(approval);
-			
-		return "approval/allList";	
+		
+		//메세지 창
+		request.setCharacterEncoding("EUC-KR");
+		response.setContentType("text/html; charset=EUC-KR");
+		response.setHeader("Content-Type", "text/html;charset=EUC-KR");
+		String msg = "결재 되었습니다.";
+		PrintWriter out = response.getWriter();
+		 
+		out.println("<script>alert('"+msg+"'); location.href='/GroupWare/approval/allList';</script>");
+		out.flush(); 
+		out.close();
+		
+		return "redirect:/approval/allList";	
 	}
 		
 	//반려
 	@RequestMapping("/docReturn")
-	public String docReturn(String docNo,HttpSession session ) {
+	public String docReturn(String docNo,HttpSession session,  HttpServletRequest request, HttpServletResponse response ) throws IOException {
 		
 		String userid = (String)session.getAttribute("id");
 		
@@ -265,8 +275,19 @@ public class AppovalController {
 		int no = Integer.parseInt(docNo);
 			
 		dbPro.docReturn(no,userid);
+		
+		//메세지 창
+		request.setCharacterEncoding("EUC-KR");
+		response.setContentType("text/html; charset=EUC-KR");
+		response.setHeader("Content-Type", "text/html;charset=EUC-KR");
+		String msg = "반려 되었습니다.";
+		PrintWriter out = response.getWriter();
+		 
+		out.println("<script>alert('"+msg+"'); location.href='/GroupWare/approval/allList';</script>");
+		out.flush(); 
+		out.close();
 			
-		return "approval/allList";	
+		return "redirect:/approval/allList";	
 	}
 		
 	

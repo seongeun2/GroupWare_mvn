@@ -9,11 +9,12 @@
 <div class="w3-main">
 
 <!-- 게시판 div 영역 -->
-<div class="w3-row-padding">
+
+<div class="w3-row-padding" style="margin-right: 8px;">
    <div class="w3-half w3-container w3-padding w3-metro-dark-blue">
       <div class="w3-row">
-         <h5>공지사항</h5>
-         <div class="w3-col" style="width: 80%;">
+         <h5 onclick="location='board/list2'">공지사항</h5>
+         <div class="w3-col" style="width: 100%;">
             <table class="w3-table w3-striped w3-white">
                
                
@@ -85,8 +86,8 @@
    
    <div class="w3-half w3-container w3-padding w3-metro-dark-blue">
       <div class="w3-row">
-         <h5>자유게시판</h5>
-         <div class="w3-col" style="width: 80%;">
+         <h5 onclick="location='board/list1'">자유게시판</h5>
+         <div class="w3-col" style="width: 100%;">
             <table class="w3-table w3-striped w3-white">
               
                

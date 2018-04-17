@@ -56,34 +56,35 @@
          <div class="w3-padding-16"></div>
          
       <div class="w3-col" style="width: 55%;"><p class="w3-xxxlarge" style="text-align:center;">휴가신청서</p></div>
-      <!-- 1번 결재 -->
-       <div class="w3-col" style="width: 15%; background-color: white;">
+      
+     <!-- 1번 결재 -->
+      <div class="w3-col" style="width: 15%; background-color: white;">
          <div class="w3-container w3-center w3-border w3-border-black">
             <p id="name" name="name">${vo.name}</p>
          </div>
          <div class="w3-container w3-center w3-border w3-border-black">
-            <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" 
-                    style="width: 100px; height: 100px" class="w3-circle" alt="Avatar">
+            <img src="${pageContext.servletContext.contextPath}/resources/images/stamp/no.JPG" 
+                   style="width: 100px; height: 100px" alt="Avatar">
            </div>
          </div>
          <!-- 2번 결재 -->
       <div class="w3-col" style="width: 15%; background-color: white;">
          <div class="w3-container w3-center w3-border w3-border-black">
-            <p id="name22" name="name22" onclick="apPop();" >선택</p>
+            <p id="name22" name="name22" onclick="apPop();" >결재선1</p>
             </div>
             <div class="w3-container w3-center w3-border w3-border-black">
-                 <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" 
-                    style="width: 100px; height: 100px" class="w3-circle" alt="Avatar">
+                 <img src="${pageContext.servletContext.contextPath}/resources/images/stamp/no.JPG" 
+                   style="width: 100px; height: 100px" alt="Avatar">
            </div>
          </div>
          <!-- 3번 결재 -->
          <div class="w3-col" style="width: 15%; background-color: white;">
             <div class="w3-container w3-center w3-border w3-border-black">
-                 <p id="name33" name="name33" onclick="apPop2();" >선택</p>
+                 <p id="name33" name="name33" onclick="apPop2();" >결재선2</p>
             </div>
             <div class="w3-container w3-center w3-border w3-border-black">
-                 <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" 
-                  style="width: 100px; height: 100px" class="w3-circle" alt="Avatar">
+                 <img src="${pageContext.servletContext.contextPath}/resources/images/stamp/no.JPG" 
+                   style="width: 100px; height: 100px" alt="Avatar">
             </div>
          </div>
          
