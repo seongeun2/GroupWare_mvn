@@ -84,7 +84,7 @@ $(document).ready(function () {
 		 	<p>
 				<label>*팀</label>
 				<select class="w3-select" name="tnum" id="tnum"   required>
-				
+				 <option id="tnum_100" value="100" style="display:none">대표</option>
 				 <option id="tnum_201" value="201">인사팀</option>
 				 <option id="tnum_202" value="202">회계팀</option>
 				 <option id="tnum_203" value="203">고객관리팀</option>
@@ -96,8 +96,11 @@ $(document).ready(function () {
 				</select>
 			</p> 
 
-			
 			<div class="selectPosition"><p>*직위</p>
+				<input id="position_1" class="w3-radio" type="radio" name="position" value="1" style="display:none">
+				
+				<input id="position_2" class="w3-radio" type="radio" name="position" value="2" style="display:none">
+				
 				<input id="position_3" class="w3-radio" type="radio" name="position" value="3">
 				<label for="position_3">팀장</label>
 				
@@ -130,26 +133,26 @@ $(document).ready(function () {
 			</p>
 		
 			 <tr>
-  				<td width="70" align="center">*서명<br/></td>
-				<td>
+  				<td width="70" align="center">*서명</td>
+				<td width="330">
 				<%-- <img src="/GroupWare/fileSave/${article.signature}" style="height:300px; width: 300px;"></td> --%>
-  				<br><br>
   				<input type="file" size="40" maxlength="30" name="uploadfile" value="${article.signature}"/> 
+		 		</td>
 		    </tr>
 		    <input type="hidden" name="signature" value="${article.signature}"/>
 		    
-		    <p>
+		   
 		    <tr>
-  				<td width="70" align="center">*프로필사진<br/></td>
-  				<td>
+  				<td width="70" align="center">*프로필사진</td>
+  				<td width="330">
   				<%-- <img src="/GroupWare/fileSave/${article.profile}" style="height:300px; width: 300px;"> --%>
-  				<br><br>
   				<input type="file" size="40" maxlength="30" name="profileimage"></td>
   				</tr> 
-  				<input type="hidden" name="profile" value="${article.profile}"/>
   				</td>
 		    </tr>
-			</p>
+  				<input type="hidden" name="profile" value="${article.profile}"/>
+  				
+			
 			<div align="center">
 				<p>
 					<button type="button" class="w3-button w3-black w3-margin-bottom w3-hover-teal" onclick="location.href = '../main'" align="center"> 메인</button>

@@ -202,8 +202,8 @@ GenerateID()
 			<img id="emp_info_profile" src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" height="300" width="300">
 		</div>
       </div>
-      
-      <!-- 사원 번호 -->
+  <!--     
+      사원 번호
       <div class="w3-row w3-section">
          <div class="w3-col" style="width:50px">
             <i class="w3-xxlarge fa fa-star"></i>
@@ -213,7 +213,7 @@ GenerateID()
 		</div>
       </div>
       
-      <!-- 이름 -->
+      이름
       <div class="w3-row w3-section">
          <div class="w3-col" style="width:50px">
             <i class="w3-xxlarge fa fa-user"></i>
@@ -221,44 +221,56 @@ GenerateID()
          <div class="w3-rest">
             <p id="emp_info_name"></p>
          </div>
+      </div> -->
+  
+  <div style="margin-left: 85px">
+       <!-- 사원 번호 & 이름-->
+        <div class="w3-row w3-section" >
+         <div class="w3-col" style="width:10%">
+            <i class="w3-xxlarge fa fa-star"></i>
+         </div>
+         <div class="w3-col" style="width:40%">
+            <p id="emp_info_emnum"></p>
+        </div>
+
+        <div class="w3-col" style="width:10%">
+            <i class="w3-xxlarge fa fa-user"></i>
+         </div>
+         <div class="w3-col" style="width:40%">
+            <p id="emp_info_name"></p>
+         </div>
       </div>
-      
-      <!-- 부서 -->
+         
+      <!-- 부서 & 팀 -->
       <div class="w3-row w3-section">
-         <div class="w3-col" style="width:50px">
+         <div class="w3-col" style="width:10%">
             <i class="w3-xxlarge fa fa-bookmark"></i>
          </div>
-         <div class="w3-rest">
+         <div class="w3-col" style="width:40%">
             <p id="emp_info_dnum"></p>
          </div>
-      </div>
       
-      <!-- 팀 -->
-      <div class="w3-row w3-section">
-         <div class="w3-col" style="width:50px">
+         <div class="w3-col" style="width:10%">
             <i class="w3-xxlarge fa fa-group"></i>
          </div>
-         <div class="w3-rest">
+         <div class="w3-col" style="width:40%">
             <p id="emp_info_tnum"></p>
          </div>
       </div>
       
-      <!-- 직위 -->
+      <!-- 직위,사내 연락처 -->
       <div class="w3-row w3-section">
-         <div class="w3-col" style="width:50px">
+         <div class="w3-col" style="width:10%">
             <i class="w3-xxlarge fa fa-id-badge"></i>
          </div>
-         <div class="w3-rest">
+         <div class="w3-col" style="width:40%">
             <p id="emp_info_position"></p>
          </div>
-      </div>
-      
-      <!-- 사내 연락처 -->
-      <div class="w3-row w3-section">
-         <div class="w3-col" style="width:50px">
+    
+         <div class="w3-col" style="width:10%">
             <i class="w3-xxlarge fa fa-phone"></i>
          </div>
-         <div class="w3-rest">
+         <div class="w3-col" style="width:40%">
             <p id="emp_info_tel"></p>
          </div>
       </div>
@@ -292,6 +304,7 @@ GenerateID()
         </div>
       </div> -->
    
+   </div>
    </div>
    <br>
     <div class="w3-center">
