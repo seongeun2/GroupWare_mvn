@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,6 +47,7 @@
 		  text-decoration: none;
 		}
 </style>
+
 <body>
 
 <!-- Sidebar -->
@@ -59,52 +60,61 @@
 </div>
 
 <div class="container"><br/>
-	<ul class="nav nav-tabs">
-		<li class="active"><a data-toggle="tab" href="#received">받은쪽지</a></li>
-		<li><a data-toggle="tab" href="#sent">보낸쪽지</a></li>
-	</ul>
-
-	<div class="tab-content">
-		<div id="received" class="tab-pane fade in active">
-			<h3>받은쪽지함</h3>
-			<table class="w3-table-all w3-hoverable">
-				<thead>
-	      			<tr class="w3-blue">
-	      				<th>삭제</th>
-	       				<th>번호</th>
-	        			<th>제목</th>
-	       				<th>보낸사람</th>
-	       				<th>보낸날짜</th>
-	      			</tr>
-	    		</thead>
-	    		<tr>
-	    			<td><input type="checkbox"></td>
-	      			<td>1</td>
-	      			<td>제목1</td>
-	      			<td>보낸사람1</td>
-	      			<td>보낸날짜1</td>
-	    		</tr>
-	    		<tr><td><input type="checkbox"></td><td>2</td><td>제목2<td>보낸사람2</td><td>보낸날짜2</td></tr>
-  			</table>
-		</div>
-
-		<div id="sent" class="tab-pane fade">
-			<h3>보낸쪽지함</h3>
-			<table class="w3-table-all">
-				<thead>
-	      			<tr class="w3-light-green">
-	       				<th>First Name</th>
-	        			<th>Last Name</th>
-	       				<th>Points</th>
-	      			</tr>
-	    		</thead>
-	    		<tr><td>Jill</td><td>Smith</td><td>50</td></tr>
-	    		<tr><td>Eve</td><td>Jackson</td><td>94</td></tr>
-  			</table>
-		</div>
+	<div class="listNotice" id="received">
+		<h3>받은쪽지함</h3>
+			<c:if test="${count==0 }">
+				<table class="table-bordered" width="700">
+				<tr class="w3-grey">
+				<td align="center">받은 쪽지가 없습니다.</td>
+				</table>
+			</c:if>
+			
+			<c:if test="${count!=0 }">
+				<table class="w3-table-all w3-hoverable">
+					<thead>
+		      			<tr class="w3-blue">
+		      				<!-- <th>삭제</th> -->
+		       				<th>번호</th>
+		        			<th>제목</th>
+		       				<th>보낸사람</th>
+		       				<th>받은날짜</th>
+		      			</tr>
+		    		</thead>
+					
+		    		<c:forEach var="notice" items="${toList}">
+						<a href="pageNum=${currentPage}"></a> 
+						<tr height="30">
+							<!-- <td align="center" width="20"><input type="checkbox"></td> -->
+							<td align="center" width="20">${notice.nid}</td>
+							<td align="center" width="50" onclick="window.location.href='${pageContext.request.contextPath}/notice/detailNotice?nid=${notice.nid}'">
+							${notice.title}</td>
+							<td align="center" width="30">${notice.fromid}</td>
+							<td align="center" width="20">${notice.indate}</td>
+						</tr>
+					</c:forEach>
+	  			</table>
+	  		</c:if>
+	  		<!-- 페이지 표시 -->
+			<div class="w3-center">
+				<c:if test="${count>0 }">
+					<c:if test="${startPage>bottomLine }">
+					<a href="receivedNotice?pageNum=${startPage-bottomLine}">[이전]</a>
+					</c:if>
+					<c:forEach var="i" begin="${startPage }" end="${endPage}">
+					<a href="receivedNotice?pageNum=${i }"> 
+						<c:if test="${i!=currentPage }">[${i}]</c:if>
+						<c:if test="${i==currentPage }">[${i}]
+						<font color='red'></font></c:if>
+		 			</a>
+					</c:forEach>
+					<c:if test="${endPage<pageCount }">
+						<a href="receivedNotice=${startPage+bottomLine}">[다음]</a>
+					</c:if>
+				</c:if>
+			</div>
 	</div>
 	<br/><hr/>
-	<input type="button" class="btn" value="삭제" onclick="window.location.href='${pageContext.request.contextPath}/notice/deleteNotice'">
+	<%-- <input type="button" class="btn" value="삭제" onclick="window.location.href='${pageContext.request.contextPath}/notice/deleteNotice'"> --%>
 	<input type="button" class="btn" value="쪽지쓰기" onclick="window.location.href='${pageContext.request.contextPath}/notice/writeNotice'"></a>
 	<input type="button" class="btn" value="메인메뉴" onclick="window.location.href='${pageContext.request.contextPath}/main'"></a>
 </div>

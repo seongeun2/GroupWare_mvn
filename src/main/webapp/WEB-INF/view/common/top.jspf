@@ -17,12 +17,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="${pageContext.servletContext.contextPath}/resources/js/app.js"></script>
 </head>
-<script type="text/javascript">
-function pop(){	//쪽지쓰기_조직도 팝업
-	window.open("http://www.google.com/","","width=800,height=600");
-}
-</script>
-
 <style>
 .w3-main {margin-left: 200px; margin-right: 200px;}"
 body .div{
@@ -155,39 +149,56 @@ body .div{
       </div>
    </div>
    
-   <!-- 쪽지함 메뉴 그리드 -->
-   <div id="mailbox" class="w3-col" style="width: 29%;">
-      <div class="top-menu w3-display-container main_color_theme">
-         <div class="w3-display-middle">
-            <i class="fa fa-envelope" style="font-size:96px;"></i>
-         </div>
-         <div class="w3-display-bottommiddle">
-            <p class="w3-large">쪽지함</p>
-         </div>
-      </div>
+   <!-- 쪽지함 메뉴 그리드 changed by yjchoi 10Apr2018 -->
+	<div id="mailbox" class="w3-col" style="width: 29%;">
+		<div class="top-menu w3-display-container w3-metro-dark-blue">
+			<div class="w3-display-middle">
+				<i class="fa fa-envelope" style="font-size:96px;"></i>	
+			</div>
+			<div class="w3-display-bottommiddle">
+				<p class="w3-large">쪽지함</p>
+			</div>
+		</div>
       
-      <div class="grid-menu w3-display-container" style="display: none;">
-         <div class="grid-menu-item w3-display-topmiddle">
-            <!-- 쪽지함 쓰기 -->
-            <div class="w3-display-middle">
-               <i class="fa fa-paper-plane-o" style="font-size:36px;"></i>
-            </div>
-            <div class="w3-display-bottommiddle">
-               <p class="toggle_label_small"><a href="${pageContext.request.contextPath}/notice/writeNotice">쪽지 쓰기</a></p>
-            </div>
-         </div>
-         
-         <div class="grid-menu-item w3-display-bottommiddle">
-            <!-- 받은 쪽지 -->
-            <div class="w3-display-middle">
-               <i class="fa fa-briefcase" style="font-size:36px;"></i>
-            </div>
-            <div class="w3-display-bottommiddle">
-               <p class="toggle_label_small"><a href="${pageContext.request.contextPath}/notice/listNotice">쪽지함</a></p>
-            </div>
-         </div>
-      </div>
-   </div>
+		<div class="grid-menu w3-display-container" style="display: none;">									
+			<div class="w3-row">								
+				<div class="w3-half grid-menu-item w3-display-topleft w3-metro-dark-blue" onclick="location.href='/GroupWare/notice/writeNotice'">							
+					<div class="w3-display-middle">						
+						<i class="fa fa-paper-plane-o" style="font-size:36px;"></i>					
+					</div>						
+					<div class="w3-display-bottommiddle">						
+						<p class="toggle_label_small">쪽지쓰기</p>				
+					</div>						
+				</div>							
+				<div class="w3-half grid-menu-item w3-display-topright w3-metro-dark-blue">							
+					<div class="w3-display-middle">						
+						<!-- <i class="fa fa-paper-plane-o" style="font-size:36px;"></i>	 -->				
+					</div>						
+					<div class="w3-display-bottommiddle">						
+						<!-- <p>쪽지쓰기</p> -->					
+					</div>						
+				</div>							
+			</div>								
+			<div class="w3-row">								
+				<div class="w3-half grid-menu-item w3-display-bottomleft w3-metro-dark-blue" onclick="location.href='/GroupWare/notice/receivedNotice'">							
+					<div class="w3-display-middle">						
+						<i class="fa fa-briefcase" style="font-size:36px;"></i>					
+					</div>						
+					<div class="w3-display-bottommiddle">						
+						<p class="toggle_label_small">받은쪽지함</p>				
+					</div>						
+				</div>							
+				<div class="w3-half grid-menu-item w3-display-bottomright w3-metro-dark-blue" onclick="location.href='/GroupWare/notice/sentNotice'">							
+					<div class="w3-display-middle">						
+						<i class="fa fa-briefcase" style="font-size:36px;"></i>					
+					</div>						
+					<div class="w3-display-bottommiddle">
+						<p class="toggle_label_small">보낸쪽지함</p>							
+					</div>						
+				</div>							
+			</div>								
+		</div>
+	</div><!-- 쪽지함 그리드 -->
 </div>
 
 
@@ -244,40 +255,49 @@ function refresh() {
       $(this).children(".grid-menu").hide();
     });
     
-    /* 쪽지함 */ 
-    $("#mailbox").mouseenter(function(){
-      $(this).children(".top-menu").hide();
-      $(this).children(".grid-menu").show();
-      
-      var height = $(this).find(".grid-menu").height();
-      var width = $(this).find(".grid-menu").width();
-      
-      /* 두 개니깐 너비는 그대로 씁니다. */
-      $(this).children().children(".grid-menu-item").height(height * 0.49);
-      $(this).children().children(".grid-menu-item").width(width);
-    });
-   
-    $("#mailbox").mouseleave(function(){
-       $(this).children(".top-menu").show();
-      $(this).children(".grid-menu").hide();
-    });
     
-   $(".grid-menu-item").mouseenter(function() {
-	   SetGridHoverColor(this);
-   });
-   
-   $(".grid-menu-item").mouseleave(function() {
-	   $(this).css("background-color", "#2b5797");
-	   $(this).css("color", "#fff");
-   });
+    /* 쪽지함~~~ */
+    $("#mailbox").mouseenter(function(){
+       /* 큰 애는 숨기고, 작은 애는 보이고 */
+       $(this).children(".top-menu").hide();
+       $(this).children(".grid-menu").show();
+       
+       /* .grid-menu가 .grid-menu-item를 가집니다. */
+       var width = $(this).find(".grid-menu").width();
+       var height = $(this).find(".grid-menu").height();
+       
+       /* 0.49 곱해서 여백 만들어주기 */ 
+       $(this).children().children().children(".grid-menu-item").width(width * 0.49);
+       $(this).children().children().children(".grid-menu-item").height(height * 0.49);
+     });
+    
+     $("#mailbox").mouseleave(function(){
+        $(this).children(".top-menu").show();
+       $(this).children(".grid-menu").hide();
+       
+     });
+     
+     $(".grid-menu-item").mouseenter(function() {
+  	   SetGridHoverColor(this);
+     });
+     
+     $(".grid-menu-item").mouseleave(function() {
+  	   $(this).css("background-color", "#2b5797");
+  	   $(this).css("color", "#fff");
+     });
+    
+    
    
    ToggleLabel();
 }
 
-function PreventOverlap() {
-	
+function PreventOverlap() {	
 }
 
+jQuery.fn.extend({
+   setGridHeight: function (source) {
+   }
+});
 </script>
 
 </div>

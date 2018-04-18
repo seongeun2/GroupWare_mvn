@@ -5,12 +5,13 @@ import java.util.Date;
 public class NoticeDataBean {
 
 	private int 	nid;		//Notice ID
-	private int 	fromid;		//SABUN of Sender
-	private int 	toid;		//SABUN of Receiver
+	private String 	fromid;		//id of Sender
+	private String 	toid;		//id of Receiver
 	private String 	title;
 	private String 	content;
 	private String 	status;		//0: writing, 1: notread, 2: read, 3:saved
 	private Date 	indate;		//date sent or received
+	private int sentrecv;
 	
 	public int getNid() {
 		return nid;
@@ -18,16 +19,16 @@ public class NoticeDataBean {
 	public void setNid(int nid) {
 		this.nid = nid;
 	}
-	public int getFromid() {
+	public String getFromid() {
 		return fromid;
 	}
-	public void setFromid(int fromid) {
+	public void setFromid(String fromid) {
 		this.fromid = fromid;
 	}
-	public int getToid() {
+	public String getToid() {
 		return toid;
 	}
-	public void setToid(int toid) {
+	public void setToid(String toid) {
 		this.toid = toid;
 	}
 	public String getTitle() {
@@ -54,5 +55,10 @@ public class NoticeDataBean {
 	public void setIndate(Date indate) {
 		this.indate = indate;
 	}
+	public int getSentrecv() {
+		return sentrecv;
+	}
+	public void setSentrecv(int sentrecv) {
+		this.sentrecv = sentrecv;
+	}
 }
-	

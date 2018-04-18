@@ -16,7 +16,7 @@
 
 <body>
 <div class="w3-main">
-<div class="w3-container">
+<div class="w3-container w3-padding-32"">
   <h2 style="text-align: center;">공지게시판 : ${boardid} 번 (전체 글:${count})</h2>
   
  

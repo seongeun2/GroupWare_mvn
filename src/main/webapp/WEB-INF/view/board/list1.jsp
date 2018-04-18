@@ -16,7 +16,7 @@
 
 <div class="w3-main">
 
-<div class="w3-container">
+<div class="w3-container w3-padding-32"">
   <h2 style="text-align: center;">자유게시판 : ${boardid} 번 (전체 글:${count})</h2>
   
 <!--  글쓰기 버튼  -->
@@ -113,7 +113,6 @@
    </div><br>
    
    
-   
 <!-- 회원 검색 -->
    <form name ="Board_search" method="get" style="text-align: center;" action="./">
       <select name="keyField"  id="keyField" style="height: 30px;">
@@ -123,7 +122,8 @@
       		<option value="content">내용</option>
       </select>
       <input type="text" size="20" name="keyWord" id="keyWord">
-      <button type="button" value="검색" onclick="search();" />&nbsp;
+      <input type="button" value="검색" onclick="search();">
+      
    </form>
    
    <script>

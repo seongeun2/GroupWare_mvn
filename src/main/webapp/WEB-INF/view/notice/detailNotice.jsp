@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +12,7 @@
   <style>
 	  #container { box-sizing: border-box; width:70%;}
 		
-		#writeform { box-sizing: border-box; }
-		
-		#writeform .inputtitle {
+		.title {
 			 background: #3498db;
 			  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
 			  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -41,7 +39,7 @@
 			  text-align:center;
 		}
 		
-		#writeform .inputitem { 
+		.item { 
 			display: block;
 			font-family: "Helvetica Neue", Arial, sans-serif;
 			border-style: solid;
@@ -62,7 +60,7 @@
 			-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
 		}
 		
-		#writeform .inputitem:focus { 
+		.item:focus { 
 			color: #333;
 			border-color: rgba(41, 92, 161, 0.4);
 			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
@@ -71,47 +69,14 @@
 			outline: 0 none; 
 		}
 		
-		#writeform input#sender {
+		#fromid {
 			background: #fff url('user.png') 5px 4px no-repeat;
 		}
-		#writeform input#receiver {
+		#toid {
 			background: #fff url('email.png') 5px 4px no-repeat;
 		}
-		#writeform input#title {
+		#title {
 			background: #fff url('website.png') 5px 4px no-repeat;
-		}
-		
-		#writeform textarea {
-		display: block;
-			font-family: "Helvetica Neue", Arial, sans-serif;
-			border-style: solid;
-			border-width: 1px;
-			border-color: #dedede;
-			margin-bottom: 15px;
-			font-size: 14px;
-			padding: 11px 25px;
-			padding-left: 55px;
-			width: 70%;
-			height: 180px;
-			color: #777;
-			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
-			-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
-			-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
-			transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-			-webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-			-moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-			-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-		}
-		#writeform textarea:focus {
-			color: #333;
-			border-color: rgba(41, 92, 161, 0.4);
-			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
-			-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
-			-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
-			outline: 0 none; 
-		}
-		#writeform textarea.txtblock {
-			background: #fff url('speech.png') 5px 4px no-repeat;
 		}
 		
 		/** custom buttons **/
@@ -156,25 +121,27 @@
 <br/>
 <div class="container" id="container">
   
-	<form name="writeform" id="writeform" method="post" action="writeNotice">
-		<div class="inputtitle">보낸사람 </div>
-		<div class="inputitem">${name}(${fromid})</div>
-		<%-- <input id="sender" type="text" class="inputitem" name="fromid" value="${name}(${fromid})" disabled> --%>
-		<input type="text" name="fromid" value="${fromid}" hidden>
-		<div class="inputtitle">받는사람</div>
-		<input id="receiver" type="text" class="inputitem" name="toid" >
-		<div class="inputtitle">제목</div>
-		<input id="title" type="text" class="inputitem" name="title" >
-		<div class="inputtitle">내용</div>
-		<textarea name="content" id="content" class="txtblock"></textarea>
-		
-	    
-		<div id="buttons"><center id="centered">
-			<input type="reset" name="reset" id="resetbtn" class="btn" value="다시작성">
-			<input type="submit" name="submit" id="submitbtn" class="btn" value="전송">
-			<input type="button" name="premenu" id="premenubtn" class="btn" value="메인메뉴" onclick="window.location.href='${pageContext.request.contextPath}/main'"></center>
-		</div>
-	</form><br>
+	<div class="title">보낸사람</div>
+		<p id="fromid" class="item">${notice.fromid}</p>
+	<div class="title">받는사람</div>
+		<p id="toid" class="item">${notice.toid}</p>
+	<div class="title">제목</div>
+		<p id="title" class="item">${notice.title}</p>
+	<div class="title">내용</div>
+		<p id="content" class="item">${notice.content}</p>
+		  
+	<div id="buttons">
+		<center id="centered">
+			<button id="recvbtn" class="btn"
+				onclick="window.location.href='${pageContext.request.contextPath}/notice/deleteNotice?nid=${notice.nid}&sentrecv=${notice.sentrecv}'">삭제</button>
+			<button id="recvbtn" class="btn"
+				onclick="window.location.href='${pageContext.request.contextPath}/notice/receivedNotice'">받은쪽지함</button>
+			<button id="sentbtn" class="btn"
+				onclick="window.location.href='${pageContext.request.contextPath}/notice/sentNotice'">보낸쪽지함</button>
+			<button id="pemenubtn" class="btn"
+				onclick="window.location.href='${pageContext.request.contextPath}/main'">메인메뉴</button>
+		</center>
+	</div>
 </div>
 
 </body>

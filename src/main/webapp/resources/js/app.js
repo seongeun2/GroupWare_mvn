@@ -143,13 +143,15 @@ function SetApprovalColorTheme() {
 function SetGridHoverColor(element) {
 	/*
 	1 - 문서작성
-	2 - 결재현황 #607d8b
+	2 - 결재현황
 	3 - 진행문서 
 	4 - 결재대기 
 	5 - 쪽지함 쓰기
-	6 - 받은 쪽지
+	6 - 
+	7 - 받은 쪽지
+	8 - 보낸 쪽지
 	*/
-	var colors = ['#009688', '#00bcd4', '#9F81F7', '#f75044', '#1d1d1d', '#ffc40d'];
+	var colors = ['#009688', '#00bcd4', '#9F81F7', '#f75044', '#ff7d2d', '#c4a15a', '#80cc28', '#ffc40d'];
 	var white = '#ffffff';
 	
 	var items = document.getElementsByClassName('grid-menu-item');
