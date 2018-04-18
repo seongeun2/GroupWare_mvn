@@ -190,7 +190,7 @@ GenerateID()
                   <span onclick="document.getElementById('modal_emp_info').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
          </div>
 
-<div class="w3-container w3-text-black w3-margin">
+<div class="w3-container w3-text-light-blue w3-margin">
    <h2 class="w3-center" style="color: black"><strong>사원 정보</strong></h2>
 
    <div class="w3-container w3-border w3-border-black">
@@ -202,49 +202,108 @@ GenerateID()
 			<img id="emp_info_profile" src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" height="300" width="300">
 		</div>
       </div>
-      
-  <div style="margin-left: 10px">
-  <div class="w3-row-padding">
-         <div class="w3-quarter">
-            <label style="font-weight: bold">사원 번호</label>
-            <p class="w3-input w3-border" style="height: 50px" id="emp_info_emnum" readonly >
+  <!--     
+      사원 번호
+      <div class="w3-row w3-section">
+         <div class="w3-col" style="width:50px">
+            <i class="w3-xxlarge fa fa-star"></i>
          </div>
-         <div class="w3-half">
-            <label>이름</label>
-            <p class="w3-input w3-border" style="height: 50px" id="emp_info_name" readonly>
-         </div>
-         <div class="w3-quarter">
-            <label>직위</label>
-            <p class="w3-input w3-border" style="height: 50px" id="emp_info_position"  readonly>
-         </div> 
+         <div class="w3-rest">
+				<p id="emp_info_emnum"></p>
+		</div>
       </div>
+      
+      이름
+      <div class="w3-row w3-section">
+         <div class="w3-col" style="width:50px">
+            <i class="w3-xxlarge fa fa-user"></i>
+         </div>
+         <div class="w3-rest">
+            <p id="emp_info_name"></p>
+         </div>
+      </div> -->
   
-   <div class="w3-row-padding">
-         <div class="w3-half">
-            <label style="font-weight: bold">부서</label>
-            <p class="w3-input w3-border" style="height: 50px" id="emp_info_dnum" readonly >
+  <div style="margin-left: 85px">
+       <!-- 사원 번호 & 이름-->
+        <div class="w3-row w3-section" >
+         <div class="w3-col" style="width:10%">
+            <i class="w3-xxlarge fa fa-star"></i>
          </div>
-         <div class="w3-half">
-            <label>팀</label>
-            <p class="w3-input w3-border" style="height: 50px" id="emp_info_tnum" readonly>
+         <div class="w3-col" style="width:40%">
+            <p id="emp_info_emnum" style="color: black"></p>
+        </div>
+
+        <div class="w3-col" style="width:10%">
+            <i class="w3-xxlarge fa fa-user"></i>
+         </div>
+         <div class="w3-col" style="width:40%">
+            <p id="emp_info_name" style="color: black"></p>
+         </div>
+      </div>
+         
+      <!-- 부서 & 팀 -->
+      <div class="w3-row w3-section">
+         <div class="w3-col" style="width:10%">
+            <i class="w3-xxlarge fa fa-bookmark"></i>
+         </div>
+         <div class="w3-col" style="width:40%">
+            <p id="emp_info_dnum" style="color: black"></p>
+         </div>
+      
+         <div class="w3-col" style="width:10%">
+            <i class="w3-xxlarge fa fa-group"></i>
+         </div>
+         <div class="w3-col" style="width:40%">
+            <p id="emp_info_tnum" style="color: black"></p>
          </div>
       </div>
       
-    <div class="w3-row-padding">
-         <div class="w3-half">
-            <label style="font-weight: bold">사내 번호</label>
-            <p class="w3-input w3-border" style="height: 50px" id="emp_info_tel" readonly >
+      <!-- 직위,사내 연락처 -->
+      <div class="w3-row w3-section">
+         <div class="w3-col" style="width:10%">
+            <i class="w3-xxlarge fa fa-id-badge"></i>
          </div>
-         <div class="w3-half">
-            <label>이메일</label>
-            <p class="w3-input w3-border" style="height: 50px" id="emp_info_email" readonly>
+         <div class="w3-col" style="width:40%">
+            <p id="emp_info_position" style="color: black"></p>
          </div>
-        <!--  <div class="w3-quarter">
-            <label>부서</label>
-            <p class="w3-input w3-border w3-border-black" style="height: 50px"d id="emp_info_dnum"  readonly>
-         </div> -->
+    
+         <div class="w3-col" style="width:10%">
+            <i class="w3-xxlarge fa fa-phone"></i>
+         </div>
+         <div class="w3-col" style="width:40%">
+            <p id="emp_info_tel" style="color: black"></p>
+         </div>
       </div>
-
+      
+      <!-- 핸드폰 -->
+      <!-- <div class="w3-row w3-section">
+         <div class="w3-col" style="width:50px">
+            <i class="w3-xxlarge fa fa-star"></i>
+         </div>
+         <div class="w3-rest">
+            <p class="w3-container"></p>
+         </div>
+      </div> -->
+      
+      <!-- 이메일 -->
+      <div class="w3-row w3-section">
+         <div class="w3-col" style="width:50px">
+            <i class="w3-xxlarge fa fa-star"></i>
+         </div>
+         <div class="w3-rest">
+            <p id="emp_info_email" style="color: black"></p>
+         </div>
+      </div>
+   
+      <!-- <div class="w3-row w3-section">
+        <div class="w3-col" style="width:50px">
+           <i class="w3-xxlarge fa fa-commenting"></i>
+        </div>
+        <div class="w3-rest">
+          <input class="w3-input w3-border" name="message" type="text" placeholder="쪽지보내기" readonly="readonly">
+        </div>
+      </div> -->
+   
    </div>
    </div>
    <br>

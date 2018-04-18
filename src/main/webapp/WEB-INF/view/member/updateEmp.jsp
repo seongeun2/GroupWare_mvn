@@ -162,9 +162,7 @@ $(document).ready(function () {
 					<button type="submit" class="w3-button w3-black w3-margin-bottom w3-hover-teal" align="center">
 	     			<i class="fa fa-paper-plane w3-margin-right"></i>입력</button>
 				
-				
-				
-					<button type="reset" class="w3-button w3-black w3-margin-bottom w3-hover-teal" align="center"> 취소</button>
+					<button onClick="window.location.reload()" class="w3-button w3-black w3-margin-bottom w3-hover-teal" align="center"> 취소</button>
 				</p>
 			</div>	
 		</form>
