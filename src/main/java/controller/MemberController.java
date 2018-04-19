@@ -1,7 +1,10 @@
 package controller;
 
 import java.io.FileOutputStream;
+import java.io.PrintWriter;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,11 +38,13 @@ public class MemberController{
 		String name = dbPro.getname(id);
 		String profile = dbPro.getprofile(id);
 		String email = dbPro.getEmail(id);
+		int emnum = dbPro.getEmnum(id);
 		
 		session.setAttribute("name", name);
 		session.setAttribute("id", id);
 		session.setAttribute("email", email);
 		session.setAttribute("profile", profile);
+		session.setAttribute("emnum", emnum);
 		model.addAttribute("pwcheck",pwcheck);	
 		
 		return  "loginDb"; 
@@ -59,9 +66,34 @@ public class MemberController{
 		return mv;
 	}
 	
+	
+	//직원 아이디 중복 체크
+		@RequestMapping(value = "/checkSignup", method = RequestMethod.POST)
+		public @ResponseBody String AjaxView(  
+		        @RequestParam("id") String id)  {
+		
+			
+			//String id = request.getParameter("id");
+			String str = "";
+
+			int idcheck = dbPro.idCheck(id);
+			//int idcheck = dbPro.idCheck(id);
+			
+			if(idcheck==1){ //이미 존재하는 계정
+				str = "NO";	
+				
+			}else{	//사용 가능한 계정
+				str = "YES";	
+				
+			}
+			return str;
+		}
+	
+	
 	//관리자 모드 - 직원 등록 DB에 넣기
 		@RequestMapping("/regEmployeePro")
-		public String regEmployeePro(MultipartHttpServletRequest request, MemberDataBean article, Model model) throws Exception{
+		public String regEmployeePro(MultipartHttpServletRequest request, HttpServletResponse response, 
+				MemberDataBean article, Model model) throws Exception{
 			ModelAndView mv = new ModelAndView();
 			
 			MultipartFile multi = request.getFile("uploadfile");
@@ -93,15 +125,27 @@ public class MemberController{
 				}
 			
 				dbPro.insertEmployee(article);
-			return "member/adminpage";
+			//return "member/adminpage";
+			
+			//메세지 창
+			request.setCharacterEncoding("EUC-KR");
+			response.setContentType("text/html; charset=EUC-KR");
+			response.setHeader("Content-Type", "text/html;charset=EUC-KR");
+			String msg = "직원이 등록되었습니다.";
+			PrintWriter out = response.getWriter();
+			 
+			out.println("<script>alert('"+msg+"'); location.href='/GroupWare/member/adminpage';</script>");
+			out.flush(); 
+			out.close();
+			
+			return null;
 		}
 
 		//관리자 모드 - 직원 수정
 		@RequestMapping("/updateEmpPro")
-		public String updateEmpPro(MultipartHttpServletRequest request, Model model,MemberDataBean article, String signature, String profile)
-				throws Exception {
+		public String updateEmpPro(MultipartHttpServletRequest request, HttpServletResponse response,
+				Model model,MemberDataBean article, String signature, String profile) throws Exception {
 	
-			System.out.println("직원수정");
 			ModelAndView mv = new ModelAndView();
 			
 			MultipartFile multi = request.getFile("uploadfile");
@@ -132,12 +176,21 @@ public class MemberController{
 					//article.setFilesize(0); 
 				}
 			
-			System.out.println("signature=====" + signature);
-			System.out.println("profile=====" + profile);
-			System.out.println("getSignature=====" + article.getSignature());
-			System.out.println("getProfile=====" + article.getProfile());
+			
 			dbPro.updateEmp(article);
-			return "member/adminpage";
+			
+			//메세지 창
+			request.setCharacterEncoding("EUC-KR");
+			response.setContentType("text/html; charset=EUC-KR");
+			response.setHeader("Content-Type", "text/html;charset=EUC-KR");
+			String msg = "정보가 수정되었습니다.";
+			PrintWriter out = response.getWriter();
+			 
+			out.println("<script>alert('"+msg+"'); location.href='/GroupWare/orgChart/insa';</script>");
+			out.flush(); 
+			out.close();
+			
+			return null;
 
 		}	
 }

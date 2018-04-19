@@ -59,6 +59,18 @@ public class MemberDBMybatis extends MybatisConnector{
 	}
 	
 	
+	//id중복 체크
+		public int idCheck(String id) {
+			sqlSession = sqlSession();
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("id", id);
+			System.out.println(id);
+			int count = 0;
+			count = sqlSession.selectOne(namespace+".idcheck", map) ;	
+			sqlSession.close();
+			return count;
+		}
+	
 	//프로필사진 가져오기
 	public String getprofile(String id) {
 		sqlSession = sqlSession();
@@ -79,6 +91,18 @@ public class MemberDBMybatis extends MybatisConnector{
 		sqlSession.close();
 		return email;
 	}
+	
+	//사원번호 가져오기
+	public int getEmnum(String id) {
+		sqlSession = sqlSession();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		int emnum = sqlSession.selectOne(namespace+".getEmnum", map) ;	
+		sqlSession.close();
+		return emnum;
+	}
+	
+	
 	//직원 수정
 	public void updateEmp(MemberDataBean article) {
 		sqlSession = sqlSession();

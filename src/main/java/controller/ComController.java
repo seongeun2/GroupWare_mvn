@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import dao.BoardDBMybatis;
+import dao.MemberDBMybatis;
+import dao.OrgChartDBMybatis;
+import model.MemberDataBean;
 
 @Controller
 @RequestMapping("/")
@@ -118,5 +121,23 @@ public class ComController {
 			mav.setViewName("/index");
 			return mav; 
 		}
+		
+		//마이페이지
+		@RequestMapping("/mypage")
+		public String mypage(Model model,MemberDataBean article,HttpSession session)
+				throws Exception {
+			OrgChartDBMybatis dbPro = OrgChartDBMybatis.getInstance();
+			 int emnum = (Integer) session.getAttribute("emnum");
+			article = dbPro.getEmployee(emnum);
+			
+			ModelAndView mv = new ModelAndView();
+			int dnum = dbPro.getdnum(emnum);
+		 	model.addAttribute("article", article);
+		 	model.addAttribute("dnum",dnum);
+		 		 	
+			return "member/mypage";
+
+		}
+
 
 }

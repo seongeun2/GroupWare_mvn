@@ -28,11 +28,19 @@
 			WHERE id = #{id} 
 	</select>
 	
+	
+	<!-- 사원번호 가져오기 -->
+	<select id="getEmnum" resultType="int" parameterType="hashmap">
+		select emnum from tpuser 
+			WHERE id = #{id} 
+	</select>
+	
 	<select id="getNextNumber" resultType="int">
 		select TPUSER_SEQ.nextval from dual
 		<!-- select MEMBER_SEQ.nextval from dual -->
 	</select>
 	
+	<!-- 회원 등록 -->
 	<insert id="insertEmployee" parameterType="Member">
 	<!-- 	insert into tpuser  (num,writer,email,subject,passwd,reg_date,
 		ref,re_step,re_level,content,ip,boardid, filename, filesize) 
@@ -41,6 +49,13 @@
 		insert into tpuser(name,phone,tel,emnum,tnum,id,pw,email,position,joind,login,signature,profile)
     values(#{name},#{phone},#{tel},#{emnum},#{tnum},#{id},#{pw},#{email},#{position},#{joind},#{login},#{signature},#{profile})	
 	</insert>
+
+	
+	<!-- id중복 체크 -->
+	<select id="idcheck" resultType="int" parameterType="hashmap">
+		SELECT count(*) FROM tpuser WHERE id=#{id}
+	</select>
+	
 
 	<!-- 게시글 수정 -->
 	<update id="updateEmp"  parameterType="Member">

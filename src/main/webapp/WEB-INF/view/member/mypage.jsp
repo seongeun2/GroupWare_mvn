@@ -51,7 +51,7 @@ $(document).ready(function () {
 
 </script>
 	<div class="w3-container w3-margin">
-	  	<h1 align="center">-직원 수정-</h1>
+	  	<h1 align="center">마이 페이지</h1>
 	</div>
 	<div class="w3-container w3-content w3-margin-top">	
 		<form class="w3-container w3-card-4" action="/GroupWare/member/updateEmpPro" enctype="multipart/form-data" method="post">

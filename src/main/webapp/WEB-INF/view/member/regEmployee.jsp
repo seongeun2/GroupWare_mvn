@@ -25,6 +25,47 @@
 	         dateFormat: 'yy-mm-dd'
 	     });
 	});
+	
+	//아이디 중복체크
+	$(function(){
+	   $('#id').blur(function(){
+		   
+	      $.ajax({
+	         type:"POST",
+	         url:"checkSignup",
+	         /* url:"checkSignup", */
+	         data:{
+	            "id":$('#id').val() //m_id 
+	         },
+	         success:function(data){	//data : checkSignup에서 넘겨준 결과값
+	            if($.trim(data)=="YES"){
+	               if($('#id').val()!=''){ //입력한 값이 있을때만 (값이 없는경우에도 경고창이 나와서 해줌)
+	               alert("사용가능한 아이디입니다.");
+	               }
+	            }else{
+	               if($('#id').val()!=''){
+	                  alert("중복된 아이디입니다.");
+	                  $('#id').val('');
+	                  $('#id').focus();
+	               }
+	            }
+	         }
+	      })
+	      
+	   })
+	   
+	   //비밀번호 확인
+	   $('#pw2').blur(function(){
+	      if($('#pw').val() != $('#pw2').val()){
+	    	  if($('#pw2').val()!=''){
+		    	  alert("비밀번호가 일치하지 않습니다.");
+	    		  $('#pw2').val('');
+	              $('#pw2').focus();
+	    	  }
+	      }
+	   })
+	   	   
+	});
 	</script>
 	<div class="w3-container w3-margin">
 	  	<h1 align="center">-직원 등록-</h1>
@@ -39,12 +80,17 @@
 			
 			<p>
 				<label>*아이디</label>
-				<input class="w3-input" type="text" style="width:90%" name="id" required>
+				<input class="w3-input" type="text" style="width:90%" id="id" name="id" required>
 			</p>
 			
 			<p>
 				<label>*비밀번호</label>
-				<input class="w3-input" type="password" style="width:90%" name="pw" required>
+				<input class="w3-input" type="password" style="width:20%" id="pw" name="pw" value="1234" required>
+			</p>
+			
+			<p>
+			<label>*비밀번호 확인</label>
+				<input class="w3-input" type="password" style="width:20%" id="pw2" value="1234" required>
 			</p>
 			
 			<p>
@@ -79,7 +125,7 @@
 			
 			<p>
 				<label>*이메일</label>
-				<input class="w3-input" type="text" style="width:90%" name="email">
+				<input class="w3-input" type="email" style="width:90%" name="email">
 			</p>
 			
 			<p>

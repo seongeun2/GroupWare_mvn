@@ -114,6 +114,25 @@ public class OrgChartContorller {
 				return "member/updateEmp";
 
 			}
+			
+			/*//마이페이지
+			@RequestMapping("/mypage")
+			public String mypage(int emnum, Model model,MemberDataBean article)
+					throws Exception {
+				
+				article = dbPro.getEmployee(emnum);
+				
+				ModelAndView mv = new ModelAndView();
+				int dnum = dbPro.getdnum(emnum);
+			 	model.addAttribute("article", article);
+			 	model.addAttribute("dnum",dnum);
+			 	
+			 	System.out.println(article.getSignature());
+			 	System.out.println(article.getProfile());
+			 	
+				return "member/updateEmp";
+
+			}*/
 
 	
 }

@@ -34,7 +34,7 @@ body .div{
          	<a href="${pageContext.request.contextPath}/member/adminpage" class="w3-bar-item w3-button w3-hide-small">직원 관리</a>
          </c:if>
          
-         <a href="#" class="w3-bar-item w3-button w3-hide-small">내 정보</a>
+          <a href="${pageContext.request.contextPath}/mypage" class="w3-bar-item w3-button w3-hide-small">내 정보</a> 
          <a href="/GroupWare/logout" class="w3-bar-item w3-button w3-hide-small">로그아웃</a>
       </div>
    </div>
@@ -64,7 +64,7 @@ body .div{
    
          <!-- 아래 메뉴들 -->
          <div class="w3-padding">
-            <a href="#" ><i class="fa fa-user" style="font-size: 24px;">${name}</i></a>
+            <i class="fa fa-user" style="font-size: 24px;"> ${name}</i>
          </div>
       </div>
 
@@ -73,8 +73,8 @@ body .div{
          <div class="w3-padding">
             <div class="w3-medium">
 				<!-- 오늘 날짜 -->
-				<jsp:useBean id="toDay" class="java.util.Date" />
-				<fmt:formatDate value="${toDay}" pattern="yyyy-MM-dd" />
+				<jsp:useBean id="toDay" class="java.util.Date" />				
+			<fmt:formatDate value="${toDay}" pattern="yyyy-MM-dd" />
 
             </div>
          </div>
