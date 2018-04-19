@@ -96,7 +96,7 @@ $(document).ready(function () {
 				</select>
 			</p> 
 
-			<div class="selectPosition"><p>*직위</p>
+			<div class="selectPosition"><p><label>*직위</label></p>
 				<input id="position_1" class="w3-radio" type="radio" name="position" value="1" style="display:none">
 				
 				<input id="position_2" class="w3-radio" type="radio" name="position" value="2" style="display:none">
@@ -155,14 +155,12 @@ $(document).ready(function () {
 			
 			<div align="center">
 				<p>
-					<button type="button" class="w3-button w3-black w3-margin-bottom w3-hover-teal" onclick="location.href = '../main'" align="center"> 메인</button>
-			
-				
-				
+					<!-- <button type="button" class="w3-button w3-black w3-margin-bottom w3-hover-teal" onclick="location.href = '../main'" align="center"> 메인</button> -->
+
 					<button type="submit" class="w3-button w3-black w3-margin-bottom w3-hover-teal" align="center">
-	     			<i class="fa fa-paper-plane w3-margin-right"></i>입력</button>
+	     			<i class="fa fa-paper-plane w3-margin-right"></i>수정</button>
 				
-					<button onClick="window.location.reload()" class="w3-button w3-black w3-margin-bottom w3-hover-teal" align="center"> 취소</button>
+					<!-- <button onClick="window.location.reload()" class="w3-button w3-black w3-margin-bottom w3-hover-teal" align="center"> 취소</button> -->
 				</p>
 			</div>	
 		</form>

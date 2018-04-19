@@ -85,12 +85,12 @@
 			
 			<p>
 				<label>*비밀번호</label>
-				<input class="w3-input" type="password" style="width:20%" id="pw" name="pw" value="1234" required>
+				<input class="w3-input" type="password" style="width:90%" id="pw" name="pw" value="1234" required>
 			</p>
 			
 			<p>
 			<label>*비밀번호 확인</label>
-				<input class="w3-input" type="password" style="width:20%" id="pw2" value="1234" required>
+				<input class="w3-input" type="password" style="width:90%" id="pw2" value="1234" required>
 			</p>
 			
 			<p>
@@ -111,7 +111,8 @@
 			</p> 
 			
 			
-			<div class="selectPosition"><p>*직위</p>
+			<div class="selectPosition">
+				<p><label>*직위</label></p>
 				<input class="w3-radio" type="radio" name="position" value="3" required>팀장
 				<input class="w3-radio" type="radio" name="position" value="4">대리
 				<input class="w3-radio" type="radio" name="position" value="5">사원

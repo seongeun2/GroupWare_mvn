@@ -256,13 +256,13 @@ GenerateID()
       <!-- 관리자인 경우에는 수정과 삭제가 가능합니다. -->
          
          <!-- 사용자 정보 수정 -->
-         <button id="modifyForAdmin" type="button" class="w3-button w3-section w3-pink" style="visibility:visible" 
+         <button id="modifyForAdmin" type="button" class="w3-button w3-section w3-red" style="visibility:visible" 
          <%-- onclick="location.href='${pageContext.request.contextPath}/member/updateEmp'"> 수정 </button> --%>
          onclick="updateArticle()"> 수정 </button>
          
          <!-- 사용자 정보 삭제 -->
         <!-- <button type= "button" id="deleteForAdmin" class="w3-button w3-section w3-red" style="visibility:visible" onclick="location.href='${pageContext.request.contextPath}/member/deleteEmp?emnum=${emp_info_emnum}'"> 삭제 </button> -->
-       <button type= "button" id="deleteForAdmin" class="w3-button w3-section w3-red" style="visibility:visible" 
+       <button type= "button" id="deleteForAdmin" class="w3-button w3-section w3-pink" style="visibility:visible" 
         onclick="document.getElementById('confirmModal').style.display='block'"> 삭제 </button>
       </c:if>
       </div>

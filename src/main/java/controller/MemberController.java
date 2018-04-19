@@ -183,10 +183,11 @@ public class MemberController{
 			request.setCharacterEncoding("EUC-KR");
 			response.setContentType("text/html; charset=EUC-KR");
 			response.setHeader("Content-Type", "text/html;charset=EUC-KR");
-			String msg = "정보가 수정되었습니다.";
+			String msg = "정보가 수정되었습니다. *프로필 사진 수정시에는 다시 로그인 해주세요!";
 			PrintWriter out = response.getWriter();
 			 
-			out.println("<script>alert('"+msg+"'); location.href='/GroupWare/orgChart/insa';</script>");
+			/*out.println("<script>alert('"+msg+"'); location.href='/GroupWare/orgChart/insa';</script>");*/
+			out.println("<script>alert('"+msg+"'); location.href='/GroupWare/main';</script>");
 			out.flush(); 
 			out.close();
 			
