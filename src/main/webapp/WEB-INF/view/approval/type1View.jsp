@@ -89,22 +89,22 @@
    <div class="w3-row-padding">
       <div class="w3-half">
          <label>작성자</label>
-         <input class="w3-input w3-border w3-border-black" style="height: 50px;  type="text" value="${vo.name}" readonly >
+         <input class="w3-input w3-border w3-border-black" style="height: 50px;"  type="text" value="${vo.name}" readonly >
       </div>
       <div class="w3-quarter">
          <label>부서</label>
-         <input class="w3-input w3-border w3-border-black" style="height: 50px;  type="text" value="${vo.deptName}" readonly>
+         <input class="w3-input w3-border w3-border-black" style="height: 50px;"  type="text" value="${vo.deptName}" readonly>
       </div>
       <div class="w3-quarter">
          <label>팀명</label>
-         <input class="w3-input w3-border w3-border-black" style="height: 50px;  type="text" value="${vo.teamName}" readonly>
+         <input class="w3-input w3-border w3-border-black" style="height: 50px;"  type="text" value="${vo.teamName}" readonly>
       </div>
    </div>
    
    <div class="w3-padding-16"></div>
    <div class="w3-padding">
       <label>제목</label>
-        <input class="w3-input w3-border w3-border-black" style="height: 50px;  type="text" value="${vo.title}" readonly>
+        <input class="w3-input w3-border w3-border-black" style="height: 50px;"  type="text" value="${vo.title}" readonly>
    </div>
 
    <div class="w3-padding-16"></div>
@@ -117,7 +117,7 @@
    <div class="w3-padding-16"></div>
    <div class="w3-padding">
       <label>작성일자</label>
-        <input class="w3-input w3-border w3-border-black" style="height: 50px;  type="text" value="${vo.inDt}" readonly>
+        <input class="w3-input w3-border w3-border-black" style="height: 50px;"  type="text" value="${vo.inDt}" readonly>
    </div>
    
    <div class="w3-padding-16"></div>
