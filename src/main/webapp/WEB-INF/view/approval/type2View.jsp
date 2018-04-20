@@ -7,7 +7,6 @@
 <script src="${pageContext.servletContext.contextPath}/resources/js/app.js"></script>
 
 <div class="w3-main">
-<div class="w3-padding-24"></div>
   <!-- Contact Section -->
  <div class="w3-row-padding w3-center w3-padding-24">
    <div class="w3-third main_color_theme w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type1'">

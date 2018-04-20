@@ -30,7 +30,8 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 <bean class="controller.NoticeController" />
 <bean class="controller.BoardController" />
 <bean class="controller.RController" />
-
+<!-- 장효추가 4/20(금) -->
+<bean class="controller.RControllerBoard" />
 
 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix" value="/WEB-INF/view/" />

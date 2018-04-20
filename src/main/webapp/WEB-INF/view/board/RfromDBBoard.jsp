@@ -14,9 +14,9 @@
 
 		<form class="w3-container" id="rform" method="post" style="margin-left: -10px; background-color: #2b5797;">
 			<div id="rformdata" style="height: 60px; text-align:  center; margin-top: 30px;">
-				<label class="rtitle" style="font-size: 20px;color:  white;">쪽지항목</label>&nbsp;&nbsp;
+				<label class="rtitle" style="font-size: 20px;color:  white;">게시판 항목</label>&nbsp;&nbsp;
 				<select class="ritem" style="height: 30px;" name="item" >
-					<option value="title">제목</option>
+					<option value="subject">제목</option>
 					<option value="content">내용</option>
 				</select>&nbsp;&nbsp;
 				
@@ -30,10 +30,10 @@
 				<input class="ritem" name="imgname" type="text"  value="${imgname}"> --%>
 
 				<input id="button" type="submit" class="form-control" value="확인">
-				<a href="/GroupWare/RB/RfromDBBoard" style="float: right"><h3>게시판이동</h3></a>
+				<a href="/GroupWare/R/RfromDB" style="float: right"><h3>쪽지이동</h3></a>	
 			</div>
 		</form>
-		
+	
 	
 		<div id="rformoutput" style="text-align: center"> 
 			<img src="<%=request.getContextPath() %>/img/ccc.jpg"/>

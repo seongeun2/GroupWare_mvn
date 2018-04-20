@@ -185,6 +185,10 @@
 		where num = #{num} and boardid = #{boardid}
 	</update>	
 	
+	<!-- R -->
+	<select id="RListBoard" resultType="String" parameterType="String">
+	select ${value} from board
+	</select>
 	
 	
 </mapper>

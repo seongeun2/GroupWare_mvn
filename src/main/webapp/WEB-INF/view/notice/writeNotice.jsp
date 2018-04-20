@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
@@ -61,6 +62,7 @@
 			-moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
 			-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
 		}
+	
 		
 		#writeform .inputitem:focus { 
 			color: #333;
@@ -154,11 +156,11 @@
 </head>
 <body>
 <br/>
+<div class="w3-container w3-padding-32" align="center" style="font-size: 30px;"><i class="material-icons" style="font-size:36px">local_post_office</i><span style="font-family: F4">쪽지쓰기</span></div>
 <div class="container" id="container">
-  
-	<form name="writeform" id="writeform" method="post" action="writeNotice">
+	<form name="writeform" id="writeform" method="post" action="writeNotice" style="padding-left: 300px;">
 		<div class="inputtitle">보낸사람 </div>
-		<div class="inputitem">${name}(${fromid})</div>
+		<div class="inputitem">${name}(${fromid})</div> 
 		<%-- <input id="sender" type="text" class="inputitem" name="fromid" value="${name}(${fromid})" disabled> --%>
 		<input type="text" name="fromid" value="${fromid}" hidden>
 		<div class="inputtitle">받는사람</div>
@@ -174,7 +176,7 @@
 			<input type="submit" name="submit" id="submitbtn" class="btn" value="전송">
 			<input type="button" name="premenu" id="premenubtn" class="btn" value="메인메뉴" onclick="window.location.href='${pageContext.request.contextPath}/main'"></center>
 		</div>
-	</form><br>
+	</form><br><</div>
 </div>
 
 </body>

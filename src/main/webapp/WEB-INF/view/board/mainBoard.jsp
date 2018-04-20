@@ -4,6 +4,9 @@
 <%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<style>
+a{text-decoration: none;}
+</style>
 <div class="w3-padding-16"></div>
 
 <div class="w3-main">
@@ -49,8 +52,7 @@
 <!-- 수정 : content?num=${article.num}&pageNum=${currentPage} 에서 => 맨 앞에 board/ 추가 -->
 <!-- board/content?num=${article.num}&pageNum=${currentPage} -->
 		 	<a href="board/content?num=${article.num}&pageNum=${currentPage}&boardid=2">
-					${article.subject}</a> 
-
+					${article.subject}</a>
  			<c:if test="article.readcount>=20">
  				<img src="${pageContext.request.contextPath}/resources/images/hyo-board-img/hot.gif" border="0" height="16">
 			</c:if>

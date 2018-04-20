@@ -16,7 +16,7 @@
 	<br/>
 	<br/>
 
-<div class="container">
+<div class="container" style="font-family: F4">
 	<table class="w3-table-all"   style="width:80%;" >
 		<tr height="30">
       		<td  width="125" align="center">등록번호</td>

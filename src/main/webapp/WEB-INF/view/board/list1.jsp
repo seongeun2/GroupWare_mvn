@@ -11,13 +11,15 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<style>
+a{text-decoration: none;}
+</style>
 <body>
 
-<div class="w3-main">
+<div class="w3-main" style="font-family: F4">
 
 <div class="w3-container w3-padding-32"">
-  <h2 style="text-align: center;">자유게시판 : ${boardid} 번 (전체 글:${count})</h2>
+  <h2 style="text-align: center; font-family: F4">자유게시판 : ${boardid} 번 (전체 글:${count})</h2>
   
 <!--  글쓰기 버튼  -->
 	<p class="w3-right w3-padding-right-large">

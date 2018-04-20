@@ -7,9 +7,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+ 	  div{
+ 	  font-family: F4
+ 	  }
 	  #container { box-sizing: border-box; width:70%;}
 		
 		.title {
@@ -119,8 +123,9 @@
 </head>
 <body>
 <br/>
-<div class="container" id="container">
-  
+<div class="w3-container w3-padding-32" align="center" style="font-size: 30px;"><i class="material-icons" style="font-size:36px;">local_post_office</i><span style="font-family: F4">쪽지확인</span></div>
+<div class="container" id="container" style="padding-left: 300px;">
+    <div class="w3-container w3-padding-32">
 	<div class="title">보낸사람</div>
 		<p id="fromid" class="item">${notice.fromid}</p>
 	<div class="title">받는사람</div>
@@ -141,7 +146,7 @@
 			<button id="pemenubtn" class="btn"
 				onclick="window.location.href='${pageContext.request.contextPath}/main'">메인메뉴</button>
 		</center>
-	</div>
+	</div></div>
 </div>
 
 </body>
