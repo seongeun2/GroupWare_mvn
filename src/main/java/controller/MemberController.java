@@ -132,20 +132,27 @@ public class MemberController{
 	//로그인 로직 처리, 페이지 이동
 	@RequestMapping(value="/loginDb", method=RequestMethod.POST)
 	public String loginDb(Model model,HttpSession session,String id, String pw) {
+		int pwcheck;
 		//로그인체크
-		int pwcheck = dbPro.login(id, pw);
-		String name = dbPro.getname(id);
-		String profile = dbPro.getprofile(id);
-		String email = dbPro.getEmail(id);
-		int emnum = dbPro.getEmnum(id);
+		int idcheck = dbPro.check_id(id);
+		if(idcheck == 0) {
+			pwcheck = -1;
+		}else {
+			pwcheck = dbPro.login(id, pw);
+			String name = dbPro.getname(id);
+			String profile = dbPro.getprofile(id);
+			String email = dbPro.getEmail(id);
+			int emnum = dbPro.getEmnum(id);
+			
+			session.setAttribute("name", name);
+			session.setAttribute("id", id);
+			session.setAttribute("email", email);
+			session.setAttribute("profile", profile);
+			session.setAttribute("emnum", emnum);
+			
+		}
 		
-		session.setAttribute("name", name);
-		session.setAttribute("id", id);
-		session.setAttribute("email", email);
-		session.setAttribute("profile", profile);
-		session.setAttribute("emnum", emnum);
 		model.addAttribute("pwcheck",pwcheck);	
-		
 		return  "loginDb"; 
 	}
 	

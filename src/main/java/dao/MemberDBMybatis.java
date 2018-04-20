@@ -23,16 +23,13 @@ public class MemberDBMybatis extends MybatisConnector{
 	
 	//·Î±×ÀÎ
 	public int login(String id, String pw) {
-		System.out.println("333333333333");
 		sqlSession = sqlSession();
 		
-		System.out.println("22222222222222");
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id", id);
 		map.put("pw", pw);
 		int x = sqlSession.selectOne(namespace+".login", map) ;	
 		
-		System.out.println("33333333333"+x);
 		sqlSession.close();
 		return x;
 	}
