@@ -64,4 +64,14 @@
 				where emnum=#{emnum}
 	</update>
 	
+	<!-- 비밀번호 변경 -->
+	<update id="update_pw" parameterType="Member">
+		update tpuser set pw = #{pw} where id = #{id}
+	</update>
+
+	<!--직원 한명 데이터 가져오기 -->
+	<select id="getEmployee" resultType="Member" parameterType="hashmap">
+		select * from tpuser 
+			WHERE id = #{id} 
+	</select>
 </mapper>

@@ -48,7 +48,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					<span class="icon2"><i class="fa fa-unlock" aria-hidden="true"></i></span>
 				</div>
 				<div class="sub-w3l">
-					<h6><a href="#">Forgot Password?</a></h6>
+					<h6><a href="${pageContext.request.contextPath}/member/find_pw_form">Forgot Password?</a></h6>
 					<div class="right-w3l">
 						<input type="submit" value="Login">
 					</div>

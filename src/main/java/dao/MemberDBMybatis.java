@@ -106,12 +106,45 @@ public class MemberDBMybatis extends MybatisConnector{
 	//직원 수정
 	public void updateEmp(MemberDataBean article) {
 		sqlSession = sqlSession();
-		System.out.println("getEmnum=========="+article.getEmnum());
 		sqlSession.update(namespace+".updateEmp",	article);	
 		sqlSession.commit();
 		sqlSession.close();	
 
 		}
-	
+	// 비밀번호 변경
+		public int update_pw(MemberDataBean member) throws Exception{
+			sqlSession = sqlSession();
+			 int result = sqlSession.update(namespace+".update_pw", member);
+			 sqlSession.commit();
+			 sqlSession.close();	
+			return result;
+		}
+
+		//비밀번호 찾기 1
+		public int check_id(String id) {
+			// TODO Auto-generated method stub
+			sqlSession = sqlSession();
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("id", id);
+			int check_id = sqlSession.selectOne(namespace+".idcheck", map) ;	
+			sqlSession.close();
+			return check_id;
+		}
+
+		//비밀번호 찾기 2
+		public MemberDataBean login(String id) {
+			// TODO Auto-generated method stub
+			 sqlSession= sqlSession();
+		      Map map = new HashMap();
+		      map.put("id", id);
+		      
+		      MemberDataBean article 
+		      = sqlSession.selectOne(namespace+".getEmployee",   map);
+		      
+		      sqlSession.commit();
+		      sqlSession.close();   
+		      
+		      return article;   
+		}
 		 
 }

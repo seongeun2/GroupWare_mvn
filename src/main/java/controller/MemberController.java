@@ -3,13 +3,14 @@ package controller;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.mail.HtmlEmail;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +30,105 @@ public class MemberController{
 
 	MemberDBMybatis dbPro = MemberDBMybatis.getInstance();
 	
+	// 비밀번호 찾기 폼
+	@RequestMapping(value ="/find_pw_form")
+	public String find_pw_form() throws Exception{
+		return "find_pw_form";
+	}
 	
+	// 비밀번호 찾기
+		@RequestMapping(value = "/find_pw", method = RequestMethod.POST)
+		public void find_pw(@ModelAttribute MemberDataBean member, HttpServletResponse response) throws Exception{
+			find_pw(response, member);
+		}
+	
+		// 비밀번호 찾기
+		public void find_pw(HttpServletResponse response, MemberDataBean member) throws Exception {
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			// 아이디가 없으면
+			if(dbPro.check_id(member.getId()) == 0) {
+				out.print("아이디가 없습니다.");
+				out.close();
+			}
+			// 가입에 사용한 이메일이 아니면
+			else if(!member.getEmail().equals(dbPro.login(member.getId()).getEmail())) {
+				out.print("잘못된 이메일 입니다.");
+				out.close();
+			}else {
+				// 임시 비밀번호 생성
+				String pw = "";
+				for (int i = 0; i < 12; i++) {
+					pw += (char) ((Math.random() * 26) + 97);
+				}
+				member.setPw(pw);
+				// 비밀번호 변경
+				dbPro.update_pw(member);
+				// 비밀번호 변경 메일 발송
+				send_mail(member, "find_pw");
+				
+				out.print("이메일로 임시 비밀번호를 발송하였습니다.");
+				out.close();
+			}
+		}	
+		
+		// 이메일 발송
+		public void send_mail(MemberDataBean member, String div) throws Exception {
+			// Mail Server 설정
+			String charSet = "utf-8";
+			String hostSMTP = "smtp.naver.com";
+			String hostSMTPid = "이메일 입력";
+			String hostSMTPpwd = "비밀번호 입력";
+
+			// 보내는 사람 EMail, 제목, 내용
+			String fromEmail = "이메일 입력";
+			String fromName = "Spring Homepage";
+			String subject = "";
+			String msg = "";
+			
+			if(div.equals("join")) {
+				// 회원가입 메일 내용
+				subject = "Spring Homepage 회원가입 인증 메일입니다.";
+				msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
+				msg += "<h3 style='color: blue;'>";
+				msg += member.getId() + "님 회원가입을 환영합니다.</h3>";
+				msg += "<div style='font-size: 130%'>";
+				msg += "하단의 인증 버튼 클릭 시 정상적으로 회원가입이 완료됩니다.</div><br/>";
+				msg += "<form method='post' action='http://localhost:8081/homepage/member/approval_member.do'>";
+				msg += "<input type='hidden' name='email' value='" + member.getEmail() + "'>";
+				/*msg += "<input type='hidden' name='approval_key' value='" + member.getApproval_key() + "'>";*/
+				msg += "<input type='submit' value='인증'></form><br/></div>";
+			}else if(div.equals("find_pw")) {
+				subject = "Spring Homepage 임시 비밀번호 입니다.";
+				msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
+				msg += "<h3 style='color: blue;'>";
+				msg += member.getId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
+				msg += "<p>임시 비밀번호 : ";
+				msg += member.getPw() + "</p></div>";
+			}
+			// 받는 사람 E-Mail 주소
+			String mail = member.getEmail();
+			System.out.println("mail="+mail);
+			try {
+				HtmlEmail email = new HtmlEmail();
+				email.setDebug(true);
+				email.setCharset(charSet);
+				email.setSSL(true);
+				email.setHostName(hostSMTP);
+				email.setSmtpPort(587);
+
+				email.setAuthentication(hostSMTPid, hostSMTPpwd);
+				email.setTLS(true);
+				email.addTo(mail, charSet);
+				email.setFrom(fromEmail, fromName, charSet);
+				email.setSubject(subject);
+				email.setHtmlMsg(msg);
+				email.send();
+			} catch (Exception e) {
+				System.out.println("메일발송 실패 : " + e);
+			}
+		}
+		
 	//로그인 로직 처리, 페이지 이동
 	@RequestMapping(value="/loginDb", method=RequestMethod.POST)
 	public String loginDb(Model model,HttpSession session,String id, String pw) {
@@ -183,7 +282,7 @@ public class MemberController{
 			request.setCharacterEncoding("EUC-KR");
 			response.setContentType("text/html; charset=EUC-KR");
 			response.setHeader("Content-Type", "text/html;charset=EUC-KR");
-			String msg = "정보가 수정되었습니다. *프로필 사진 수정시에는 다시 로그인 해주세요!";
+			String msg = "정보가 수정되었습니다." +"\\n"+  "*프로필 사진 수정시에는 다시 로그인 해주세요!";
 			PrintWriter out = response.getWriter();
 			 
 			/*out.println("<script>alert('"+msg+"'); location.href='/GroupWare/orgChart/insa';</script>");*/
@@ -194,5 +293,8 @@ public class MemberController{
 			return null;
 
 		}	
+		
+	
+	
 }
 
