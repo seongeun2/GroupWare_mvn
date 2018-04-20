@@ -20,7 +20,7 @@
 <style>
 .w3-main {margin-left: 200px; margin-right: 200px;}"
 body .div{
-	font-family: F2;
+   font-family: F2;
 }
 </style>
 <body>
@@ -31,7 +31,7 @@ body .div{
       <a href="${pageContext.request.contextPath}/main" class="w3-bar-item w3-button">GroupWare</a>
       <div class="w3-right w3-hide-small">
          <c:if test="${id.equals('admin')}">
-         	<a href="${pageContext.request.contextPath}/member/adminpage" class="w3-bar-item w3-button w3-hide-small">직원 관리</a>
+            <a href="${pageContext.request.contextPath}/member/adminpage" class="w3-bar-item w3-button w3-hide-small">직원 관리</a>
          </c:if>
          
           <a href="${pageContext.request.contextPath}/mypage" class="w3-bar-item w3-button w3-hide-small">내 정보</a> 
@@ -54,11 +54,11 @@ body .div{
             <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu"></a>
              <!-- <img src="../resources/images/mypic.gif" style="width:100%;"> -->
              <c:if test="${empty profile}">
-             	<img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" style="width:100%; max-height: 200px;">
+                <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" style="width:100%; max-height: 200px;">
              </c:if>
              
               <c:if test="${not empty profile}">
-             	<img src="${pageContext.servletContext.contextPath}/fileSave/${profile}" style="width:100%; max-height: 200px;">
+                <img src="${pageContext.servletContext.contextPath}/fileSave/${profile}" style="width:100%; max-height: 200px;">
              </c:if>
          </div>
    
@@ -72,9 +72,9 @@ body .div{
          <!-- 아래 메뉴들 -->
          <div class="w3-padding">
             <div class="w3-medium">
-				<!-- 오늘 날짜 -->
-				<jsp:useBean id="toDay" class="java.util.Date" />				
-			<fmt:formatDate value="${toDay}" pattern="yyyy-MM-dd" />
+            <!-- 오늘 날짜 -->
+            <jsp:useBean id="toDay" class="java.util.Date" />            
+         <fmt:formatDate value="${toDay}" pattern="yyyy-MM-dd" />
 
             </div>
          </div>
@@ -143,62 +143,62 @@ body .div{
             <i class="fa fa-group" style="font-size:96px;"></i>
          </div>
          <div class="w3-display-bottommiddle">
-         	<!-- 성희 수정함. 조직도 클릭시 링크 연결되게 -->
+            <!-- 성희 수정함. 조직도 클릭시 링크 연결되게 -->
             <p class="w3-large">조직도</p>
          </div>
       </div>
    </div>
    
    <!-- 쪽지함 메뉴 그리드 changed by yjchoi 10Apr2018 -->
-	<div id="mailbox" class="w3-col" style="width: 29%;">
-		<div class="top-menu w3-display-container w3-metro-dark-blue">
-			<div class="w3-display-middle">
-				<i class="fa fa-envelope" style="font-size:96px;"></i>	
-			</div>
-			<div class="w3-display-bottommiddle">
-				<p class="w3-large">쪽지함</p>
-			</div>
-		</div>
+   <div id="mailbox" class="w3-col" style="width: 29%;">
+      <div class="top-menu w3-display-container w3-metro-dark-blue">
+         <div class="w3-display-middle">
+            <i class="fa fa-envelope" style="font-size:96px;"></i>   
+         </div>
+         <div class="w3-display-bottommiddle">
+            <p class="w3-large">쪽지함</p>
+         </div>
+      </div>
       
-		<div class="grid-menu w3-display-container" style="display: none;">									
-			<div class="w3-row">								
-				<div class="w3-half grid-menu-item w3-display-topleft w3-metro-dark-blue" onclick="location.href='/GroupWare/notice/writeNotice'">							
-					<div class="w3-display-middle">						
-						<i class="fa fa-paper-plane-o" style="font-size:36px;"></i>					
-					</div>						
-					<div class="w3-display-bottommiddle">						
-						<p class="toggle_label_small">쪽지쓰기</p>				
-					</div>						
-				</div>							
-				<div class="w3-half grid-menu-item w3-display-topright w3-metro-dark-blue">							
-					<div class="w3-display-middle">						
-						<!-- <i class="fa fa-paper-plane-o" style="font-size:36px;"></i>	 -->				
-					</div>						
-					<div class="w3-display-bottommiddle">						
-						<!-- <p>쪽지쓰기</p> -->					
-					</div>						
-				</div>							
-			</div>								
-			<div class="w3-row">								
-				<div class="w3-half grid-menu-item w3-display-bottomleft w3-metro-dark-blue" onclick="location.href='/GroupWare/notice/receivedNotice'">							
-					<div class="w3-display-middle">						
-						<i class="fa fa-briefcase" style="font-size:36px;"></i>					
-					</div>						
-					<div class="w3-display-bottommiddle">						
-						<p class="toggle_label_small">받은쪽지함</p>				
-					</div>						
-				</div>							
-				<div class="w3-half grid-menu-item w3-display-bottomright w3-metro-dark-blue" onclick="location.href='/GroupWare/notice/sentNotice'">							
-					<div class="w3-display-middle">						
-						<i class="fa fa-briefcase" style="font-size:36px;"></i>					
-					</div>						
-					<div class="w3-display-bottommiddle">
-						<p class="toggle_label_small">보낸쪽지함</p>							
-					</div>						
-				</div>							
-			</div>								
-		</div>
-	</div><!-- 쪽지함 그리드 -->
+      <div class="grid-menu w3-display-container" style="display: none;">                           
+         <div class="w3-row">                        
+            <div class="w3-half grid-menu-item w3-display-topleft w3-metro-dark-blue" onclick="location.href='/GroupWare/notice/writeNotice'">                     
+               <div class="w3-display-middle">                  
+                  <i class="fa fa-paper-plane-o" style="font-size:36px;"></i>               
+               </div>                  
+               <div class="w3-display-bottommiddle">                  
+                  <p class="toggle_label_small">쪽지쓰기</p>            
+               </div>                  
+            </div>                     
+            <div class="w3-half grid-menu-item w3-display-topright w3-metro-dark-blue" onclick="location.href='/GroupWare/R/RfromDB'">                     
+               <div class="w3-display-middle">                  
+                  <i class="fa fa-paper-plane-o" style="font-size:36px;"></i>            
+               </div>                  
+               <div class="w3-display-bottommiddle">                  
+                  <p class="toggle_label_small">R 시각화</p>                
+               </div>                  
+            </div>                     
+         </div>                        
+         <div class="w3-row">                        
+            <div class="w3-half grid-menu-item w3-display-bottomleft w3-metro-dark-blue" onclick="location.href='/GroupWare/notice/receivedNotice'">                     
+               <div class="w3-display-middle">                  
+                  <i class="fa fa-briefcase" style="font-size:36px;"></i>               
+               </div>                  
+               <div class="w3-display-bottommiddle">                  
+                  <p class="toggle_label_small">받은쪽지함</p>            
+               </div>                  
+            </div>                     
+            <div class="w3-half grid-menu-item w3-display-bottomright w3-metro-dark-blue" onclick="location.href='/GroupWare/notice/sentNotice'">                     
+               <div class="w3-display-middle">                  
+                  <i class="fa fa-briefcase" style="font-size:36px;"></i>               
+               </div>                  
+               <div class="w3-display-bottommiddle">
+                  <p class="toggle_label_small">보낸쪽지함</p>                     
+               </div>                  
+            </div>                     
+         </div>                        
+      </div>
+   </div><!-- 쪽지함 그리드 -->
 </div>
 
 
@@ -220,8 +220,8 @@ $(window).on('resize', refresh);
 $(window).on('load',InitTop);
 
 function InitTop() {
-	SetView();
-	refresh();
+   SetView();
+   refresh();
 }
 
 function refresh() {
@@ -278,12 +278,12 @@ function refresh() {
      });
      
      $(".grid-menu-item").mouseenter(function() {
-  	   SetGridHoverColor(this);
+        SetGridHoverColor(this);
      });
      
      $(".grid-menu-item").mouseleave(function() {
-  	   $(this).css("background-color", "#2b5797");
-  	   $(this).css("color", "#fff");
+        $(this).css("background-color", "#2b5797");
+        $(this).css("color", "#fff");
      });
     
     
@@ -291,7 +291,7 @@ function refresh() {
    ToggleLabel();
 }
 
-function PreventOverlap() {	
+function PreventOverlap() {   
 }
 
 jQuery.fn.extend({

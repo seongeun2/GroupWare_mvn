@@ -1,0 +1,6 @@
+library('wordcloud')
+library('RColorBrewer')
+conventions <- read.table('[filename]', header = TRUE,sep = ',')
+png('[img]', width=1000,height=1000)
+wordcloud(conventions[,1], conventions[,2],scale = c(10,1), colors = brewer.pal(8,'Dark2'), rot.per = 0.25)
+dev.off()

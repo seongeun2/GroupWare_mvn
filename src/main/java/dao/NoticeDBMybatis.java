@@ -13,8 +13,8 @@ import org.apache.ibatis.session.SqlSession;
 
 public class NoticeDBMybatis extends MybatisConnector {
 	
-	private final String namespace = "groupWare.mybatis";
-	private static NoticeDBMybatis instance = new NoticeDBMybatis();
+	private final String namespace = "notice.mybatis";
+private static NoticeDBMybatis instance = new NoticeDBMybatis();
 	
 	public static NoticeDBMybatis getInstance() { return instance; }
 	

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace = "groupWare.mybatis">
+<mapper namespace = "notice.mybatis">
 
 <select id="getFromNoticeCount" resultType="int" parameterType="String">
 	select count(*) from tpnotice where fromid = #{id}
@@ -35,6 +35,10 @@
 
 <select id="detail" resultType="Notice" parameterType="int">
 	select * from tpnotice where nid = #{nid}
+</select>
+
+<select id="RList" resultType="String" parameterType="String">
+	select ${value} from tpnotice
 </select>
 
 <insert id="insert" parameterType="Notice" >
