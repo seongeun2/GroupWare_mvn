@@ -76,12 +76,12 @@ public class MemberController{
 		public void send_mail(MemberDataBean member, String div) throws Exception {
 			// Mail Server 설정
 			String charSet = "utf-8";
-			String hostSMTP = "smtp.naver.com";
-			String hostSMTPid = "이메일 입력";
-			String hostSMTPpwd = "비밀번호 입력";
+			String hostSMTP = "smtp.gmail.com";
+			String hostSMTPid = "zhdzhdgl";
+			String hostSMTPpwd = "godty0316!";
 
 			// 보내는 사람 EMail, 제목, 내용
-			String fromEmail = "이메일 입력";
+			String fromEmail = "xodgl@daum.net";
 			String fromName = "Spring Homepage";
 			String subject = "";
 			String msg = "";
