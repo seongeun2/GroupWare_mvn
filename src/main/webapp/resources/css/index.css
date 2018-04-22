@@ -141,6 +141,37 @@ span.icon2 {
 	-moz-transition:0.5s all;
 	-ms-transition:0.5s all;
 }
+
+.sub-main-w3 input[type="button"] {
+    color: white;
+    background: #2898ea;
+    border: none;
+    padding: .7em 0;
+    outline: none;
+    width: 33%;
+    height: 50px;
+    font-size: 1em;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    border-radius: 30px;
+}
+.sub-main-w3 input[type="button"]:hover {
+    background: #fff;
+    color: black;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-o-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+
 /*--//main--*/
 
 /*--footer--*/

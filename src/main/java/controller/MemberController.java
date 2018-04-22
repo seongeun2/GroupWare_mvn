@@ -171,7 +171,7 @@ public class MemberController{
 				
 				
 				// 메일 제목을 등록합니다.
-				message.setSubject("Spring Homepage 임시 비밀번호 입니다.");
+				message.setSubject("그룹웨어 임시 비밀번호 입니다.");
 				
 				// 메일 내용을 등록합니다.
 				message.setText(member.getId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요."
