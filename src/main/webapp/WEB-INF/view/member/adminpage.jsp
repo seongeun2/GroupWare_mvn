@@ -27,15 +27,12 @@
 	<div class="w3-padding-32"></div>
 	
 	<div class="w3-row-padding">
-	  <div class="w3-quarter w3-container w3-red"><p>quarter</p></div>
-	  <div class="w3-quarter w3-container w3-purple"><p>quarter</p></div>
-	  <div class="w3-half">
-	    <div class="w3-row">
-	      <div class="w3-col w3-container w3-blue" style="width:35%"><p>35%</p></div>
-	      <div class="w3-rest w3-container w3-green"><p>w3-rest</p></div>
+	  <div class="w3-quarter w3-container w3-red" style="height: 30px"><p></p></div>
+	  <div class="w3-quarter w3-container w3-purple" style="height: 30px"><p></p></div>
+
+	      <div class="w3-quarter w3-container w3-blue" style="height: 30px"><p></p></div>
+	      <div class="w3-quarter w3-container w3-green" style="height: 30px"><p></p></div>
 	    </div>
-	  </div>
-	</div>
 </div>
 
 

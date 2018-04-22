@@ -2,11 +2,12 @@ package controller;
 
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.security.Security;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.mail.HtmlEmail;
+//import org.apache.commons.mail.HtmlEmail;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -19,6 +20,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.mail.smtp.SMTPTransport;
+
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
 
 import dao.MemberDBMybatis;
 import model.MemberDataBean;
@@ -74,14 +81,14 @@ public class MemberController{
 		
 		// 이메일 발송
 		public void send_mail(MemberDataBean member, String div) throws Exception {
-			// Mail Server 설정
+			/*// Mail Server 설정
 			String charSet = "utf-8";
-			String hostSMTP = "smtp.gmail.com";
+			String hostSMTP = "smtp.google.com";
 			String hostSMTPid = "zhdzhdgl";
 			String hostSMTPpwd = "godty0316!";
 
 			// 보내는 사람 EMail, 제목, 내용
-			String fromEmail = "xodgl@daum.net";
+			String fromEmail = "20db20@naver.com";
 			String fromName = "Spring Homepage";
 			String subject = "";
 			String msg = "";
@@ -96,7 +103,7 @@ public class MemberController{
 				msg += "하단의 인증 버튼 클릭 시 정상적으로 회원가입이 완료됩니다.</div><br/>";
 				msg += "<form method='post' action='http://localhost:8081/homepage/member/approval_member.do'>";
 				msg += "<input type='hidden' name='email' value='" + member.getEmail() + "'>";
-				/*msg += "<input type='hidden' name='approval_key' value='" + member.getApproval_key() + "'>";*/
+				msg += "<input type='hidden' name='approval_key' value='" + member.getApproval_key() + "'>";
 				msg += "<input type='submit' value='인증'></form><br/></div>";
 			}else if(div.equals("find_pw")) {
 				subject = "Spring Homepage 임시 비밀번호 입니다.";
@@ -115,7 +122,7 @@ public class MemberController{
 				email.setCharset(charSet);
 				email.setSSL(true);
 				email.setHostName(hostSMTP);
-				email.setSmtpPort(587);
+				email.setSmtpPort(465);
 
 				email.setAuthentication(hostSMTPid, hostSMTPpwd);
 				email.setTLS(true);
@@ -126,9 +133,59 @@ public class MemberController{
 				email.send();
 			} catch (Exception e) {
 				System.out.println("메일발송 실패 : " + e);
+			}*/
+			
+			// 메일 발송용 프로퍼티 설정
+			// 수정할 필요 없습니다.
+			
+			Properties props = new Properties();
+			props.put("mail.smtp.host", "smtp.gmail.com");
+			props.put("mail.smtp.socketFactory.port", "465");
+			props.put("mail.smtp.socketFactory.class",
+					"javax.net.ssl.SSLSocketFactory");
+			props.put("mail.smtp.auth", "true");
+			props.put("mail.smtp.port", "465");
+
+			// 자신의 gmail / password
+			Session session = Session.getDefaultInstance(props,
+				new javax.mail.Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						// 
+						return new PasswordAuthentication("zhdzhdgl","godty0316!");
+					}
+				});
+
+			try {
+
+				Message message = new MimeMessage(session);
+				
+				// 발송하는 이메일 주소를 등록합니다.
+				// 인증을 받은 메일 계정이어야 합니다.
+				message.setFrom(new InternetAddress("zhdzhdgl@gmail.com"));
+				
+				// 받는 사람 E-Mail 주소
+				String mail = member.getEmail();
+				// 받는 사람 이메일을 등록합니다.
+				message.setRecipients(Message.RecipientType.TO,
+						InternetAddress.parse(mail));
+				
+				
+				// 메일 제목을 등록합니다.
+				message.setSubject("Spring Homepage 임시 비밀번호 입니다.");
+				
+				// 메일 내용을 등록합니다.
+				message.setText(member.getId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요."
+						+"\n 임시 비밀번호 : " + member.getPw());
+
+				Transport.send(message);
+
+				System.out.println("Done");
+
+			} catch (MessagingException e) {
+				throw new RuntimeException(e);
 			}
 		}
-		
+			
 	//로그인 로직 처리, 페이지 이동
 	@RequestMapping(value="/loginDb", method=RequestMethod.POST)
 	public String loginDb(Model model,HttpSession session,String id, String pw) {

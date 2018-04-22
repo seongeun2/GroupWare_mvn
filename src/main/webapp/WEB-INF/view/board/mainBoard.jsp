@@ -68,7 +68,7 @@ a{text-decoration: none;}
            
              </c:if>
             </table>
-          
+          <div class="w3-padding-16"></div>
          </div>
          
          <!-- <div class="w3-col" style="width: 20%;">
@@ -141,6 +141,8 @@ a{text-decoration: none;}
                
            </c:if>
             </table>
+            <div class="w3-padding-16"></div>
+            
          </div>
          
          <!-- <div class="w3-col" style="width: 20%;">
@@ -160,5 +162,18 @@ a{text-decoration: none;}
 </div>
 
 <div class="w3-padding-32"></div>
+	
+<!-- 	<div class="w3-row-padding">
+	  <div class="w3-quarter w3-metro-blue" style="height: 30px"><p></p></div>
+	  <div class="w3-quarter w3-metro-blue" style="height: 30px"><p></p></div>
+	      <div class="w3-quarter w3-metro-blue" style="height: 30px"><p></p></div>
+	      <div class="w3-quarter w3-metro-blue" style="height: 30px"><p></p></div>
+	    </div> -->
+<div class="w3-row-padding">
+	  <div class="w3-quarter w3-container w3-red" style="height: 30px"><p></p></div>
+	  <div class="w3-quarter w3-container w3-purple" style="height: 30px"><p></p></div>
 
+	      <div class="w3-quarter w3-container w3-blue" style="height: 30px"><p></p></div>
+	      <div class="w3-quarter w3-container w3-green" style="height: 30px"><p></p></div>
+	    </div>
 </div>
