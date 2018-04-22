@@ -14,6 +14,7 @@
 <meta name="keywords" content="Online Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="application/x-javascript"> 
+
 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 function hideURLbar(){ window.scrollTo(0,1); } 
 $(function(){

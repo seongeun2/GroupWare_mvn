@@ -22,3 +22,5 @@
  
    COMMENT ON COLUMN "SCOTT"."APPROVAL_PATH"."GUBUN" IS '결재구분';
  
+   
+

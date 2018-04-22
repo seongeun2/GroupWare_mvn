@@ -48,3 +48,5 @@
  
    COMMENT ON COLUMN "SCOTT"."APPROVAL"."HOLIDAY" IS 'ÈÞ°¡±¸ºÐ';
  
+   
+

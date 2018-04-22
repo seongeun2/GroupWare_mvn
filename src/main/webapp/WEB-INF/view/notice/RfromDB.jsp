@@ -30,7 +30,8 @@
 				<input class="ritem" name="imgname" type="text"  value="${imgname}"> --%>
 
 				<input id="button" type="submit" class="form-control" value="확인">
-				<a href="/GroupWare/RB/RfromDBBoard" style="float: right"><h3>게시판이동</h3></a>
+				<a href="/GroupWare/RB/RfromDBBoard" style="float: right">
+											<i class="fa fa-bars" style="color: white; font-size: 24px;">&nbsp;게시판Go</i></a>
 			</div>
 		</form>
 		
