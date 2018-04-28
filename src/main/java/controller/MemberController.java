@@ -84,8 +84,8 @@ public class MemberController{
 			/*// Mail Server 설정
 			String charSet = "utf-8";
 			String hostSMTP = "smtp.google.com";
-			String hostSMTPid = "zhdzhdgl";
-			String hostSMTPpwd = "godty0316!";
+			String hostSMTPid = 
+			String hostSMTPpwd = 
 
 			// 보내는 사람 EMail, 제목, 내용
 			String fromEmail = "20db20@naver.com";
@@ -151,7 +151,7 @@ public class MemberController{
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
 						// 
-						return new PasswordAuthentication("zhdzhdgl","godty0316!");
+						return new PasswordAuthentication("id","pw!");
 					}
 				});
 
@@ -161,7 +161,7 @@ public class MemberController{
 				
 				// 발송하는 이메일 주소를 등록합니다.
 				// 인증을 받은 메일 계정이어야 합니다.
-				message.setFrom(new InternetAddress("zhdzhdgl@gmail.com"));
+				message.setFrom(new InternetAddress("이메일@gmail.com"));
 				
 				// 받는 사람 E-Mail 주소
 				String mail = member.getEmail();
